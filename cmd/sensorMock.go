@@ -1,35 +1,38 @@
 package cmd
 
 import (
-	"fmt"
+	"github.com/kuritka/onho.io/common/utils"
+	"github.com/kuritka/onho.io/services"
+	"github.com/kuritka/onho.io/services/sensorMock"
 	"github.com/spf13/cobra"
 )
 
 var (
 	name string
-	freq uint8
-	max float64
-	min float64
-	stepSize float64
 )
 
-var sensorFakeCmd = &cobra.Command{
-	Use:   "sensor-fake",
-	Short: "SensorFake is authenticated webapp collecting face data",
+var sensorMockCmd = &cobra.Command{
+	Use:   "sensor-mock",
+	Short: "SensorMock is mocking sensor service",
 	Long: `A Fast and Flexible face data collector. Authentication is done by github`,
 
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Printf("Starting SESNSOR FAKE CMD...")
+		var svc services.IService
+		svc = sensorMock.NewService(sensorOptions)
+		err := svc.Run()
+		//err := sensorMock.NewService(sensorOptions).Run()
+		utils.FailOnError(err,"Error in SENSOR MOCK")
 	},
 }
 
 func init(){
-	sensorFakeCmd.Flags().StringVarP(&name, "name", "n", "", "name of the sensor")
-	sensorFakeCmd.Flags().Uint8VarP(&freq, "frequency","f", 1, "update frequency in cycles/sec ")
-	sensorFakeCmd.Flags().Float64VarP(&min, "min","i", 1., "minimum value for generated readings")
-	sensorFakeCmd.Flags().Float64VarP(&max, "max","x", 5., "maximum value for generated readings")
-	sensorFakeCmd.Flags().Float64VarP(&stepSize, "stepSize","s", 0.1, "maximum allowable change per measurement")
-	sensorFakeCmd.MarkFlagRequired("name")
-	rootCmd.AddCommand(sensorFakeCmd)
-
+	sensorMockCmd.Flags().StringVarP(&sensorOptions.Name, "name", "n", "", "Name of the sensor")
+	sensorMockCmd.Flags().Uint8VarP(&sensorOptions.Freq, "frequency","f", 1, "update frequency in cycles/sec ")
+	sensorMockCmd.Flags().Float64VarP(&sensorOptions.Min, "min","i", 1., "minimum value for generated readings")
+	sensorMockCmd.Flags().Float64VarP(&sensorOptions.Max, "max","x", 5., "maximum value for generated readings")
+	sensorMockCmd.Flags().Float64VarP(&sensorOptions.StepSize, "step-size","s", 0.1, "maximum allowable change per measurement")
+	sensorMockCmd.Flags().StringVarP(&sensorOptions.ConnectionString, "connection-string", "c", "", "connectionString i.e. amqp://guest:guest@localhost:5672")
+	sensorMockCmd.MarkFlagRequired("Name")
+	sensorMockCmd.MarkFlagRequired("connection-string")
+	rootCmd.AddCommand(sensorMockCmd)
 }

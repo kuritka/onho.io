@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=GoLan
+Exec=/home/michal/GoLand-2018.3.2/bin/goland.sh
+Icon=/home/michal/GoLand-2018.3.2/bin/goland.svg
+Type=Application
+Categories=GTK;GNOME;Utility;
+
