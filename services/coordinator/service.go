@@ -20,7 +20,9 @@ func NewService(options Options) *Coordinator {
 
 func (c *Coordinator) Run() error {
 
-	NewQueueListener(c.options).ListenForNewSource()
+	aggregator := NewEventAggregator()
+	NewDatabaseConsumer(aggregator, c.options.ConnectionString)
+	NewQueueListener(c.options,aggregator).ListenForNewSource()
 
 	return nil
 }

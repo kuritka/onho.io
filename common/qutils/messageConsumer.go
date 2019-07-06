@@ -42,6 +42,14 @@ func (m *MessageConsumer) GetUniqueQueue() *UniqueQueue {
 	}
 }
 
+func (m *MessageConsumer) GetQueue(name string) *ChannelConsumer {
+	return m.getQueue(name, true)
+}
+
+func (m *MessageConsumer) GetPersistentQueue(name string) *ChannelConsumer {
+	return m.getQueue(name, false)
+}
+
 
 func (u *UniqueQueue) BindToFanout() *ChannelConsumer {
 	return u.BindToExchange(Fanout)
@@ -68,3 +76,15 @@ func (c *ChannelConsumer) ConsumeFromChannel() (<-chan amqp.Delivery, error) {
 		"", true,false,false,false, nil)
 }
 
+func (c *ChannelConsumer) ConsumeExclusiveFromChannel(autoAck bool) (<-chan amqp.Delivery, error) {
+	return c.channel.Consume(c.queue.Name,
+		"", autoAck,true,false,false, nil)
+}
+
+
+
+func (m *MessageConsumer) getQueue(name string, autoDelete bool) *ChannelConsumer {
+	//empty queue name = rabbit creates unique name for it
+	q := GetQueue(name, m.channel,autoDelete)
+	return &ChannelConsumer{q,m.channel}
+}

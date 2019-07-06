@@ -9,4 +9,5 @@ const (
 
 const (
 	SensorDiscoveryExchange = "SensorDiscovery"
+	PersistentReadingsQueue = "PersistentReadings"
 )

@@ -1,11 +1,10 @@
 package coordinator
 
 import (
-	"bytes"
-	"encoding/gob"
 	"github.com/kuritka/onho.io/common/dto"
 	"github.com/kuritka/onho.io/common/qutils"
 	"github.com/kuritka/onho.io/common/utils"
+	"github.com/kuritka/onho.io/services"
 	"github.com/streadway/amqp"
 )
 
@@ -20,15 +19,16 @@ type QueueListener struct {
 	registry         map[string]<-chan amqp.Delivery
 	name             string
 	connectionString string
-	ea               IEventAggregator
+	ea               services.IEventAggregator
 }
 
-func NewQueueListener(options Options) *QueueListener {
+func NewQueueListener(options Options, eventAggregator services.IEventAggregator) *QueueListener {
+	utils.FailOnNil(eventAggregator,"eventAggregator")
 	listener := QueueListener{
 		registry: make(map[string]<-chan amqp.Delivery),
 		name: options.Name,
 		connectionString: options.ConnectionString,
-		ea: NewEventAggregator(),
+		ea: eventAggregator,
 	}
 	listener.conn,listener.ch = qutils.GetChannel(options.ConnectionString)
 	return &listener
@@ -48,6 +48,8 @@ func (l *QueueListener) ListenForNewSource() {
 	l.DiscoverSensors()
 
 	for msg := range fanoutChannel {
+
+		l.ea.PublishEvent(DataSourceDiscovered, string(msg.Body))
 
 		sensorId := string(msg.Body)
 		dataChannel, _ := l.ch.Consume(
@@ -71,10 +73,7 @@ func (l *QueueListener) ListenForNewSource() {
 
 func (l *QueueListener) ProcessMessages(msgs <-chan amqp.Delivery){
 	for msg := range msgs {
-		r := bytes.NewReader(msg.Body)
-		d := gob.NewDecoder(r)
-		sensorMessage := new(dto.SensorMessage)
-		err := d.Decode(sensorMessage)
+		sensorMessage, err := dto.FromQueueMessage(msg)
 		utils.FailOnError(err, "decoding message")
 		logger.Debug().Msgf("Received message: %v\n", sensorMessage)
 
@@ -85,7 +84,7 @@ func (l *QueueListener) ProcessMessages(msgs <-chan amqp.Delivery){
 			Face: sensorMessage.Face,
 			Timestamp: sensorMessage.Timestamp,
 		}
-		l.ea.PublishEvent("MessageReceived_"+msg.RoutingKey, data)
+		l.ea.PublishEvent(MessageReceivedPrefix+msg.RoutingKey, data)
 	}
 }
 

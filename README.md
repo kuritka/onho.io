@@ -43,7 +43,7 @@ sudo docker run --rm --name pg-docker \
  -e POSTGRES_DB=test_db \
  -p 5432:5432 \
  -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data \
- -d postgres:latest
+ -d postgres:latest 
 ```
 
 
@@ -65,10 +65,11 @@ sudo docker run -p 8085:80 \
 --link pg-docker:pg-docker \
 -e "PGADMIN_DEFAULT_EMAIL=admin@local.com" \
 -e "PGADMIN_DEFAULT_PASSWORD=password" \
--d dpage/pgadmin4
+-d dpage/pgadmin4 \
+--name pgadmin
 ```
 
-than run `localhost:8085` from your browser.
+login on `localhost:8085` from your browser with credentials `admin@local.com/password`.
 When create new server use `pg-docker` as Host and `5432` as port 
 `postgres` as database and user. For password use `password`
 

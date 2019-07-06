@@ -6,8 +6,6 @@ import (
 )
 var logger = log.Log
 
-type Guard struct {}
-
 func FailOnError(err error, msg string){
 	if err != nil {
 		logger.Fatal().Msgf("%s: %s", msg, err)
