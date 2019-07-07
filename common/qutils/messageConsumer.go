@@ -76,6 +76,7 @@ func (c *ChannelConsumer) ConsumeFromChannel() (<-chan amqp.Delivery, error) {
 		"", true,false,false,false, nil)
 }
 
+//only one service could exclusively read from the channel
 func (c *ChannelConsumer) ConsumeExclusiveFromChannel(autoAck bool) (<-chan amqp.Delivery, error) {
 	return c.channel.Consume(c.queue.Name,
 		"", autoAck,true,false,false, nil)

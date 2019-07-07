@@ -10,4 +10,7 @@ const (
 const (
 	SensorDiscoveryExchange = "SensorDiscovery"
 	PersistentReadingsQueue = "PersistentReadings"
+	WebAppSourceExchange	= "WebAppSourceExchange"
+	WebAppReadingsExchange	= "WebAppReadingsExchange"
+	WebAppDiscoveryQueue	= "WebAppDiscovery"
 )

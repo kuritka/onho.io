@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"github.com/kuritka/onho.io/services"
 	"os"
 
 	"github.com/rs/zerolog/log"
@@ -8,6 +9,7 @@ import (
 )
 
 var Verbose bool
+var sharedEventAggregator = services.NewEventAggregator()
 
 var rootCmd = &cobra.Command{
 	Short: "onho.io",

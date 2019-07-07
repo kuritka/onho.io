@@ -15,7 +15,7 @@ type DatabaseConsumer struct {
 	conn                    *amqp.Connection
 	ch                      *amqp.Channel
 	persistentReadingsQueue *amqp.Queue
-	messageProvider         qutils.MessageProvider
+	messageProvider         *qutils.MessageProvider
 	sources 				[]string
 }
 
@@ -25,7 +25,7 @@ func NewDatabaseConsumer(ea services.IEventAggregator, connectionString string) 
 	dc.conn, dc.ch = qutils.GetChannel(connectionString)
 	dc.persistentReadingsQueue = qutils.GetQueue(qutils.PersistentReadingsQueue,dc.ch,false)
 	dc.messageProvider = qutils.NewGobMessageProvider()
-	ea.AddListener(DataSourceDiscovered, func(eventName interface{}){
+	ea.AddListener(services.DataSourceDiscovered, func(eventName interface{}){
 		dc.SubscribeToDataEvent(eventName.(string))
 	})
 	return &dc
@@ -44,10 +44,10 @@ func (dc *DatabaseConsumer) SubscribeToDataEvent(sensorName string) {
 
 	//self-executing method parameter func() func(interface{}){}()
 	//if event is published it checks whether previous message is older than 5 sec and if yes, message is stored
-	dc.ea.AddListener(MessageReceivedPrefix+sensorName, func() func(interface{}){
+	dc.ea.AddListener(services.MessageReceivedPrefix+sensorName, func() func(interface{}){
 		prevTime  := time.Unix(0,0)
 		return func(eventData interface{}){
-			ed := eventData.(EventData)
+			ed := eventData.(services.EventData)
 			//only message newer than maxRate seconds is written. This counts for each sensor and coordinator.
 			//if multiple coordinators exists than possibility that all of them will push message at same time.
 			if time.Since(prevTime) > maxRate {

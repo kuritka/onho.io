@@ -1,4 +1,4 @@
-package coordinator
+package services
 
 import (
 	"github.com/kuritka/onho.io/common/utils"

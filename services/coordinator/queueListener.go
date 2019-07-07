@@ -49,7 +49,7 @@ func (l *QueueListener) ListenForNewSource() {
 
 	for msg := range fanoutChannel {
 
-		l.ea.PublishEvent(DataSourceDiscovered, string(msg.Body))
+		l.ea.PublishEvent(services.DataSourceDiscovered, string(msg.Body))
 
 		sensorId := string(msg.Body)
 		dataChannel, _ := l.ch.Consume(
@@ -77,14 +77,14 @@ func (l *QueueListener) ProcessMessages(msgs <-chan amqp.Delivery){
 		utils.FailOnError(err, "decoding message")
 		logger.Debug().Msgf("Received message: %v\n", sensorMessage)
 
-		data := EventData{
+		data := services.EventData{
 			Name: sensorMessage.Name,
 			Value: sensorMessage.Value,
 			Session: sensorMessage.Session,
 			Face: sensorMessage.Face,
 			Timestamp: sensorMessage.Timestamp,
 		}
-		l.ea.PublishEvent(MessageReceivedPrefix+msg.RoutingKey, data)
+		l.ea.PublishEvent(services.MessageReceivedPrefix+msg.RoutingKey, data)
 	}
 }
 

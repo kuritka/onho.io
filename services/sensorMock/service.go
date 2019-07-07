@@ -78,12 +78,12 @@ func (sm *SensorMock) Run() error {
 		logger.Info().Msgf("NAME=%s VALUE=%v",reading.Name, reading.Value)
 	}
 
-	logger.Info().Msgf("Reading sent. %s Value: %v\n",sm.options.Name, sm.value)
+	logger.Debug().Msgf("Reading sent. %s Value: %v\n",sm.options.Name, sm.value)
 
 	return nil
 }
 
-func (sm *SensorMock) listenForDiscoverRequests(deliveries <-chan amqp.Delivery,provider qutils.MessageProvider, ch *amqp.Channel) {
+func (sm *SensorMock) listenForDiscoverRequests(deliveries <-chan amqp.Delivery,provider *qutils.MessageProvider, ch *amqp.Channel) {
 	for range deliveries {
 		provider.AsAmqpMessage(sm.options.Name).PublishQueueNameToFanout(ch)
 	}

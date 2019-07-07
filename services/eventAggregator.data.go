@@ -1,4 +1,4 @@
-package coordinator
+package services
 
 import "time"
 

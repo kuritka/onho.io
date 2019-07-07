@@ -21,9 +21,9 @@ type AmqpPublishing struct {
 	message *amqp.Publishing
 }
 
-func NewGobMessageProvider() MessageProvider {
+func NewGobMessageProvider() *MessageProvider {
 	buf := new (bytes.Buffer)
-	return MessageProvider{
+	return &MessageProvider{
 		buf,
 	}
 }
@@ -62,8 +62,20 @@ func (pub *AmqpPublishing) PublishDefault(ch *amqp.Channel, q *amqp.Queue) {
 }
 
 func (pub *AmqpPublishing) PublishQueueNameToFanout(ch *amqp.Channel) {
+	pub.PublishToCustomExchange(ch,Fanout,"")
+	//utils.FailOnNil(ch,"channel is nil")
+	//err := ch.Publish(Fanout,"",
+	//	false,
+	//	false, 	    //if true than throws error when no consumers on the q
+	//	*pub.message)
+	//utils.FailOnError(err, "default publishing")
+}
+
+
+
+func (pub *AmqpPublishing) PublishToCustomExchange(ch *amqp.Channel, exchange string, queue string) {
 	utils.FailOnNil(ch,"channel is nil")
-	err := ch.Publish(Fanout,"",
+	err := ch.Publish(exchange,queue,
 		false,
 		false, 	    //if true than throws error when no consumers on the q
 		*pub.message)

@@ -11,7 +11,7 @@ type DataManager struct {
 var logger   = log.Log
 
 
-func NewService(options Options) *DataManager {
+func NewService(options Options ) *DataManager {
 	return &DataManager {
 		options:options,
 	}
