@@ -27,10 +27,10 @@ func NewQueueListener(options Options, eventAggregator services.IEventAggregator
 	listener := QueueListener{
 		registry: make(map[string]<-chan amqp.Delivery),
 		name: options.Name,
-		connectionString: options.ConnectionString,
+		connectionString: options.QueueConnectionString,
 		ea: eventAggregator,
 	}
-	listener.conn,listener.ch = qutils.GetChannel(options.ConnectionString)
+	listener.conn,listener.ch = qutils.GetChannel(options.QueueConnectionString)
 	return &listener
 }
 

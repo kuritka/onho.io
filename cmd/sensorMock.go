@@ -9,6 +9,7 @@ import (
 
 var (
 	name string
+	sensorOptions sensorMock.Options
 )
 
 var sensorMockCmd = &cobra.Command{

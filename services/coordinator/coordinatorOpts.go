@@ -2,6 +2,6 @@ package coordinator
 
 
 type Options struct {
-	Name     string
-	ConnectionString string
+	Name                  string
+	QueueConnectionString string
 }

@@ -24,8 +24,10 @@ func NewService(options Options, aggregator services.IEventAggregator) *Coordina
 
 
 func (c *Coordinator) Run() error {
-	NewDatabaseConsumer(c.aggregator, c.options.ConnectionString)
-	NewQueueListener(c.options,c.aggregator).ListenForNewSource()
+	NewDatabaseConsumer(c.aggregator, c.options.QueueConnectionString)
+	newWebAppConsumer(c.options,c.aggregator)//.ListenForDiscoveryRequest()
+	q:= NewQueueListener(c.options,c.aggregator)
+	go q.ListenForNewSource()
 	return nil
 }
 

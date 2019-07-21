@@ -13,12 +13,32 @@ func FailOnError(err error, msg string){
 	}
 }
 
+
+func DisposeOnError(err error, msg string, dispose func()){
+	if err != nil {
+		dispose()
+		logger.Fatal().Msgf("%s: %s", msg, err)
+		panic(fmt.Sprintf("%s: %s", msg, err))
+	}
+}
+
+
 func FailOnEmptyString(str string, msg string ){
 	if str == "" {
 		logger.Fatal().Msgf("%s", msg)
 		panic(fmt.Sprintf("%s", msg))
 	}
 }
+
+
+func DisposeOnEmptyString(str string, msg string,dispose func() ){
+	if str == "" {
+		dispose()
+		logger.Fatal().Msgf("%s", msg)
+		panic(fmt.Sprintf("%s", msg))
+	}
+}
+
 
 
 func FailOnNil(entity interface{}, msg string){

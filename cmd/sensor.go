@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"github.com/kuritka/onho.io/common/log"
-	"github.com/kuritka/onho.io/services/sensorMock"
+	"github.com/kuritka/onho.io/services/sensor"
 	"github.com/spf13/cobra"
 	"go.uber.org/dig"
 )
@@ -10,7 +10,7 @@ import (
 
 var (
 	logger                = log.Log
-	sensorOptions sensorMock.Options
+	options 			sensor.Options
 )
 
 var sensorCmd = &cobra.Command{
@@ -22,19 +22,16 @@ var sensorCmd = &cobra.Command{
 
 		logger.Info().Msg("sensor mock started")
 
-		sensorMock.NewService(sensorOptions).Run()
+		sensor.NewService(options).Run()
 	},
 }
 
 func init(){
-	sensorCmd.Flags().StringVarP(&sensorOptions.Name, "name", "n", "", "Name of the sensor")
-	sensorCmd.Flags().Uint8VarP(&sensorOptions.Freq,  "frequency","f", 1, "update frequency in cycles/sec ")
-	sensorCmd.Flags().Float64VarP(&sensorOptions.Min, "min","i", 1., "minimum value for generated readings")
-	sensorCmd.Flags().Float64VarP(&sensorOptions.Max, "max","x", 5., "maximum value for generated readings")
-	sensorCmd.Flags().Float64VarP(&sensorOptions.StepSize, "step-size","s", 0.1, "maximum allowable change per measurement")
+	sensorCmd.Flags().StringVarP(&options.Name, "name", "n", "", "Name of the sensor")
+	sensorCmd.Flags().StringVarP(&options.ConnectionString, "connection-string", "c", "", "connectionString i.e. amqp://guest:guest@localhost:5672")
 	sensorCmd.MarkFlagRequired("Name")
+	sensorCmd.MarkFlagRequired("connection-string")
 	rootCmd.AddCommand(sensorCmd)
-
 	BuildContainer()
 }
 

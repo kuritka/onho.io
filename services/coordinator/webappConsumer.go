@@ -1,11 +1,10 @@
-package webadmin
+package coordinator
 
 import (
 	"github.com/kuritka/onho.io/common/dto"
 	"github.com/kuritka/onho.io/common/qutils"
 	"github.com/kuritka/onho.io/common/utils"
 	"github.com/kuritka/onho.io/services"
-	"github.com/kuritka/onho.io/services/webadmin/controller"
 	"github.com/rs/zerolog/log"
 	"github.com/streadway/amqp"
 )
@@ -21,22 +20,22 @@ type webAppConsumer struct {
 
 
 
-func NewConsumer(options controller.Options, eventAggregator services.IEventAggregator) *webAppConsumer {
+func newWebAppConsumer(options Options, eventAggregator services.IEventAggregator) *webAppConsumer {
 	utils.FailOnNil(eventAggregator,"event aggregator")
-	consumer := webAppConsumer{
+	wac := webAppConsumer{
 		eventAggregator: eventAggregator,
 	}
-	consumer.conn, consumer.ch = qutils.GetChannel(options.QueueConnectionString)
-	consumer.consumer = qutils.NewMessageConsumer(consumer.conn, consumer.ch)
-	consumer.provider = qutils.NewGobMessageProvider()
+	wac.conn, wac.ch = qutils.GetChannel(options.QueueConnectionString)
+	wac.consumer = qutils.NewMessageConsumer(wac.conn, wac.ch)
+	wac.provider = qutils.NewGobMessageProvider()
 
-	go consumer.ListenForDiscoveryRequest()
+	go wac.ListenForDiscoveryRequest()
 
-	consumer.eventAggregator.AddListener(services.DataSourceDiscovered, func (eventData interface{}){
-		consumer.SubscribeToDataEvent(eventData.(string))
+	wac.eventAggregator.AddListener(services.DataSourceDiscovered, func (eventData interface{}){
+		wac.SubscribeToDataEvent(eventData.(string))
 	})
 
-	consumer.ch.ExchangeDeclare(
+	wac.ch.ExchangeDeclare(
 		qutils.WebAppSourceExchange,
 		qutils.FanoutKind,
 		false,
@@ -46,7 +45,7 @@ func NewConsumer(options controller.Options, eventAggregator services.IEventAggr
 		nil,
 		)
 
-	consumer.ch.ExchangeDeclare(
+	wac.ch.ExchangeDeclare(
 		qutils.WebAppReadingsExchange,
 		qutils.FanoutKind,
 		false,
@@ -55,15 +54,18 @@ func NewConsumer(options controller.Options, eventAggregator services.IEventAggr
 		false,
 		nil,
 	)
-	return &consumer
+
+	return &wac
 }
 
 
 func (c *webAppConsumer) ListenForDiscoveryRequest() {
+	log.Debug().Msg("\n\nlistening\n\n")
 	msgs, err := c.consumer.
 		GetPersistentQueue(qutils.WebAppDiscoveryQueue).
 		ConsumeFromChannel()
 	utils.FailOnError(err, "cannot read from queue")
+
 	for range msgs {
 
 		for _, src := range c.sources {

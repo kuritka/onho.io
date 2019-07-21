@@ -3,6 +3,7 @@ package controller
 import (
 	"bytes"
 	"encoding/gob"
+	"fmt"
 	"github.com/gorilla/websocket"
 	"github.com/kuritka/onho.io/common/dto"
 	"github.com/kuritka/onho.io/common/qutils"
@@ -90,6 +91,7 @@ func (wsc *websocketController) listenForSources(){
 	utils.FailOnError(err, "reading sources from " + qutils.WebAppSourceExchange)
 	for msg := range msgs {
 		sensor, _ := model.GetSensorByName(string(msg.Body))
+		fmt.Println(sensor)
 		//send to the client
 		wsc.sendMessage(message{
 			Type: "source",
@@ -107,7 +109,7 @@ func (wsc *websocketController) sendMessage(msg message) {
 		}
 	}
 
-	for _, socket := range wsc.sockets {
+	for _, socket := range socketsToRemove {
 		wsc.removeSocket(socket)
 	}
 }
@@ -122,7 +124,6 @@ func (wsc *websocketController) listenForMessages() {
 		dec := gob.NewDecoder(buf)
 		sm := dto.SensorMessage{}
 		dec.Decode(&sm)
-
 		wsc.sendMessage(message{ Type: "reading" , Data: sm, })
 	}
 }
@@ -130,7 +131,7 @@ func (wsc *websocketController) listenForMessages() {
 //message sending and receiving from websockets
 type message struct {
 	Type string `json:"type"`
-	Data interface{} `json:"Data"`
+	Data interface{} `json:"data"`
 }
 
 

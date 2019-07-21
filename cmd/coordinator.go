@@ -31,7 +31,7 @@ var coordinatorCmd = &cobra.Command{
 
 func init(){
 	coordinatorCmd.Flags().StringVarP(&coordinatorOptions.Name, "name", "n", "", "Source directory to read from")
-	coordinatorCmd.Flags().StringVarP(&coordinatorOptions.ConnectionString, "connection-string", "c", "", "connectionString i.e. amqp://guest:guest@localhost:5672")
+	coordinatorCmd.Flags().StringVarP(&coordinatorOptions.QueueConnectionString, "connection-string", "c", "", "connectionString i.e. amqp://guest:guest@localhost:5672")
 	coordinatorCmd.MarkFlagRequired("Name")
 	coordinatorCmd.MarkFlagRequired("connection-string")
 	rootCmd.AddCommand(coordinatorCmd)

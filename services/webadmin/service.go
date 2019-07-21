@@ -31,7 +31,6 @@ func (c *WebAdmin) Run() error {
 
 	fmt.Printf("listening on port :"+strconv.Itoa(c.options.Port))
 	controller.NewStartup(c.options).Init()
-	NewConsumer(c.options, c.aggregator)
 
 	http.ListenAndServe(":"+strconv.Itoa(c.options.Port), nil)
 
