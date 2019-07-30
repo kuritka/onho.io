@@ -21,6 +21,7 @@ type (
 type (
 	iQueueProvider interface {
 		createQueue(name string, autoDelete bool) *messageProviderImpl
+		sendDiscoveryEvent(serviceName string)
 	}
 	queueProviderImpl struct {
 		qm 	*queueManagerImpl
@@ -31,7 +32,7 @@ type (
 
 type (
 	iExchangeProvider interface {
-		sendDiscoveryEvent(serviceName string)
+		//sendDiscoveryEvent(serviceName string)
 		bindToQueue() *queueProviderImpl
 	}
 	messageProviderImpl struct {
@@ -100,14 +101,15 @@ func (p *messageProviderImpl) bindToQueue() *messageProviderImpl {
 
 
 
-func (p *messageProviderImpl) sendDiscoveryEvent(serviceName string) {
-	utils.DisposeOnEmptyString(serviceName,"service name cannot be empty", p.qp.qm.close)
-	err := p.qp.qm.channel.Publish(p.qp.exchange.string(), queueEnum(serviceDiscoveryQueue).string() , //serviceName+"_"+uid,
+func (p *queueProviderImpl) sendDiscoveryEvent(serviceName string) {
+	utils.DisposeOnEmptyString(serviceName,"service name cannot be empty", p.qm.close)
+	err := p.qm.channel.Publish(p.exchange.string(),"",// queueEnum(serviceDiscoveryQueue).string() , //serviceName+"_"+uid,
 		false,
 		false, 	    //if true than throws error when no consumers on the q
 		toAmqpMessage(serviceName))
-	utils.DisposeOnError(err, "default publishing", p.qp.qm.close)
+	utils.DisposeOnError(err, "default publishing", p.qm.close)
 }
+
 
 
 

@@ -4,6 +4,7 @@ import (
 	"crypto/rand"
 	"fmt"
 	"github.com/kuritka/onho.io/common/utils"
+	"github.com/rs/zerolog/log"
 	"github.com/streadway/amqp"
 )
 
@@ -12,6 +13,7 @@ type IProvider interface {
 	Register(name string) *RegistredProviderImpl
 	Close()
 }
+
 
 type IRegistredProvider interface {
 	PublishEvent(name string) *RegistredProviderImpl
@@ -52,14 +54,28 @@ func NewProvider(connection *amqp.Connection,channel *amqp.Channel) *ProviderImp
 
 func (p *ProviderImpl) Register(name string) *RegistredProviderImpl {
 	utils.FailOnEmptyString(name, "name cannot be nil")
-	p.qmanager.createExchangeIfNotExists(serviceDiscoveryExchange, fanoutExchange,true).
-		createQueue(name, true).
-		bindToQueue().
+
+	p.qmanager.
+		createExchangeIfNotExists(serviceDiscoveryExchange, fanoutExchange,true).
 		sendDiscoveryEvent(name)
+
+	//	createQueue(name, true).
+	//	bindToQueue().
 	return &RegistredProviderImpl {
 		p,
 	}
 }
+
+func (p *ProviderImpl) Listen() {
+
+
+}
+
+
+//func ListenDiscovery(p *RegistredProviderImpl){
+//	p.provider..
+//}
+
 
 func (p *ProviderImpl) Close(){
 	var err error
@@ -67,6 +83,7 @@ func (p *ProviderImpl) Close(){
 	utils.FailOnError(err, "unable to close channel")
 	err = p.connection.Close()
 	utils.FailOnError(err, "unable to close connection")
+	log.Debug().Msg("connection closed")
 }
 
 

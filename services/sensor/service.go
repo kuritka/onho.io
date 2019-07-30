@@ -1,9 +1,9 @@
 package sensor
 
 import (
-	"github.com/kuritka/onho.io/common/bus"
+	"fmt"
 	"github.com/kuritka/onho.io/common/log"
-	"github.com/kuritka/onho.io/common/qutils"
+	"github.com/kuritka/onho.io/common/msgbus"
 	"github.com/kuritka/onho.io/common/utils"
 )
 
@@ -27,9 +27,21 @@ func NewService(options Options) *Sensor {
 
 
 func (sm *Sensor) Run() error {
-	conn, ch := qutils.GetChannel(sm.options.ConnectionString)
-	var provider = bus.NewProvider(conn, ch)
-	provider.Register(sm.options.Name)
-	defer provider.Close()
+	mb := msgbus.NewMsgBus(sm.options.ConnectionString)
+	defer mb.Close()
+
+	listener, _ := mb.Register("myService")
+
+	listener.Listen()
+	//conn, ch := qutils.GetChannel(sm.options.ConnectionString)
+	//var provider = bus.NewProvider(conn, ch)
+	//provider.Register(sm.options.Name)
+	//defer provider.Close()
+	//provider.Listen()
+
+	var a string
+	fmt.Println("listening")
+	fmt.Scanln(&a)
+
 	return nil
 }

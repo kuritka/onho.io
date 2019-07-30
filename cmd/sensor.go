@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"fmt"
 	"github.com/kuritka/onho.io/common/log"
 	"github.com/kuritka/onho.io/services/sensor"
 	"github.com/spf13/cobra"
@@ -23,6 +24,10 @@ var sensorCmd = &cobra.Command{
 		logger.Info().Msg("sensor mock started")
 
 		sensor.NewService(options).Run()
+
+		var a string
+
+		fmt.Scanln(&a)
 	},
 }
 
