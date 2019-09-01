@@ -1,6 +1,7 @@
 package msgbus
 
 import (
+	"fmt"
 	"github.com/kuritka/onho.io/common/qutils"
 	"github.com/kuritka/onho.io/common/utils"
 	"github.com/streadway/amqp"
@@ -16,6 +17,7 @@ type (
 		channel    *amqp.Channel
 		connection *amqp.Connection
 		exmgr      *exchangeManagerImpl
+		registry         map[string]<-chan amqp.Delivery
 	}
 )
 
@@ -29,6 +31,7 @@ func NewMsgBus(connectionString string) *BusImpl {
 		ch,
 		conn,
 		exmgr,
+		make(map[string]<-chan amqp.Delivery),
 	}
 }
 
@@ -39,17 +42,43 @@ func (mb *BusImpl) Register(name string) (*msgBusListenerImpl, *msgBusPublisherI
 	queueDiscoveryName := name + "_" + "discovery" + "_" + guid
 	queueEventName := name + "_" + "event" + "_" + guid
 	queueCommandName := name + "_" + "command" + "_" + guid
-	mb.exmgr.
-		createDiscoveryExchangeIfNotExists().
-		sendDiscoveryRequest(amqp.Publishing{Body: []byte(queueDiscoveryName)})
+
+	mb.exmgr.createQueueIfNotExists(queueCommandName,true)
 
 	mb.exmgr.createEventExchangeIfNotExists()
 
-	mb.exmgr.createCommandExchangeIfNotExists()
+	//Queuebinding for discos must complete before first request start, otherwise there will be still one service without
+	//knowledge of other services
+	discos, err := mb.exmgr.createDiscoveryExchangeIfNotExists().
+		createQueueIfNotExists(queueDiscoveryName, true).
+		bindToQueue("", serviceDiscoveryExchange).consumeFromChannel()
+	utils.FailOnError(err, "discovery exchange")
+	mb.exmgr.sendDiscoveryRequest(amqp.Publishing{Body: []byte(queueCommandName)})
+	go mb.listenForDiscoveryRequests(queueCommandName, discos)
 
 	return newMsgBusListener(name, mb, queueDiscoveryName, queueEventName, queueCommandName),
 		newMessageBusPublisher(name, mb)
 }
+
+func (mb *BusImpl) listenForDiscoveryRequests(queueCommandName string, discoveryChannel <-chan amqp.Delivery) {
+	for msg := range discoveryChannel {
+		workerQueue := string(msg.Body)
+		if mb.registry[workerQueue] == nil {
+			fmt.Println(workerQueue)
+			mb.registry[workerQueue] = make(<-chan amqp.Delivery)
+			fmt.Println("sending " + queueCommandName + " " + exchange.string(serviceDiscoveryExchange))
+			mb.exmgr.channel.
+				Publish(exchange.string(serviceDiscoveryExchange),
+					"", false, false,
+					amqp.Publishing{Body: []byte(queueCommandName )})
+			fmt.Println("\n\nREGISTRY:")
+			for x := range mb.registry {
+				fmt.Println(x)
+			}
+		}
+	}
+}
+
 
 func (mb *BusImpl) Close() {
 	mb.exmgr.close()

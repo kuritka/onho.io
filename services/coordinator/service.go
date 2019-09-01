@@ -13,7 +13,6 @@ type Coordinator struct {
 
 var logger   = log.Log
 
-
 func NewService(options Options, aggregator services.IEventAggregator) *Coordinator {
 	utils.FailOnNil(aggregator,"event aggregator")
 	return &Coordinator {
@@ -21,7 +20,6 @@ func NewService(options Options, aggregator services.IEventAggregator) *Coordina
 		aggregator: aggregator,
 	}
 }
-
 
 func (c *Coordinator) Run() error {
 	NewDatabaseConsumer(c.aggregator, c.options.QueueConnectionString)

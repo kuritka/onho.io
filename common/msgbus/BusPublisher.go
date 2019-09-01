@@ -28,9 +28,9 @@ func newMessageBusPublisher(serviceName string, msgBusImpl *BusImpl) *msgBusPubl
 }
 
 func (p *msgBusPublisherImpl) Command(cmdName string, data string) {
-	p.qm.publishMessage(exchange.string(serviceCommandExchange), cmdName, amqp.Publishing{Body: []byte(data)})
+	//p.qm.publishMessage(exchange.string(serviceCommandExchange), cmdName, amqp.Publishing{Body: []byte(data)})
 }
 
 func (p *msgBusPublisherImpl) Event(eventName string, data string) {
-	p.qm.publishMessage(string(serviceEventExchange), eventName, amqp.Publishing{Body: []byte(data)})
+	p.qm.publishMessage(exchange.string(serviceEventExchange), eventName, amqp.Publishing{Body: []byte(data)})
 }

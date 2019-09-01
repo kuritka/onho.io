@@ -58,7 +58,7 @@ func (em *exchangeManagerImpl) createDiscoveryExchangeIfNotExists() *exchangeMan
 func (em *exchangeManagerImpl) createEventExchangeIfNotExists() *exchangeManagerImpl {
 	err := em.channel.ExchangeDeclare(
 		exchange.string(serviceEventExchange),
-		amqp.ExchangeFanout,
+		amqp.ExchangeDirect,
 		false,
 		true,
 		false,

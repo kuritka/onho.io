@@ -32,39 +32,23 @@ func (sm *Sensor) Run() error {
 	listener, publisher := mb.Register("myService")
 
 	listener.
-		AddEventHandler("foo", func(input <-chan amqp.Delivery) {
-			for i := range input {
-				fmt.Printf("foo event: %s \n", i.Body)
-			}
-		}).
-		AddEventHandler("blah", func(input <-chan amqp.Delivery) {
-			for i := range input {
-				fmt.Printf("blah event: %s \n", i.Body)
-			}
-		}).
-		AddCommandHandler("cmdA", func(input <-chan amqp.Delivery) {
-			for i := range input {
-				fmt.Printf("cmdA command: %s \n", i.Body)
-			}
-		}).
-		AddCommandHandler("cmdB", func(input <-chan amqp.Delivery) {
-			for i := range input {
-				fmt.Printf("cmdB command: %s \n", i.Body)
-			}
-		}).
+		AddEventHandler("foo", func(input amqp.Delivery) {	fmt.Printf("foo event: %s \n", input.Body)}).
+		AddEventHandler("blah", func(input amqp.Delivery) {fmt.Printf("blah event: %s \n", input.Body)}).
+		AddCommandHandler("cmdA", func(input amqp.Delivery) {fmt.Printf("cmdA command: %s \n", input.Body)}).
+		AddCommandHandler("cmdB", func(input amqp.Delivery) {fmt.Printf("cmdB command: %s \n", input.Body)}).
 		Listen()
 
-	publisher.Command("cmdA", "blaah")
-	publisher.Command("cmdA", "blaah2")
-	publisher.Command("cmdB", "blaah3B")
-	publisher.Command("cmdX", "cmdX")
-	publisher.Command("cmdA", "blaah4")
+	//publisher.Command("cmdA", "A blaah")
+	//publisher.Command("cmdA", "A blaah2")
+	//publisher.Command("cmdB", "B blaah3B")
+	//publisher.Command("cmdX", "X cmdX")
+	publisher.Command("cmdA", "A blaah4")
 
-	//conn, ch := qutils.GetChannel(sm.options.ConnectionString)
-	//var provider = bus.NewProvider(conn, ch)
-	//provider.Register(sm.options.Name)
-	//defer provider.Close()
-	//provider.Listen()
+	//publisher.Event("foo", "foo: FOO EVENT")
+	//publisher.Event("foo", "foo: FOO EVENT2")
+	//publisher.Event("foo", "foo: FOO EVENT3")
+	//publisher.Event("blah", "foo: BLAH EVENT1")
+	//publisher.Event("foo", "foo: FOO EVENT4")
 
 	var a string
 	fmt.Println("listening")
