@@ -14,21 +14,24 @@ type (
 	}
 
 	msgBusPublisherImpl struct {
-		serviceName string
+		commandQueueName string
 		mb          *BusImpl
 		qm          *queueManagerImpl
+		msgProvider *messageProvider
 	}
 )
 
-func newMessageBusPublisher(serviceName string, msgBusImpl *BusImpl) *msgBusPublisherImpl {
-	utils.FailOnEmptyString(serviceName, "service name")
+func newMessageBusPublisher(commandQueueName string, msgBusImpl *BusImpl) *msgBusPublisherImpl {
+	utils.FailOnEmptyString(commandQueueName, "service name")
 	utils.FailOnNil(msgBusImpl, "MessageBusImpl")
 	qm := createQueueManager(msgBusImpl.connection, msgBusImpl.channel)
-	return &msgBusPublisherImpl{serviceName, msgBusImpl, qm}
+	msgProvider := newGobMessageProvider()
+	return &msgBusPublisherImpl{ commandQueueName, msgBusImpl, qm, msgProvider}
 }
 
 func (p *msgBusPublisherImpl) Command(cmdName string, data string) {
-	//p.qm.publishMessage(exchange.string(serviceCommandExchange), cmdName, amqp.Publishing{Body: []byte(data)})
+	msg := p.msgProvider.Encode(Message{Name: cmdName, Message:data })
+	p.qm.publishMessage(exchange.string(exchangeWorkerQueue), p.commandQueueName, msg)
 }
 
 func (p *msgBusPublisherImpl) Event(eventName string, data string) {

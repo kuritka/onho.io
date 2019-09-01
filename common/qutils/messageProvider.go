@@ -16,7 +16,6 @@ type AmqpMessage struct {
 	buf *bytes.Buffer
 }
 
-
 type AmqpPublishing struct {
 	message *amqp.Publishing
 }
@@ -32,7 +31,6 @@ func (p *MessageProvider) Encode(m dto.SensorMessage) *AmqpMessage{
 	return p.encode(m)
 }
 
-
 func (p *MessageProvider) AsAmqpMessage(message string) *AmqpPublishing {
 	return &AmqpPublishing{
 		&amqp.Publishing{
@@ -41,7 +39,6 @@ func (p *MessageProvider) AsAmqpMessage(message string) *AmqpPublishing {
 	}
 }
 
-
 func (a *AmqpMessage) AsAmqpMessage() *AmqpPublishing {
 	return &AmqpPublishing {
 		&amqp.Publishing {
@@ -49,7 +46,6 @@ func (a *AmqpMessage) AsAmqpMessage() *AmqpPublishing {
 		},
 	}
 }
-
 
 func (pub *AmqpPublishing) PublishDefault(ch *amqp.Channel, q *amqp.Queue) {
 	utils.FailOnNil(ch,"channel is nil")
@@ -63,15 +59,7 @@ func (pub *AmqpPublishing) PublishDefault(ch *amqp.Channel, q *amqp.Queue) {
 
 func (pub *AmqpPublishing) PublishQueueNameToFanout(ch *amqp.Channel) {
 	pub.PublishToCustomExchange(ch,Fanout,"")
-	//utils.FailOnNil(ch,"channel is nil")
-	//err := ch.Publish(Fanout,"",
-	//	false,
-	//	false, 	    //if true than throws error when no consumers on the q
-	//	*pub.message)
-	//utils.FailOnError(err, "default publishing")
 }
-
-
 
 func (pub *AmqpPublishing) PublishToCustomExchange(ch *amqp.Channel, exchange string, queue string) {
 	utils.FailOnNil(ch,"channel is nil")
@@ -81,8 +69,6 @@ func (pub *AmqpPublishing) PublishToCustomExchange(ch *amqp.Channel, exchange st
 		*pub.message)
 	utils.FailOnError(err, "default publishing")
 }
-
-
 
 func (p *MessageProvider) encode(m interface{}) *AmqpMessage{
 	utils.FailOnNil(m,"nil message")

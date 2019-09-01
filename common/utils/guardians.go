@@ -39,18 +39,8 @@ func DisposeOnEmptyString(str string, msg string,dispose func() ){
 	}
 }
 
-
-
 func FailOnNil(entity interface{}, msg string){
 	if entity == nil {
-		logger.Fatal().Msgf("%s", msg)
-		panic(fmt.Sprintf("%s", msg))
-	}
-}
-
-
-func FailOnNotNil(entity interface{}, msg string){
-	if entity != nil {
 		logger.Fatal().Msgf("%s", msg)
 		panic(fmt.Sprintf("%s", msg))
 	}

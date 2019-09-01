@@ -14,55 +14,54 @@ type (
 	}
 
 	msgBusListenerImpl struct {
-		serviceName     string
 		eventQueue      string
 		commandQueue    string
 		qm              *queueManagerImpl
 		cmdEventAggreagtor *eventAggregator
 		evntEventAggreagtor *eventAggregator
 		registry         map[string]<-chan amqp.Delivery
+		discos 			<-chan amqp.Delivery
+		msgProvider *messageProvider
 	}
 )
 
-func newMsgBusListener(serviceName string, msgBusImpl *BusImpl, discoveryQueue string, serviceEvent string, serviceCommand string) *msgBusListenerImpl {
+func newMsgBusListener( msgBusImpl *BusImpl,  serviceEvent string, serviceCommand string, discos <-chan amqp.Delivery) *msgBusListenerImpl {
 	qm := createQueueManager(msgBusImpl.connection, msgBusImpl.channel)
 	return &msgBusListenerImpl{
-		serviceName,
 		serviceEvent,
 		serviceCommand,
 		qm,
 		newEventAggregator(),
 		newEventAggregator(),
 		make(map[string]<-chan amqp.Delivery),
+		discos,
+		newGobMessageProvider(),
 	}
 }
 
-func (l *msgBusListenerImpl) AddCommandHandler(name string, f func(amqp.Delivery)) *msgBusListenerImpl {
+func (l *msgBusListenerImpl) AddCommandHandler(name string, f func(Message)) *msgBusListenerImpl {
 	l.cmdEventAggreagtor.AddListener(name, f)
 	return l
 }
 
-func (l *msgBusListenerImpl) AddEventHandler(name string, f func(amqp.Delivery)) *msgBusListenerImpl {
+func (l *msgBusListenerImpl) AddEventHandler(name string, f func(Message)) *msgBusListenerImpl {
 	l.evntEventAggreagtor.AddListener(name, f)
 	return l
 }
 
 
 func (l *msgBusListenerImpl) Listen() {
-	evnts, err := l.bindHandlersToQueue(l.eventQueue, l.evntEventAggreagtor, serviceEventExchange)
+	events, err := l.bindHandlersToQueue(l.eventQueue, l.evntEventAggreagtor, serviceEventExchange)
 	utils.FailOnError(err, fmt.Sprintf("%s %s", l.eventQueue, exchange.string(serviceEventExchange)))
-	go l.consume(evnts, l.evntEventAggreagtor)
-	//
-	//cmds, err := l.bindHandlersToQueue(l.commandQueue, l.cmdEventAggreagtor, serviceCommandExchange)
-	//utils.FailOnError(err, fmt.Sprintf("%s %s", l.commandQueue, exchange.string(serviceCommandExchange)))
-	//go l.consume(cmds, l.cmdEventAggreagtor)
+	go l.listenForEvents(events, l.evntEventAggreagtor)
 
-
+	go l.listenForDiscoveryRequests(l.commandQueue, l.discos)
 }
 
-func (l *msgBusListenerImpl) consume(input <-chan amqp.Delivery, aggregator *eventAggregator) {
+func (l *msgBusListenerImpl) listenForEvents(input <-chan amqp.Delivery, aggregator *eventAggregator) {
 	for value := range input {
-		aggregator.Publish(value.RoutingKey, value)
+		m := Message{Name: value.RoutingKey,Message: string(value.Body)}
+		aggregator.Publish(m)
 	}
 }
 
@@ -74,48 +73,27 @@ func (l *msgBusListenerImpl) bindHandlersToQueue(queueName string, aggregator *e
 	return  q.consumeFromChannel()
 }
 
-func (l *msgBusListenerImpl) listenForDiscoverRequests(discoveryChannel <-chan amqp.Delivery) {
-	for d := range discoveryChannel {
-		fmt.Println("hit")
-		workerQueue := string(d.Body)
-			if l.registry[workerQueue] == nil {
-				fmt.Println(workerQueue)
-				l.registry[workerQueue] = make(<-chan amqp.Delivery)
-				fmt.Println("sending " + l.commandQueue + " " + exchange.string(serviceDiscoveryExchange))
-				//l.qm.publishMessage(exchange.string(serviceDiscoveryExchange),
-				//	"", amqp.Publishing{Body: []byte(l.commandQueue)})
-				l.qm.channel.
-					Publish(exchange.string(serviceDiscoveryExchange),
-						"", false, false,
-						amqp.Publishing{Body: []byte(l.commandQueue)})
-			}
-		}
-		//if l.registry[workerQueue] == nil {
-		//	msgs,err := l.qm.channel.Consume(
-		//		workerQueue,
-		//		"",
-		//		true,
-		//		false,
-		//		false,
-		//		false,
-		//		nil,
-		//	)
-		//	utils.FailOnError(err,"hovno")
-		//  l.registry[workerQueue] = msgs
-		//go func() {
-		//	for d := range msgs {
-		//		fmt.Printf("Received a message: %s", d.Body)
+func (l *msgBusListenerImpl) listenForDiscoveryRequests(queueCommandName string, discoveryChannel <-chan amqp.Delivery) {
+	for msg := range discoveryChannel {
+		workerQueue := string(msg.Body)
+		if l.registry[workerQueue] == nil {
+			l.registry[workerQueue] = make(<-chan amqp.Delivery)
+			err := l.qm.channel.Publish(exchange.string(serviceDiscoveryExchange),
+				"", false, false, amqp.Publishing{Body: []byte(queueCommandName )})
+			utils.FailOnError(err, "Unable publish to "+exchange.string(serviceDiscoveryExchange))
+			//for listener := range l.cmdEventAggreagtor.listeners {
+			//	if listener ==
+				cmds, err := l.qm.channel.Consume(workerQueue, "", true, false, false, false, nil)
+				utils.FailOnError(err, "consuming name queue "+workerQueue)
+				go l.ProcessCommand(cmds)
 		//	}
-		//}()
-		//if l.registry[workerQueue] == nil {
-		//	l.registry[workerQueue] = commandChannel
-		//	go l.ProcessMessages(commandChannel)
-		//}
-	//}
+		}
+	}
 }
 
-func (l *msgBusListenerImpl) ProcessMessages(msgs <-chan amqp.Delivery) {
+func (l *msgBusListenerImpl) ProcessCommand(msgs <-chan amqp.Delivery) {
 	for msg := range msgs {
-		fmt.Println("COMMAND: "+string(msg.Body))
+		cmd := l.msgProvider.Decode(msg)
+		l.cmdEventAggreagtor.Publish(cmd)
 	}
 }

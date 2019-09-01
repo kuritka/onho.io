@@ -1,7 +1,6 @@
 package msgbus
 
 import (
-	"fmt"
 	"github.com/kuritka/onho.io/common/qutils"
 	"github.com/kuritka/onho.io/common/utils"
 	"github.com/streadway/amqp"
@@ -17,7 +16,6 @@ type (
 		channel    *amqp.Channel
 		connection *amqp.Connection
 		exmgr      *exchangeManagerImpl
-		registry         map[string]<-chan amqp.Delivery
 	}
 )
 
@@ -31,7 +29,6 @@ func NewMsgBus(connectionString string) *BusImpl {
 		ch,
 		conn,
 		exmgr,
-		make(map[string]<-chan amqp.Delivery),
 	}
 }
 
@@ -41,7 +38,7 @@ func (mb *BusImpl) Register(name string) (*msgBusListenerImpl, *msgBusPublisherI
 	guid, _ := getGuid()
 	queueDiscoveryName := name + "_" + "discovery" + "_" + guid
 	queueEventName := name + "_" + "event" + "_" + guid
-	queueCommandName := name + "_" + "command" + "_" + guid
+	queueCommandName := name + "_" + "name" + "_" + guid
 
 	mb.exmgr.createQueueIfNotExists(queueCommandName,true)
 
@@ -54,31 +51,10 @@ func (mb *BusImpl) Register(name string) (*msgBusListenerImpl, *msgBusPublisherI
 		bindToQueue("", serviceDiscoveryExchange).consumeFromChannel()
 	utils.FailOnError(err, "discovery exchange")
 	mb.exmgr.sendDiscoveryRequest(amqp.Publishing{Body: []byte(queueCommandName)})
-	go mb.listenForDiscoveryRequests(queueCommandName, discos)
 
-	return newMsgBusListener(name, mb, queueDiscoveryName, queueEventName, queueCommandName),
-		newMessageBusPublisher(name, mb)
+	return newMsgBusListener(mb,  queueEventName, queueCommandName, discos),
+		newMessageBusPublisher(queueCommandName, mb)
 }
-
-func (mb *BusImpl) listenForDiscoveryRequests(queueCommandName string, discoveryChannel <-chan amqp.Delivery) {
-	for msg := range discoveryChannel {
-		workerQueue := string(msg.Body)
-		if mb.registry[workerQueue] == nil {
-			fmt.Println(workerQueue)
-			mb.registry[workerQueue] = make(<-chan amqp.Delivery)
-			fmt.Println("sending " + queueCommandName + " " + exchange.string(serviceDiscoveryExchange))
-			mb.exmgr.channel.
-				Publish(exchange.string(serviceDiscoveryExchange),
-					"", false, false,
-					amqp.Publishing{Body: []byte(queueCommandName )})
-			fmt.Println("\n\nREGISTRY:")
-			for x := range mb.registry {
-				fmt.Println(x)
-			}
-		}
-	}
-}
-
 
 func (mb *BusImpl) Close() {
 	mb.exmgr.close()

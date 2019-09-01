@@ -5,7 +5,6 @@ import (
 	"github.com/kuritka/onho.io/common/log"
 	"github.com/kuritka/onho.io/common/msgbus"
 	"github.com/kuritka/onho.io/common/utils"
-	"github.com/streadway/amqp"
 )
 
 var logger = log.Log
@@ -32,10 +31,10 @@ func (sm *Sensor) Run() error {
 	listener, publisher := mb.Register("myService")
 
 	listener.
-		AddEventHandler("foo", func(input amqp.Delivery) {	fmt.Printf("foo event: %s \n", input.Body)}).
-		AddEventHandler("blah", func(input amqp.Delivery) {fmt.Printf("blah event: %s \n", input.Body)}).
-		AddCommandHandler("cmdA", func(input amqp.Delivery) {fmt.Printf("cmdA command: %s \n", input.Body)}).
-		AddCommandHandler("cmdB", func(input amqp.Delivery) {fmt.Printf("cmdB command: %s \n", input.Body)}).
+		AddEventHandler("foo", func(message msgbus.Message) {	fmt.Printf("foo event: %s \n", message.Message)}).
+		AddEventHandler("blah", func(message msgbus.Message) {fmt.Printf("blah event: %s \n", message.Message)}).
+		AddCommandHandler("cmdA", func(message msgbus.Message) {fmt.Printf("cmdA command: %s \n", message.Message)}).
+		AddCommandHandler("cmdB", func(message msgbus.Message) {fmt.Printf("cmdB command: %s \n", message.Message)}).
 		Listen()
 
 	//publisher.Command("cmdA", "A blaah")
