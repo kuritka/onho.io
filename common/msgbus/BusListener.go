@@ -39,8 +39,8 @@ func newMsgBusListener( msgBusImpl *BusImpl,  serviceEvent string, serviceComman
 	}
 }
 
-func (l *msgBusListenerImpl) AddCommandHandler(name string, f func(Message)) *msgBusListenerImpl {
-	l.cmdEventAggreagtor.AddListener(name, f)
+func (l *msgBusListenerImpl) AddCommandHandler(command string, f func(Message)) *msgBusListenerImpl {
+	l.cmdEventAggreagtor.AddListener(command, f)
 	return l
 }
 
@@ -53,6 +53,7 @@ func (l *msgBusListenerImpl) AddEventHandler(name string, f func(Message)) *msgB
 func (l *msgBusListenerImpl) Listen() {
 	events, err := l.bindHandlersToQueue(l.eventQueue, l.evntEventAggreagtor, serviceEventExchange)
 	utils.FailOnError(err, fmt.Sprintf("%s %s", l.eventQueue, exchange.string(serviceEventExchange)))
+
 	go l.listenForEvents(events, l.evntEventAggreagtor)
 
 	go l.listenForDiscoveryRequests(l.commandQueue, l.discos)

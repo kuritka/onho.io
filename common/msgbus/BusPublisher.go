@@ -29,8 +29,8 @@ func newMessageBusPublisher(commandQueueName string, msgBusImpl *BusImpl) *msgBu
 	return &msgBusPublisherImpl{ commandQueueName, msgBusImpl, qm, msgProvider}
 }
 
-func (p *msgBusPublisherImpl) Command(cmdName string, data string) {
-	msg := p.msgProvider.Encode(Message{Name: cmdName, Message:data })
+func (p *msgBusPublisherImpl) Command(command string, data string) {
+	msg := p.msgProvider.Encode(Message{Name: command, Message:data })
 	p.qm.publishMessage(exchange.string(exchangeWorkerQueue), p.commandQueueName, msg)
 }
 
