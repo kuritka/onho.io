@@ -54,17 +54,32 @@ func (l *msgBusListenerImpl) Listen() {
 	events, err := l.bindHandlersToQueue(l.eventQueue, l.evntEventAggreagtor, serviceEventExchange)
 	utils.FailOnError(err, fmt.Sprintf("%s %s", l.eventQueue, exchange.string(serviceEventExchange)))
 
-	go l.listenForEvents(events, l.evntEventAggreagtor)
+	cmds, err := l.qm.channel.Consume(l.commandQueue, "", true, false, false, false, nil)
+	utils.FailOnError(err, "consuming name queue "+l.commandQueue)
 
-	go l.listenForDiscoveryRequests(l.commandQueue, l.discos)
+	go l.listenForEvents(events)
+
+	go l.listenForCommands(cmds)
+
+	//go l.listenForDiscoveryRequests(l.commandQueue, l.discos)
+
 }
 
-func (l *msgBusListenerImpl) listenForEvents(input <-chan amqp.Delivery, aggregator *eventAggregator) {
-	for value := range input {
+func (l *msgBusListenerImpl) listenForEvents(messages <-chan amqp.Delivery) {
+	for value := range messages {
 		m := Message{Name: value.RoutingKey,Message: string(value.Body)}
-		aggregator.Publish(m)
+		l.evntEventAggreagtor.Publish(m)
 	}
 }
+
+func (l *msgBusListenerImpl) listenForCommands(messages <-chan amqp.Delivery) {
+	for msg := range messages{
+		cmd := l.msgProvider.Decode(msg)
+		l.cmdEventAggreagtor.Publish(cmd)
+	}
+}
+
+
 
 func (l *msgBusListenerImpl) bindHandlersToQueue(queueName string, aggregator *eventAggregator, exchange exchange) (<-chan amqp.Delivery, error){
 	var q = l.qm.createQueueIfNotExists(queueName, true)

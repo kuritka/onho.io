@@ -38,7 +38,7 @@ func (mb *BusImpl) Register(name string) (*msgBusListenerImpl, *msgBusPublisherI
 	guid, _ := getGuid()
 	queueDiscoveryName := name + "_" + "discovery" + "_" + guid
 	queueEventName := name + "_" + "event" + "_" + guid
-	queueCommandName := name + "_" + "name" + "_" + guid
+	queueCommandName := name + "_" + "command"
 
 	mb.exmgr.createQueueIfNotExists(queueCommandName,true)
 

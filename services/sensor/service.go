@@ -41,7 +41,10 @@ func (sm *Sensor) Run() error {
 	//publisher.Command("cmdA", "A blaah2")
 	//publisher.Command("cmdB", "B blaah3B")
 	//publisher.Command("cmdX", "X cmdX")
-	publisher.Command("cmdA", "A blaah4")
+	publisher.Command("myService", "cmdA", "A blaah4")
+	publisher.Command("myService", "cmdB", "B blaah1")
+	publisher.Command("myService", "cmdB", "B blaah2")
+	publisher.Command("myService", "cmdB", "B 3")
 
 	//publisher.Event("foo", "foo: FOO EVENT")
 	//publisher.Event("foo", "foo: FOO EVENT2")
