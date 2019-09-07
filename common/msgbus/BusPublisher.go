@@ -18,20 +18,22 @@ type (
 		mb          *BusImpl
 		qm          *queueManagerImpl
 		msgProvider *messageProvider
+		registry map[string]string
 	}
 )
 
-func newMessageBusPublisher(commandQueueName string, msgBusImpl *BusImpl) *msgBusPublisherImpl {
+func newMessageBusPublisher(commandQueueName string, msgBusImpl *BusImpl, registry map[string]string) *msgBusPublisherImpl {
 	utils.FailOnEmptyString(commandQueueName, "service name")
 	utils.FailOnNil(msgBusImpl, "MessageBusImpl")
 	qm := createQueueManager(msgBusImpl.connection, msgBusImpl.channel)
 	msgProvider := newGobMessageProvider()
-	return &msgBusPublisherImpl{ commandQueueName, msgBusImpl, qm, msgProvider}
+	return &msgBusPublisherImpl{ commandQueueName, msgBusImpl, qm, msgProvider, registry}
 }
 
 func (p *msgBusPublisherImpl) Command(targetService string, command string, data string) {
+	queue := p.registry[command]
 	msg := p.msgProvider.Encode(Message{Name: command, Message:data })
-	p.qm.publishMessage(exchange.string(exchangeWorkerQueue), targetService+"_"+"command", msg)
+	p.qm.publishMessage(exchange.string(exchangeWorkerQueue), queue, msg)
 }
 
 func (p *msgBusPublisherImpl) Event(eventName string, data string) {

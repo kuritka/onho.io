@@ -1,8 +1,9 @@
 package msgbus
 
-type discoveryRequest struct{
-	message string
-	commandHandlers []string
+type DiscoveryRequest struct{
+	CommandHandlers []string
+	CommandQueue string
+	ServiceGuid string
 }
 
 type Message struct {

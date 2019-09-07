@@ -37,14 +37,11 @@ func (sm *Sensor) Run() error {
 		AddCommandHandler("cmdB", func(message msgbus.Message) {fmt.Printf("cmdB command: %s \n", message.Message)}).
 		Listen()
 
-	//publisher.Command("cmdA", "A blaah")
-	//publisher.Command("cmdA", "A blaah2")
-	//publisher.Command("cmdB", "B blaah3B")
-	//publisher.Command("cmdX", "X cmdX")
-	publisher.Command("myService", "cmdA", "A blaah4")
-	publisher.Command("myService", "cmdB", "B blaah1")
-	publisher.Command("myService", "cmdB", "B blaah2")
-	publisher.Command("myService", "cmdB", "B 3")
+
+	publisher.Command("myService", "cmdA", "A1")
+	publisher.Command("myService", "cmdB", "B1")
+	publisher.Command("myService", "cmdB", "B2")
+	publisher.Command("myService", "cmdB", "B3")
 
 	//publisher.Event("foo", "foo: FOO EVENT")
 	//publisher.Event("foo", "foo: FOO EVENT2")

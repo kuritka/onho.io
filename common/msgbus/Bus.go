@@ -50,10 +50,9 @@ func (mb *BusImpl) Register(name string) (*msgBusListenerImpl, *msgBusPublisherI
 		createQueueIfNotExists(queueDiscoveryName, true).
 		bindToQueue("", serviceDiscoveryExchange).consumeFromChannel()
 	utils.FailOnError(err, "discovery exchange")
-	mb.exmgr.sendDiscoveryRequest(amqp.Publishing{Body: []byte(queueCommandName)})
-
-	return newMsgBusListener(mb,  queueEventName, queueCommandName, discos),
-		newMessageBusPublisher(queueCommandName, mb)
+	registry := make(map[string]string)
+	return newMsgBusListener(mb,  queueEventName, queueCommandName, discos, registry, guid),
+		newMessageBusPublisher(queueCommandName, mb, registry)
 }
 
 func (mb *BusImpl) Close() {

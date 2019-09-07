@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/kuritka/onho.io/common/utils"
 	"github.com/streadway/amqp"
+	"time"
 )
 
 type (
@@ -13,29 +14,34 @@ type (
 		Listen()
 	}
 
+
 	msgBusListenerImpl struct {
-		eventQueue      string
-		commandQueue    string
-		qm              *queueManagerImpl
-		cmdEventAggreagtor *eventAggregator
+		eventQueue          string
+		commandQueue        string
+		guid                string
+		qm                  *queueManagerImpl
+		cmdEventAggreagtor  *eventAggregator
 		evntEventAggreagtor *eventAggregator
-		registry         map[string]<-chan amqp.Delivery
-		discos 			<-chan amqp.Delivery
-		msgProvider *messageProvider
+		discos              <-chan amqp.Delivery
+		msgProvider         *messageProvider
+		commandRegistry     map[string]string
+		serviceRegistry     map[string]bool
 	}
 )
 
-func newMsgBusListener( msgBusImpl *BusImpl,  serviceEvent string, serviceCommand string, discos <-chan amqp.Delivery) *msgBusListenerImpl {
+func newMsgBusListener( msgBusImpl *BusImpl,  serviceEvent string, serviceCommand string, discos <-chan amqp.Delivery, registry map[string]string, guid string) *msgBusListenerImpl {
 	qm := createQueueManager(msgBusImpl.connection, msgBusImpl.channel)
 	return &msgBusListenerImpl{
 		serviceEvent,
 		serviceCommand,
+		guid,
 		qm,
 		newEventAggregator(),
 		newEventAggregator(),
-		make(map[string]<-chan amqp.Delivery),
 		discos,
 		newGobMessageProvider(),
+		registry,
+		make(map[string]bool),
 	}
 }
 
@@ -57,12 +63,32 @@ func (l *msgBusListenerImpl) Listen() {
 	cmds, err := l.qm.channel.Consume(l.commandQueue, "", true, false, false, false, nil)
 	utils.FailOnError(err, "consuming name queue "+l.commandQueue)
 
+	discoPublishing := l.prepareDiscoveryRequest()
+	l.sendDiscoveryRequest(discoPublishing)
+
 	go l.listenForEvents(events)
 
 	go l.listenForCommands(cmds)
 
-	//go l.listenForDiscoveryRequests(l.commandQueue, l.discos)
+	go l.listenForDiscoveryRequests(l.commandQueue, l.discos)
+	//whole command bus must be changed. This delay is here because we want to
+	// listeners wait for discos.Than commands can be sent
+	time.Sleep(2 * time.Second)
+}
 
+func (l *msgBusListenerImpl) sendDiscoveryRequest(discoPublishing amqp.Publishing) {
+	err := l.qm.channel.Publish(exchange.string(serviceDiscoveryExchange),
+		"", false, false, discoPublishing)
+	utils.FailOnError(err, "Unable publish to "+exchange.string(serviceDiscoveryExchange))
+}
+
+func (l *msgBusListenerImpl) prepareDiscoveryRequest() amqp.Publishing{
+	var arr []string
+	for k := range l.cmdEventAggreagtor.listeners {
+		arr = append(arr, k)
+	}
+	disco := DiscoveryRequest{CommandQueue: l.commandQueue, CommandHandlers: arr, ServiceGuid: l.guid }
+	return l.msgProvider.EncodeDisco(disco)
 }
 
 func (l *msgBusListenerImpl) listenForEvents(messages <-chan amqp.Delivery) {
@@ -74,12 +100,10 @@ func (l *msgBusListenerImpl) listenForEvents(messages <-chan amqp.Delivery) {
 
 func (l *msgBusListenerImpl) listenForCommands(messages <-chan amqp.Delivery) {
 	for msg := range messages{
-		cmd := l.msgProvider.Decode(msg)
+		cmd := l.msgProvider.DecodeMessage(msg)
 		l.cmdEventAggreagtor.Publish(cmd)
 	}
 }
-
-
 
 func (l *msgBusListenerImpl) bindHandlersToQueue(queueName string, aggregator *eventAggregator, exchange exchange) (<-chan amqp.Delivery, error){
 	var q = l.qm.createQueueIfNotExists(queueName, true)
@@ -91,25 +115,20 @@ func (l *msgBusListenerImpl) bindHandlersToQueue(queueName string, aggregator *e
 
 func (l *msgBusListenerImpl) listenForDiscoveryRequests(queueCommandName string, discoveryChannel <-chan amqp.Delivery) {
 	for msg := range discoveryChannel {
-		workerQueue := string(msg.Body)
-		if l.registry[workerQueue] == nil {
-			l.registry[workerQueue] = make(<-chan amqp.Delivery)
-			err := l.qm.channel.Publish(exchange.string(serviceDiscoveryExchange),
-				"", false, false, amqp.Publishing{Body: []byte(queueCommandName )})
-			utils.FailOnError(err, "Unable publish to "+exchange.string(serviceDiscoveryExchange))
-			//for listener := range l.cmdEventAggreagtor.listeners {
-			//	if listener ==
-				cmds, err := l.qm.channel.Consume(workerQueue, "", true, false, false, false, nil)
-				utils.FailOnError(err, "consuming name queue "+workerQueue)
-				go l.ProcessCommand(cmds)
-		//	}
+		discoMessage := l.msgProvider.DecodeDisco(msg)
+		if !l.serviceRegistry[discoMessage.ServiceGuid] {
+			l.serviceRegistry[discoMessage.ServiceGuid] = true
+			for _,cmd := range discoMessage.CommandHandlers {
+				if q, found := l.commandRegistry[cmd]; found {
+					if q != discoMessage.CommandQueue {
+						utils.Fail(fmt.Sprintf("command %s is not unique", cmd ))
+					}
+					continue
+				}
+				l.commandRegistry[cmd] = discoMessage.CommandQueue
+			}
+			discoPublishing := l.prepareDiscoveryRequest()
+			l.sendDiscoveryRequest(discoPublishing)
 		}
-	}
-}
-
-func (l *msgBusListenerImpl) ProcessCommand(msgs <-chan amqp.Delivery) {
-	for msg := range msgs {
-		cmd := l.msgProvider.Decode(msg)
-		l.cmdEventAggreagtor.Publish(cmd)
 	}
 }
