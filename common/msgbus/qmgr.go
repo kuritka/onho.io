@@ -143,6 +143,10 @@ func (qm *queueManagerImpl) bindToQueue(routingKey string, exchange exchange) *q
 		false,
 		nil,
 	)
+	if err != nil {
+		log.Info().Msg("bind " + " " + qm.queue.Name + " " + routingKey)
+		log.Error().Msg(err.Error() )
+	}
 	utils.DisposeOnError(err, "cannot bind exchange", qm.close)
 	return qm
 }
@@ -152,7 +156,7 @@ func (qm *queueManagerImpl) publishMessage(exchange string, routingKey string, m
 		false,
 		false, //if true than throws error when no consumers on the q
 		message)
-	utils.FailOnError(err, "default publishing")
+	utils.DisposeOnError(err, "default publishing", qm.close)
 }
 
 func (qm *queueManagerImpl) consumeFromChannel() (<-chan amqp.Delivery, error) {

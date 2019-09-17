@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"github.com/kuritka/onho.io/common/utils"
 	"github.com/streadway/amqp"
-	"time"
 )
 
 type (
@@ -14,34 +13,32 @@ type (
 		Listen()
 	}
 
-
 	msgBusListenerImpl struct {
 		eventQueue          string
-		commandQueue        string
 		guid                string
 		qm                  *queueManagerImpl
 		cmdEventAggreagtor  *eventAggregator
 		evntEventAggreagtor *eventAggregator
 		discos              <-chan amqp.Delivery
 		msgProvider         *messageProvider
-		commandRegistry     map[string]string
-		serviceRegistry     map[string]bool
+		registry      		map[string]<-chan amqp.Delivery
+		publishedCommands   map[string]*queueManagerImpl
 	}
 )
 
-func newMsgBusListener( msgBusImpl *BusImpl,  serviceEvent string, serviceCommand string, discos <-chan amqp.Delivery, registry map[string]string, guid string) *msgBusListenerImpl {
+func newMsgBusListener( msgBusImpl *BusImpl,  serviceEvent string,  discos <-chan amqp.Delivery, guid string, registry map[string]*queueManagerImpl) *msgBusListenerImpl {
+
 	qm := createQueueManager(msgBusImpl.connection, msgBusImpl.channel)
 	return &msgBusListenerImpl{
 		serviceEvent,
-		serviceCommand,
 		guid,
 		qm,
 		newEventAggregator(),
 		newEventAggregator(),
 		discos,
 		newGobMessageProvider(),
+		make(map[string]<-chan amqp.Delivery),
 		registry,
-		make(map[string]bool),
 	}
 }
 
@@ -55,40 +52,20 @@ func (l *msgBusListenerImpl) AddEventHandler(name string, f func(Message)) *msgB
 	return l
 }
 
-
 func (l *msgBusListenerImpl) Listen() {
 	events, err := l.bindHandlersToQueue(l.eventQueue, l.evntEventAggreagtor, serviceEventExchange)
 	utils.FailOnError(err, fmt.Sprintf("%s %s", l.eventQueue, exchange.string(serviceEventExchange)))
 
-	cmds, err := l.qm.channel.Consume(l.commandQueue, "", true, false, false, false, nil)
-	utils.FailOnError(err, "consuming name queue "+l.commandQueue)
-
-	discoPublishing := l.prepareDiscoveryRequest()
+	discoPublishing :=  l.msgProvider.EncodeDisco(DiscoveryRequest{CommandQueue: "register", CommandHandlers: []string{}, ServiceGuid: l.guid })
 	l.sendDiscoveryRequest(discoPublishing)
 
 	go l.listenForEvents(events)
 
-	go l.listenForCommands(cmds)
-
-	go l.listenForDiscoveryRequests(l.commandQueue, l.discos)
-	//whole command bus must be changed. This delay is here because we want to
-	// listeners wait for discos.Than commands can be sent
-	time.Sleep(2 * time.Second)
+	go l.listenForDiscoveryRequests(l.discos)
 }
 
 func (l *msgBusListenerImpl) sendDiscoveryRequest(discoPublishing amqp.Publishing) {
-	err := l.qm.channel.Publish(exchange.string(serviceDiscoveryExchange),
-		"", false, false, discoPublishing)
-	utils.FailOnError(err, "Unable publish to "+exchange.string(serviceDiscoveryExchange))
-}
-
-func (l *msgBusListenerImpl) prepareDiscoveryRequest() amqp.Publishing{
-	var arr []string
-	for k := range l.cmdEventAggreagtor.listeners {
-		arr = append(arr, k)
-	}
-	disco := DiscoveryRequest{CommandQueue: l.commandQueue, CommandHandlers: arr, ServiceGuid: l.guid }
-	return l.msgProvider.EncodeDisco(disco)
+	l.qm.publishMessage( exchange.string(serviceDiscoveryExchange), "",discoPublishing )
 }
 
 func (l *msgBusListenerImpl) listenForEvents(messages <-chan amqp.Delivery) {
@@ -113,22 +90,31 @@ func (l *msgBusListenerImpl) bindHandlersToQueue(queueName string, aggregator *e
 	return  q.consumeFromChannel()
 }
 
-func (l *msgBusListenerImpl) listenForDiscoveryRequests(queueCommandName string, discoveryChannel <-chan amqp.Delivery) {
+func (l *msgBusListenerImpl) listenForDiscoveryRequests(discoveryChannel <-chan amqp.Delivery) {
 	for msg := range discoveryChannel {
 		discoMessage := l.msgProvider.DecodeDisco(msg)
-		if !l.serviceRegistry[discoMessage.ServiceGuid] {
-			l.serviceRegistry[discoMessage.ServiceGuid] = true
-			for _,cmd := range discoMessage.CommandHandlers {
-				if q, found := l.commandRegistry[cmd]; found {
-					if q != discoMessage.CommandQueue {
-						utils.Fail(fmt.Sprintf("command %s is not unique", cmd ))
-					}
-					continue
-				}
-				l.commandRegistry[cmd] = discoMessage.CommandQueue
-			}
-			discoPublishing := l.prepareDiscoveryRequest()
-			l.sendDiscoveryRequest(discoPublishing)
+
+		if discoMessage.CommandQueue == "register" {
+			//fmt.Println("REGISTER call " + discoMessage.CommandQueue)
+			//l.publishCommandRegistry()
+			continue
 		}
+
+		if l.registry[discoMessage.CommandQueue] == nil {
+			fmt.Println("REGISTERING: "+ discoMessage.CommandQueue)
+			stream , err := l.qm.channel.Consume(discoMessage.CommandQueue,"", true, false, false, false, nil)
+			l.registry[discoMessage.CommandQueue] = stream
+			utils.DisposeOnError(err, "cannot consume from " + discoMessage.CommandQueue, l.qm.close)
+			go l.listenForCommands(stream)
+		}
+	}
+}
+
+
+func (l *msgBusListenerImpl) publishCommandRegistry(){
+	commands := []string{}
+	for command,_ := range l.publishedCommands {
+		discoPublishing :=  l.msgProvider.EncodeDisco(DiscoveryRequest{CommandQueue: command+"_"+l.guid, CommandHandlers: commands, ServiceGuid: l.guid })
+		l.sendDiscoveryRequest(discoPublishing)
 	}
 }

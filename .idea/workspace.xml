@@ -97,9 +97,8 @@
       <change beforePath="$PROJECT_DIR$/common/msgbus/Bus.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/msgbus/Bus.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/msgbus/BusListener.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/msgbus/BusListener.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/msgbus/BusPublisher.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/msgbus/BusPublisher.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/msgbus/Message.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/msgbus/Message.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/msgbus/gobMessageProvider.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/msgbus/gobMessageProvider.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/utils/guardians.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/utils/guardians.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/msgbus/qmgr.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/msgbus/qmgr.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deploy.sh" beforeDir="false" afterPath="$PROJECT_DIR$/deploy.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/sensor/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/services/sensor/service.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -127,32 +126,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/common/msgbus/BusListener.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-432">
-              <caret line="48" column="29" selection-start-line="48" selection-start-column="29" selection-end-line="48" selection-end-column="29" />
-              <folding>
-                <element signature="e#16#105#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="257">
+              <caret line="99" column="12" selection-start-line="99" selection-start-column="12" selection-end-line="99" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common/msgbus/BusPublisher.go">
+        <entry file="file://$PROJECT_DIR$/common/utils/guardians.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="34" column="37" lean-forward="true" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
-              <folding>
-                <element signature="e#16#98#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common/msgbus/Message.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+            <state relative-caret-position="342">
+              <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -160,8 +144,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/services/sensor/service.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="873">
-              <caret line="53" column="18" lean-forward="true" selection-start-line="53" selection-start-column="18" selection-end-line="53" selection-end-column="18" />
+            <state relative-caret-position="612">
+              <caret line="22" column="13" lean-forward="true" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common/msgbus/Bus.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="254">
+              <caret line="23" column="47" selection-start-line="23" selection-start-column="47" selection-end-line="23" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -178,28 +171,10 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>aks</find>
-      <find>bindToDiscoveryExchange</find>
-      <find>createDiscoveryExchangeIfNotExists</find>
-      <find>Scan</find>
-      <find>map</find>
-      <find>append</find>
-      <find>createQueueIfNotExists</find>
-      <find>msgBusImpl</find>
-      <find>bindToQueue</find>
-      <find>create</find>
-      <find>provis</find>
-      <find>fanoutExchange</find>
-      <find>msgBusPublisherImpl</find>
-      <find>serviceDiscoveryExchange</find>
-      <find>key</find>
-      <find>XXX</find>
-      <find>serviceEventExchange</find>
       <find>listenForDiscoverRequests</find>
       <find>bind</find>
       <find>registry</find>
       <find>serviceCommandE</find>
-      <find>bindHandlersToQueue</find>
       <find>sending</find>
       <find>serviceCommandExchange</find>
       <find>serviceName</find>
@@ -208,6 +183,24 @@
       <find>Decode</find>
       <find>.Decode</find>
       <find>serviceCommand</find>
+      <find>commandQueueName</find>
+      <find>disco</find>
+      <find>listenForCommands</find>
+      <find>guid</find>
+      <find>prepareDiscoveryRequest</find>
+      <find>Dispos</find>
+      <find>publishMessage</find>
+      <find>sendDiscoveryRequest</find>
+      <find>bindTo</find>
+      <find>bindHandlersToQueue</find>
+      <find>exm</find>
+      <find>evntEventAggreagtor</find>
+      <find>register</find>
+      <find>&quot;register</find>
+      <find>CommandQueue</find>
+      <find>publishedCommands</find>
+      <find>`</find>
+      <find>publishCommandRegistry</find>
     </findStrings>
     <replaceStrings>
       <replace>coordinator</replace>
@@ -254,11 +247,9 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/common/msgbus/utils.go" />
         <option value="$PROJECT_DIR$/cmd/sensor.go" />
-        <option value="$PROJECT_DIR$/deploy.sh" />
         <option value="$PROJECT_DIR$/common/bus/queuemanager.go" />
         <option value="$PROJECT_DIR$/services/eventAggregator.go" />
         <option value="$PROJECT_DIR$/services/coordinator/service.go" />
-        <option value="$PROJECT_DIR$/common/msgbus/qmgr.go" />
         <option value="$PROJECT_DIR$/common/msgbus/enum.go" />
         <option value="$PROJECT_DIR$/common/msgbus/GobMessageProvider.go" />
         <option value="$PROJECT_DIR$/common/qutils/messageProvider.go" />
@@ -266,19 +257,21 @@
         <option value="$PROJECT_DIR$/common/msgbus/eventAggregator.go" />
         <option value="$PROJECT_DIR$/common/msgbus/gobMessageProvider.go" />
         <option value="$PROJECT_DIR$/common/utils/guardians.go" />
-        <option value="$PROJECT_DIR$/services/sensor/service.go" />
-        <option value="$PROJECT_DIR$/common/msgbus/Bus.go" />
         <option value="$PROJECT_DIR$/common/msgbus/Message.go" />
-        <option value="$PROJECT_DIR$/common/msgbus/BusListener.go" />
+        <option value="$PROJECT_DIR$/common/msgbus/Bus.go" />
+        <option value="$PROJECT_DIR$/deploy.sh" />
+        <option value="$PROJECT_DIR$/services/sensor/service.go" />
         <option value="$PROJECT_DIR$/common/msgbus/BusPublisher.go" />
+        <option value="$PROJECT_DIR$/common/msgbus/qmgr.go" />
+        <option value="$PROJECT_DIR$/common/msgbus/BusListener.go" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1920" />
-    <option name="y" value="27" />
-    <option name="width" value="1680" />
-    <option name="height" value="1023" />
+    <option name="x" value="3200" />
+    <option name="y" value="37" />
+    <option name="width" value="1280" />
+    <option name="height" value="1403" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -288,7 +281,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -413,43 +405,11 @@
               <item name="Go Modules &lt;github.com/kuritka/onho.io&gt;" type="20ee2d1f:SyntheticLibraryElementNode" />
               <item name="amqp" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="onho.io" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Go SDK 1.11.7" type="20ee2d1f:SyntheticLibraryElementNode" />
-            </path>
-            <path>
-              <item name="onho.io" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Go SDK 1.11.7" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="onho.io" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Go SDK 1.11.7" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="encoding" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="onho.io" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Go SDK 1.11.7" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="encoding" type="462c0819:PsiDirectoryNode" />
-              <item name="gob" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="onho.io" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Go SDK 1.11.7" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="runtime" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -564,16 +524,16 @@
     </recent_temporary>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="-16" width="2560" height="1456" extended-state="6" />
+    <frame x="1920" y="37" width="2560" height="1403" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6217765" visible="true" weight="0.297166" />
-      <window_info id="Structure" order="1" sideWeight="0.3782235" side_tool="true" visible="true" weight="0.297166" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.62085307" visible="true" weight="0.22633253" />
+      <window_info id="Structure" order="1" sideWeight="0.37914693" side_tool="true" visible="true" weight="0.22633253" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32792485" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.40392828" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3851409" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.4020537" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.27804106" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -632,9 +592,25 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="GoApplicationRunConfiguration">
+        <watch expression="routingKey" language="go" />
+        <watch expression="qm" language="go" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>qm</expression-string>
+        <language-id>go</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>routingKey</expression-string>
+        <language-id>go</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>exchange.string()</expression-string>
         <language-id>go</language-id>
@@ -675,32 +651,9 @@
         <language-id>go</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>exchange</expression-string>
-        <language-id>go</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="2448">
-            <caret line="68" column="14" selection-start-line="63" selection-end-line="68" selection-end-column="14" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmd/root.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-648" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmd/constants.go">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/cmd/dbmgr.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -832,13 +785,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmd/sensorMock.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-70">
-          <caret line="21" column="35" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/github.com/streadway/amqp/types.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="222">
@@ -864,16 +810,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="212">
           <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/coordinator/service.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="e#21#154#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -912,13 +848,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmd/sensor.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="23" column="45" selection-start-line="23" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common/qutils/messageProvider.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1125">
@@ -943,58 +872,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/msgbus/eventAggregator.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/msgbus/gobMessageProvider.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="37" column="66" selection-start-line="37" selection-start-column="66" selection-end-line="37" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/utils/guardians.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/deploy.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2205">
-          <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/msgbus/enum.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/msgbus/Bus.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="44" column="22" lean-forward="true" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/msgbus/qmgr.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="86" column="33" lean-forward="true" selection-start-line="86" selection-start-column="33" selection-end-line="86" selection-end-column="33" />
-          <folding>
-            <element signature="e#16#127#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/services/sensorMock/service.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-198">
@@ -1005,44 +882,135 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/github.com/streadway/amqp/channel.go">
+    <entry file="file://$PROJECT_DIR$/cmd/sensorMock.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="1136" column="19" selection-start-line="1136" selection-start-column="19" selection-end-line="1136" selection-end-column="19" />
+        <state relative-caret-position="26">
+          <caret line="21" column="35" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/services/sensor/service.go">
+    <entry file="file://$PROJECT_DIR$/cmd/root.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="873">
-          <caret line="53" column="18" lean-forward="true" selection-start-line="53" selection-start-column="18" selection-end-line="53" selection-end-column="18" />
+        <state relative-caret-position="285">
+          <caret line="17" column="27" lean-forward="true" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/coordinator/service.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="3" column="27" lean-forward="true" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/common/msgbus/Message.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+        <state relative-caret-position="52">
+          <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/msgbus/enum.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="8" column="23" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/github.com/rs/zerolog/log/log.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/msgbus/gobMessageProvider.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="472">
+          <caret line="56" column="27" selection-start-line="56" selection-start-column="27" selection-end-line="56" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmd/sensor.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="583">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/msgbus/eventAggregator.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/github.com/rs/zerolog/event.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="100" column="16" selection-start-line="100" selection-start-column="16" selection-end-line="100" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deploy.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3600">
+          <caret line="100" column="17" selection-start-line="100" selection-start-column="17" selection-end-line="100" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/common/msgbus/BusPublisher.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="34" column="37" lean-forward="true" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
+        <state relative-caret-position="74">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
           <folding>
             <element signature="e#16#98#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/common/msgbus/Bus.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="23" column="47" selection-start-line="23" selection-start-column="47" selection-end-line="23" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/sensor/service.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="22" column="13" lean-forward="true" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/msgbus/qmgr.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="158" column="56" selection-start-line="158" selection-start-column="56" selection-end-line="158" selection-end-column="56" />
+          <folding>
+            <element signature="e#16#127#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/github.com/streadway/amqp/channel.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="1050" column="73" selection-start-line="1050" selection-start-column="16" selection-end-line="1050" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/utils/guardians.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/common/msgbus/BusListener.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-432">
-          <caret line="48" column="29" selection-start-line="48" selection-start-column="29" selection-end-line="48" selection-end-column="29" />
-          <folding>
-            <element signature="e#16#105#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="257">
+          <caret line="99" column="12" selection-start-line="99" selection-start-column="12" selection-end-line="99" selection-end-column="12" />
         </state>
       </provider>
     </entry>

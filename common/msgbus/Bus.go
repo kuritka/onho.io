@@ -16,6 +16,7 @@ type (
 		channel    *amqp.Channel
 		connection *amqp.Connection
 		exmgr      *exchangeManagerImpl
+		registry map[string]*queueManagerImpl
 	}
 )
 
@@ -29,6 +30,7 @@ func NewMsgBus(connectionString string) *BusImpl {
 		ch,
 		conn,
 		exmgr,
+		make(map[string]*queueManagerImpl),
 	}
 }
 
@@ -38,9 +40,6 @@ func (mb *BusImpl) Register(name string) (*msgBusListenerImpl, *msgBusPublisherI
 	guid, _ := getGuid()
 	queueDiscoveryName := name + "_" + "discovery" + "_" + guid
 	queueEventName := name + "_" + "event" + "_" + guid
-	queueCommandName := name + "_" + "command"
-
-	mb.exmgr.createQueueIfNotExists(queueCommandName,true)
 
 	mb.exmgr.createEventExchangeIfNotExists()
 
@@ -50,9 +49,8 @@ func (mb *BusImpl) Register(name string) (*msgBusListenerImpl, *msgBusPublisherI
 		createQueueIfNotExists(queueDiscoveryName, true).
 		bindToQueue("", serviceDiscoveryExchange).consumeFromChannel()
 	utils.FailOnError(err, "discovery exchange")
-	registry := make(map[string]string)
-	return newMsgBusListener(mb,  queueEventName, queueCommandName, discos, registry, guid),
-		newMessageBusPublisher(queueCommandName, mb, registry)
+	return newMsgBusListener(mb,  queueEventName,  discos, guid, mb.registry),
+		newMessageBusPublisher(mb, name,guid, mb.registry)
 }
 
 func (mb *BusImpl) Close() {

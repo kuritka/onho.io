@@ -2,6 +2,7 @@ package msgbus
 
 import (
 	"github.com/kuritka/onho.io/common/utils"
+	"github.com/rs/zerolog/log"
 	"github.com/streadway/amqp"
 )
 
@@ -14,26 +15,36 @@ type (
 	}
 
 	msgBusPublisherImpl struct {
-		commandQueueName string
+		guid		string
+		name        string
 		mb          *BusImpl
 		qm          *queueManagerImpl
 		msgProvider *messageProvider
-		registry map[string]string
+		registry   map[string]*queueManagerImpl
 	}
 )
 
-func newMessageBusPublisher(commandQueueName string, msgBusImpl *BusImpl, registry map[string]string) *msgBusPublisherImpl {
-	utils.FailOnEmptyString(commandQueueName, "service name")
+func newMessageBusPublisher( msgBusImpl *BusImpl,  name string, guid string, registry map[string]*queueManagerImpl) *msgBusPublisherImpl {
+	utils.FailOnEmptyString(guid, "missing guid")
 	utils.FailOnNil(msgBusImpl, "MessageBusImpl")
+	utils.FailOnNil(registry,"registry")
 	qm := createQueueManager(msgBusImpl.connection, msgBusImpl.channel)
 	msgProvider := newGobMessageProvider()
-	return &msgBusPublisherImpl{ commandQueueName, msgBusImpl, qm, msgProvider, registry}
+	return &msgBusPublisherImpl{  guid, name,msgBusImpl, qm, msgProvider, registry}
 }
 
-func (p *msgBusPublisherImpl) Command(targetService string, command string, data string) {
-	queue := p.registry[command]
+func (p *msgBusPublisherImpl) Command(command string, data string) {
+	cq := command + "_" + p.guid
+	if p.registry[cq] == nil {
+		disco := DiscoveryRequest{CommandQueue: cq, CommandHandlers: []string{command}, ServiceGuid: p.guid}
+		p.registry[cq] = p.mb.exmgr.createQueueIfNotExists(cq, true)
+		err := p.qm.channel.Publish(exchange.string(serviceDiscoveryExchange),
+			"", false, false, p.msgProvider.EncodeDisco(disco))
+		utils.DisposeOnError(err, "Unable publish to "+exchange.string(serviceDiscoveryExchange), p.mb.Close)
+		log.Info().Msg("PUBLISHED: " +cq )
+	}
 	msg := p.msgProvider.Encode(Message{Name: command, Message:data })
-	p.qm.publishMessage(exchange.string(exchangeWorkerQueue), queue, msg)
+	p.registry[cq].publishMessage(exchange.string(exchangeWorkerQueue), cq, msg)
 }
 
 func (p *msgBusPublisherImpl) Event(eventName string, data string) {

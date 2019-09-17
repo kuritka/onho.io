@@ -15,11 +15,13 @@ usage(){
 	Commands:
         drop                        removes all containers from local docker
         install                     installing postgre, pgadmin and mq
+        reinstall_mq                removes mq and installs again
         start                       starts onho with mock services
 
 	Command arguments:
         drop
         install
+        reinstall_mq
         start                       [sensors] [controllers] [param3]
 EOF
 }
@@ -38,6 +40,20 @@ drop_all_containers(){
     docker rmi $(docker images | grep "^<none>" | awk '{ print $3 }')
 }
 
+reinstall_mq(){
+
+ docker stop some-rabbit
+ docker rm some-rabbit
+
+ docker run -d --hostname my-rabbit --name some-rabbit \
+    -e RABBITMQ_DEFAULT_USER=guest \
+    -e RABBITMQ_DEFAULT_PASS=guest \
+    -p 15672:15672 -p 5671:5671 \
+    -p 5672:5672 -p 15671:15671 \
+    -p 25672:25672 rabbitmq:3-management
+
+ printf "rabbitmq on localhost:15671 guest/guest \n\n"
+}
 
 install(){
     docker run -d --hostname my-rabbit --name some-rabbit \
@@ -81,6 +97,10 @@ case "$1" in
     "install")
                 printf "installing local infrastructure...\n\n\n"
                 install
+                ;;
+    "reinstall_mq")
+                printf "reinstalling MQ...\n\n\n"
+                reinstall_mq
                 ;;
     "start")
 

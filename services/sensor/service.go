@@ -38,11 +38,11 @@ func (sm *Sensor) Run() error {
 		Listen()
 
 
-	publisher.Command("myService", "cmdA", "A1")
-	publisher.Command("myService", "cmdB", "B1")
-	publisher.Command("myService", "cmdB", "B2")
-	publisher.Command("myService", "cmdB", "B3")
-
+	publisher.Command( "cmdA", "A1")
+	publisher.Command( "cmdB", "B1")
+	publisher.Command( "cmdB", "B2")
+	publisher.Command( "cmdB", "B3")
+	//
 	//publisher.Event("foo", "foo: FOO EVENT")
 	//publisher.Event("foo", "foo: FOO EVENT2")
 	//publisher.Event("foo", "foo: FOO EVENT3")
