@@ -38,7 +38,8 @@ func (sm *SensorBusMock) Run() error {
 	mb := msgbus.NewMsgBus(sm.options.ConnectionString)
 	defer mb.Close()
 
-	_, publisher := mb.Register("serviceBus")
+	listener, publisher := mb.Register("serviceBus")
+	listener.Listen()
 
 	duration,err := time.ParseDuration(strconv.Itoa(1000/int(sm.options.Freq)) + "ms")
 

@@ -60,9 +60,6 @@ func (l *msgBusListenerImpl) Listen() {
 	events, err := l.bindHandlersToQueue(l.eventQueue, l.evntEventAggreagtor, serviceEventExchange)
 	utils.FailOnError(err, fmt.Sprintf("%s %s", l.eventQueue, exchange.string(serviceEventExchange)))
 
-	//discoPublishing :=  l.msgProvider.EncodeDisco(DiscoveryRequest{CommandQueue: register, ServiceGuid: l.guid })
-	//l.sendDiscoveryRequest(discoPublishing)
-
 	go l.listenForEvents(events)
 
 	go l.listenForDiscoveryRequests(l.discos)
@@ -101,7 +98,7 @@ func (l *msgBusListenerImpl) listenForDiscoveryRequests(discoveryChannel <-chan 
 		fmt.Println(discoMessage.CommandQueue)
 
 		if discoMessage.CommandQueue == register {
-			//l.publishCommandRegistry()
+			l.publishCommandRegistry()
 			fmt.Println("DISCOVERY REQUEST")
 			continue
 		}
