@@ -172,9 +172,11 @@ func dispose(connection *amqp.Connection, channel *amqp.Channel) {
 	utils.FailOnNil(connection, "connection is nil")
 	utils.FailOnNil(channel, "channel is nil")
 	var err error
-	err = channel.Close()
-	utils.FailOnError(err, "unable to dispose channel")
-	err = connection.Close()
-	utils.FailOnError(err, "unable to dispose connection")
-	log.Debug().Msg("connection closed")
+	if !connection.IsClosed() {
+		err = channel.Close()
+		utils.FailOnError(err, "unable to dispose channel")
+		err = connection.Close()
+		utils.FailOnError(err, "unable to dispose connection")
+		log.Debug().Msg("connection closed")
+	}
 }

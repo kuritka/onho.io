@@ -19,7 +19,6 @@ type SensorMock struct {
 	rand    *rand.Rand
 	value   float64
 	nom     float64
-
 }
 
 func NewService(options Options) *SensorMock {

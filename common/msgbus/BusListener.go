@@ -26,6 +26,10 @@ type (
 	}
 )
 
+const (
+	register = "register"
+)
+
 func newMsgBusListener( msgBusImpl *BusImpl,  serviceEvent string,  discos <-chan amqp.Delivery, guid string, registry map[string]*queueManagerImpl) *msgBusListenerImpl {
 
 	qm := createQueueManager(msgBusImpl.connection, msgBusImpl.channel)
@@ -56,8 +60,8 @@ func (l *msgBusListenerImpl) Listen() {
 	events, err := l.bindHandlersToQueue(l.eventQueue, l.evntEventAggreagtor, serviceEventExchange)
 	utils.FailOnError(err, fmt.Sprintf("%s %s", l.eventQueue, exchange.string(serviceEventExchange)))
 
-	discoPublishing :=  l.msgProvider.EncodeDisco(DiscoveryRequest{CommandQueue: "register", CommandHandlers: []string{}, ServiceGuid: l.guid })
-	l.sendDiscoveryRequest(discoPublishing)
+	//discoPublishing :=  l.msgProvider.EncodeDisco(DiscoveryRequest{CommandQueue: register, ServiceGuid: l.guid })
+	//l.sendDiscoveryRequest(discoPublishing)
 
 	go l.listenForEvents(events)
 
@@ -94,14 +98,15 @@ func (l *msgBusListenerImpl) listenForDiscoveryRequests(discoveryChannel <-chan 
 	for msg := range discoveryChannel {
 		discoMessage := l.msgProvider.DecodeDisco(msg)
 
-		if discoMessage.CommandQueue == "register" {
-			//fmt.Println("REGISTER call " + discoMessage.CommandQueue)
+		fmt.Println(discoMessage.CommandQueue)
+
+		if discoMessage.CommandQueue == register {
 			//l.publishCommandRegistry()
+			fmt.Println("DISCOVERY REQUEST")
 			continue
 		}
 
 		if l.registry[discoMessage.CommandQueue] == nil {
-			fmt.Println("REGISTERING: "+ discoMessage.CommandQueue)
 			stream , err := l.qm.channel.Consume(discoMessage.CommandQueue,"", true, false, false, false, nil)
 			l.registry[discoMessage.CommandQueue] = stream
 			utils.DisposeOnError(err, "cannot consume from " + discoMessage.CommandQueue, l.qm.close)
@@ -112,9 +117,9 @@ func (l *msgBusListenerImpl) listenForDiscoveryRequests(discoveryChannel <-chan 
 
 
 func (l *msgBusListenerImpl) publishCommandRegistry(){
-	commands := []string{}
-	for command,_ := range l.publishedCommands {
-		discoPublishing :=  l.msgProvider.EncodeDisco(DiscoveryRequest{CommandQueue: command+"_"+l.guid, CommandHandlers: commands, ServiceGuid: l.guid })
+	for cq := range l.publishedCommands {
+		fmt.Println("PUBLISHING: " + cq)
+		discoPublishing :=  l.msgProvider.EncodeDisco(DiscoveryRequest{CommandQueue: cq,  ServiceGuid: l.guid })
 		l.sendDiscoveryRequest(discoPublishing)
 	}
 }

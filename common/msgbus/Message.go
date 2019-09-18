@@ -1,7 +1,6 @@
 package msgbus
 
 type DiscoveryRequest struct{
-	CommandHandlers []string
 	CommandQueue string
 	ServiceGuid string
 }

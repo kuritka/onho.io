@@ -45,10 +45,14 @@ func (mb *BusImpl) Register(name string) (*msgBusListenerImpl, *msgBusPublisherI
 
 	//Queuebinding for discos must complete before first request start, otherwise there will be still one service without
 	//knowledge of other services
+
+	discoveryRequest := newGobMessageProvider().EncodeDisco(DiscoveryRequest{CommandQueue: register, ServiceGuid: guid })
 	discos, err := mb.exmgr.createDiscoveryExchangeIfNotExists().
+		sendDiscoveryRequest(discoveryRequest).
 		createQueueIfNotExists(queueDiscoveryName, true).
 		bindToQueue("", serviceDiscoveryExchange).consumeFromChannel()
 	utils.FailOnError(err, "discovery exchange")
+
 	return newMsgBusListener(mb,  queueEventName,  discos, guid, mb.registry),
 		newMessageBusPublisher(mb, name,guid, mb.registry)
 }

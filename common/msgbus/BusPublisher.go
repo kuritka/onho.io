@@ -2,7 +2,6 @@ package msgbus
 
 import (
 	"github.com/kuritka/onho.io/common/utils"
-	"github.com/rs/zerolog/log"
 	"github.com/streadway/amqp"
 )
 
@@ -36,12 +35,11 @@ func newMessageBusPublisher( msgBusImpl *BusImpl,  name string, guid string, reg
 func (p *msgBusPublisherImpl) Command(command string, data string) {
 	cq := command + "_" + p.guid
 	if p.registry[cq] == nil {
-		disco := DiscoveryRequest{CommandQueue: cq, CommandHandlers: []string{command}, ServiceGuid: p.guid}
+		disco := DiscoveryRequest{CommandQueue: cq, ServiceGuid: p.guid}
 		p.registry[cq] = p.mb.exmgr.createQueueIfNotExists(cq, true)
 		err := p.qm.channel.Publish(exchange.string(serviceDiscoveryExchange),
 			"", false, false, p.msgProvider.EncodeDisco(disco))
 		utils.DisposeOnError(err, "Unable publish to "+exchange.string(serviceDiscoveryExchange), p.mb.Close)
-		log.Info().Msg("PUBLISHED: " +cq )
 	}
 	msg := p.msgProvider.Encode(Message{Name: command, Message:data })
 	p.registry[cq].publishMessage(exchange.string(exchangeWorkerQueue), cq, msg)
