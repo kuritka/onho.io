@@ -7,7 +7,7 @@ import (
 )
 
 type (
-	iExchangeManager interface {
+	IExchangeManager interface {
 		createDiscoveryExchangeIfNotExists() *exchangeManagerImpl
 		createQueueIfNotExists(name string, autoDelete bool) *queueManagerImpl
 		sendDiscoveryRequest(message amqp.Publishing) *exchangeManagerImpl
@@ -21,8 +21,8 @@ type (
 )
 
 type (
-	iQueueManager interface {
-		bindToQueue(exchange exchange) *queueManagerImpl
+	IQueueManager interface {
+		bindToQueue(routingKey string, exchange exchange) *queueManagerImpl
 		publishMessage(exchange string, queueName string, message amqp.Publishing)
 		close()
 	}

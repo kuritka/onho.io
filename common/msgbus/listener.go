@@ -30,11 +30,15 @@ const (
 	register = "register"
 )
 
-func newMsgBusListener( msgBusImpl *BusImpl,  serviceEvent string,  discos <-chan amqp.Delivery, guid string, registry map[string]*queueManagerImpl) *msgBusListenerImpl {
-
+func newMsgBusListener( msgBusImpl *BusImpl,  name string,  discos <-chan amqp.Delivery, guid string, registry map[string]*queueManagerImpl) *msgBusListenerImpl {
+	utils.FailOnNil(msgBusImpl, "MessageBusImpl")
+	utils.DisposeOnEmptyString(name, "missing name", msgBusImpl.Close)
+	utils.DisposeOnEmptyString(guid, "missing guid", msgBusImpl.Close)
+	utils.DisposeOnNil(discos,"discovery channel", msgBusImpl.Close)
+	utils.DisposeOnNil(registry,"registry", msgBusImpl.Close)
 	qm := createQueueManager(msgBusImpl.connection, msgBusImpl.channel)
 	return &msgBusListenerImpl{
-		serviceEvent,
+		name + "_" + "event" + "_" + guid,
 		guid,
 		qm,
 		newEventAggregator(),
@@ -47,18 +51,22 @@ func newMsgBusListener( msgBusImpl *BusImpl,  serviceEvent string,  discos <-cha
 }
 
 func (l *msgBusListenerImpl) AddCommandHandler(command string, f func(Message)) *msgBusListenerImpl {
+	utils.DisposeOnEmptyString(command,"empty command",l.qm.close )
+	utils.DisposeOnNil(f,"empty command",l.qm.close )
 	l.cmdEventAggreagtor.AddListener(command, f)
 	return l
 }
 
-func (l *msgBusListenerImpl) AddEventHandler(name string, f func(Message)) *msgBusListenerImpl {
-	l.evntEventAggreagtor.AddListener(name, f)
+func (l *msgBusListenerImpl) AddEventHandler(event string, f func(Message)) *msgBusListenerImpl {
+	utils.DisposeOnEmptyString(event,"empty command",l.qm.close )
+	utils.DisposeOnNil(f,"empty command",l.qm.close )
+	l.evntEventAggreagtor.AddListener(event, f)
 	return l
 }
 
 func (l *msgBusListenerImpl) Listen() {
 	events, err := l.bindHandlersToQueue(l.eventQueue, l.evntEventAggreagtor, serviceEventExchange)
-	utils.FailOnError(err, fmt.Sprintf("%s %s", l.eventQueue, exchange.string(serviceEventExchange)))
+	utils.DisposeOnError(err, fmt.Sprintf("%s %s", l.eventQueue, exchange.string(serviceEventExchange)), l.qm.close)
 
 	go l.listenForEvents(events)
 
@@ -92,7 +100,6 @@ func (l *msgBusListenerImpl) listenForDiscoveryRequests(discoveryChannel <-chan 
 	for msg := range discoveryChannel {
 		discoMessage := l.msgProvider.DecodeDisco(msg)
 
-
 		if discoMessage.ServiceGuid == l.guid {
 			continue
 		}
@@ -110,7 +117,6 @@ func (l *msgBusListenerImpl) listenForDiscoveryRequests(discoveryChannel <-chan 
 		}
 	}
 }
-
 
 func (l *msgBusListenerImpl) publishCommandRegistry(){
 	for cq := range l.publishedCommands {

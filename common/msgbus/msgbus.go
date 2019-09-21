@@ -39,7 +39,6 @@ func (mb *BusImpl) Register(name string) (*msgBusListenerImpl, *msgBusPublisherI
 	utils.FailOnEmptyString(name, "name cannot be nil")
 	guid, _ := getGuid()
 	queueDiscoveryName := name + "_" + "discovery" + "_" + guid
-	queueEventName := name + "_" + "event" + "_" + guid
 
 	mb.exmgr.createEventExchangeIfNotExists()
 
@@ -53,7 +52,7 @@ func (mb *BusImpl) Register(name string) (*msgBusListenerImpl, *msgBusPublisherI
 		"", false, false, discoveryRequest)
 	utils.DisposeOnError(err, "Unable publish to "+exchange.string(serviceDiscoveryExchange), mb.Close)
 
-	return newMsgBusListener(mb,  queueEventName,  discos, guid, mb.registry),
+	return newMsgBusListener(mb,  name,  discos, guid, mb.registry),
 		newMessageBusPublisher(mb, name,guid, mb.registry)
 }
 

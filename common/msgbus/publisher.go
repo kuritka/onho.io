@@ -24,15 +24,18 @@ type (
 )
 
 func newMessageBusPublisher( msgBusImpl *BusImpl,  name string, guid string, registry map[string]*queueManagerImpl) *msgBusPublisherImpl {
-	utils.FailOnEmptyString(guid, "missing guid")
 	utils.FailOnNil(msgBusImpl, "MessageBusImpl")
-	utils.FailOnNil(registry,"registry")
+	utils.DisposeOnEmptyString(name, "missing name", msgBusImpl.Close)
+	utils.DisposeOnEmptyString(guid, "missing guid", msgBusImpl.Close)
+	utils.DisposeOnNil(registry,"registry", msgBusImpl.Close)
 	qm := createQueueManager(msgBusImpl.connection, msgBusImpl.channel)
 	msgProvider := newGobMessageProvider()
 	return &msgBusPublisherImpl{  guid, name,msgBusImpl, qm, msgProvider, registry}
 }
 
 func (p *msgBusPublisherImpl) Command(command string, data string) {
+	utils.DisposeOnEmptyString(command, "command" , p.mb.Close)
+	utils.DisposeOnEmptyString(data, "command data" , p.mb.Close)
 	cq := command + "_" + p.guid
 	if p.registry[cq] == nil {
 		disco := DiscoveryRequest{CommandQueue: cq, ServiceGuid: p.guid}
@@ -45,6 +48,8 @@ func (p *msgBusPublisherImpl) Command(command string, data string) {
 	p.registry[cq].publishMessage(exchange.string(exchangeWorkerQueue), cq, msg)
 }
 
-func (p *msgBusPublisherImpl) Event(eventName string, data string) {
-	p.qm.publishMessage(exchange.string(serviceEventExchange), eventName, amqp.Publishing{Body: []byte(data)})
+func (p *msgBusPublisherImpl) Event(event string, data string) {
+	utils.DisposeOnEmptyString(event, "evet" , p.mb.Close)
+	utils.DisposeOnEmptyString(data, "event data" , p.mb.Close)
+	p.qm.publishMessage(exchange.string(serviceEventExchange), event, amqp.Publishing{Body: []byte(data)})
 }
