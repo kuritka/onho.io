@@ -65,9 +65,6 @@ func (l *msgBusListenerImpl) Listen() {
 	go l.listenForDiscoveryRequests(l.discos)
 }
 
-func (l *msgBusListenerImpl) sendDiscoveryRequest(discoPublishing amqp.Publishing) {
-	l.qm.publishMessage( exchange.string(serviceDiscoveryExchange), "",discoPublishing )
-}
 
 func (l *msgBusListenerImpl) listenForEvents(messages <-chan amqp.Delivery) {
 	for value := range messages {
@@ -95,11 +92,13 @@ func (l *msgBusListenerImpl) listenForDiscoveryRequests(discoveryChannel <-chan 
 	for msg := range discoveryChannel {
 		discoMessage := l.msgProvider.DecodeDisco(msg)
 
-		fmt.Println(discoMessage.CommandQueue)
+
+		if discoMessage.ServiceGuid == l.guid {
+			continue
+		}
 
 		if discoMessage.CommandQueue == register {
 			l.publishCommandRegistry()
-			fmt.Println("DISCOVERY REQUEST")
 			continue
 		}
 
@@ -115,8 +114,9 @@ func (l *msgBusListenerImpl) listenForDiscoveryRequests(discoveryChannel <-chan 
 
 func (l *msgBusListenerImpl) publishCommandRegistry(){
 	for cq := range l.publishedCommands {
-		fmt.Println("PUBLISHING: " + cq)
 		discoPublishing :=  l.msgProvider.EncodeDisco(DiscoveryRequest{CommandQueue: cq,  ServiceGuid: l.guid })
-		l.sendDiscoveryRequest(discoPublishing)
+		err := l.qm.channel.Publish(exchange.string(serviceDiscoveryExchange),
+			"", false, false, discoPublishing)
+		utils.DisposeOnError(err, "Unable publish to "+exchange.string(serviceDiscoveryExchange), l.qm.close)
 	}
 }
