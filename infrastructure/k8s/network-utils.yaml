@@ -1,0 +1,51 @@
+# Following deployment helps you to check connectivity outside of kubernetes cluster
+#
+# Just download code below and set namespace. 
+# Than follow instructions and test your connectivity
+#
+# you will simply deploy by calling :          kubectl apply -f ./network-utils.yaml
+# watch what's happening with POD by calling : watch kubectl get pods -n services
+# get into container :                         kubectl exec -ti network-utils -n services  bash
+# Inside container, check  connectivity :      nc -v -z 51.144.34.46 22
+# Inside container sniff traffic on node(443): tcpdump -i eth0 -vvv 'port 443'
+# Inside container get IP addr of container  : hostname -I
+# outside geting IP of node and container    : kubectl describe pods network-utils -n services | grep 10.120.  
+# See environment variable :                   echo $SFTP_PRIVATE_KEY
+# delete pod :                                 kubectl delete -f ./network-utils.yaml
+#
+#troubleshoot: download network utils from here: https://github.com/jtattermusch/grpc-loadbalancing-kubernetes-examples/blob/master/kubernetes/helpers/network-utils.yaml
+#
+# after login into bash run 
+# apt-get update
+# apt-get install telnet -y
+apiVersion: v1
+kind: Pod
+metadata:
+  name: network-utils
+  # be careful with namespace here, remove it when  you don't use services
+  namespace: onho
+spec:
+  containers:
+    - name: network-utils
+      image: amouat/network-utils
+      command: [ "sh", "-c"]
+      args:
+        - while true; do
+          sleep 10;
+          done;
+      env:
+        - name: ENVIRONMENT
+          value: "production"
+        - name: SFTP_HOST
+          value: "55.100.34.46:22"
+        - name: SFTP_USER
+          valueFrom:
+            secretKeyRef:
+              name: api-key
+              key: edt-sftp-user
+        - name: SFTP_PRIVATE_KEY
+          valueFrom:
+            secretKeyRef:
+              name: api-key
+              key: edt-sftp-key        
+  restartPolicy: Never
