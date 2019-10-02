@@ -47,7 +47,7 @@ func (sm *SensorBusMock) Run() error {
 
 	signal := time.Tick(duration)
 
-
+	i := 0
 	for range signal {
 		sm.calcValue()
 
@@ -58,7 +58,8 @@ func (sm *SensorBusMock) Run() error {
 			Face: "HAPPY-FACE",
 			Session: "-",
 		}
-		data := fmt.Sprintf("NAME=%s VALUE=%v",reading.Name, reading.Value)
+		i++
+		data := fmt.Sprintf("NAME=%s VALUE=%v %v",reading.Name, i,reading.Value)
 		publisher.Command("CMD-A", data)
 		fmt.Println(data)
 	}

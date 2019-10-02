@@ -8,8 +8,8 @@ import (
 
 type (
 	IMsgBusListener interface {
-		AddCommandHandler(name string, f func()) *msgBusListenerImpl
-		AddEventHandler(name string, f func()) *msgBusListenerImpl
+		AddCommandHandler(command string, f func(Message)) *msgBusListenerImpl
+		AddEventHandler(event string, f func(Message)) *msgBusListenerImpl
 		Listen()
 	}
 
@@ -30,12 +30,12 @@ const (
 	register = "register"
 )
 
-func newMsgBusListener( msgBusImpl *BusImpl,  name string,  discos <-chan amqp.Delivery, guid string, registry map[string]*queueManagerImpl) *msgBusListenerImpl {
+func newMsgBusListener( msgBusImpl *BusImpl,  name string,  discos <-chan amqp.Delivery, guid string, publishedCommands map[string]*queueManagerImpl) *msgBusListenerImpl {
 	utils.FailOnNil(msgBusImpl, "MessageBusImpl")
 	utils.DisposeOnEmptyString(name, "missing name", msgBusImpl.Close)
 	utils.DisposeOnEmptyString(guid, "missing guid", msgBusImpl.Close)
 	utils.DisposeOnNil(discos,"discovery channel", msgBusImpl.Close)
-	utils.DisposeOnNil(registry,"registry", msgBusImpl.Close)
+	utils.DisposeOnNil(publishedCommands,"publishedCommands", msgBusImpl.Close)
 	qm := createQueueManager(msgBusImpl.connection, msgBusImpl.channel)
 	return &msgBusListenerImpl{
 		name + "_" + "event" + "_" + guid,
@@ -46,7 +46,7 @@ func newMsgBusListener( msgBusImpl *BusImpl,  name string,  discos <-chan amqp.D
 		discos,
 		newGobMessageProvider(),
 		make(map[string]<-chan amqp.Delivery),
-		registry,
+		publishedCommands,
 	}
 }
 
@@ -120,7 +120,7 @@ func (l *msgBusListenerImpl) listenForDiscoveryRequests(discoveryChannel <-chan 
 
 func (l *msgBusListenerImpl) publishCommandRegistry(){
 	for cq := range l.publishedCommands {
-		discoPublishing :=  l.msgProvider.EncodeDisco(DiscoveryRequest{CommandQueue: cq,  ServiceGuid: l.guid })
+		discoPublishing :=  l.msgProvider.EncodeDisco(DiscoveryRequest{CommandQueue: cq,ServiceGuid: l.guid })
 		err := l.qm.channel.Publish(exchange.string(serviceDiscoveryExchange),
 			"", false, false, discoPublishing)
 		utils.DisposeOnError(err, "Unable publish to "+exchange.string(serviceDiscoveryExchange), l.qm.close)

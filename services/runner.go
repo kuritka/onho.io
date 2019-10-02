@@ -3,9 +3,9 @@ package services
 
 type IServiceRunner interface {
 	UsingPostgre(connectionString string) (error, *Runner)
-	UsingRabbit(connectionString string)
-	AsWebApp(port int) (error, *Runner)
-	AsConsole() (error, *Run)
+	UsingRabbit(connectionString string) *Runner
+    AsCronJob(durationms int) *Run
+    WithName() *Run
 	Run() error
 }
 
@@ -20,7 +20,7 @@ func NewRunner() *Runner {
 	return &Runner{}
 }
 
-func (r *Runner) UsingDatabase(connectionString string) *Runner {
+func (r *Runner) UsingPostgre(connectionString string) *Runner {
 	return r
 }
 
@@ -28,11 +28,11 @@ func (r *Runner) UsingRabbit(connectionString string) *Runner {
 	return r
 }
 
-func (r *Runner) AsWebApp(port int) *Run {
+func (r *Runner) AsCronJob(durationms int) *Run {
 	return &Run{ runner: r}
 }
 
-func (r *Runner) AsConsole() *Run {
+func (r *Runner) WithName() *Run {
 	return &Run{ runner: r}
 }
 

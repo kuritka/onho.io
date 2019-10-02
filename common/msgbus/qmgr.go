@@ -109,6 +109,22 @@ func (em *exchangeManagerImpl) createQueueIfNotExists(name string, autoDelete bo
 	}
 }
 
+
+func (em *exchangeManagerImpl) tryCreateQueueIfNotExists(name string, autoDelete bool) (bool, *queueManagerImpl) {
+	q, err := em.channel.QueueDeclarePassive( //automatically creates queue if doesnt exists
+		name,       //queue name
+		false,      //determines if the message should be saved to disk, messages will survive servere restart
+		autoDelete, //what to do with messages if they doesnt have any consumer, true = message will be deleted automatically from the queue, false = keep it
+		false,      //exclusive - true = accessible oly from connection that created queue. False queue could be accessible from different connections
+		false,      //only return preexisting queue which matches providing configuration, (true) server receive an error when not find, (false) create new queue if doesnt exists on the server
+		nil)        //declaring headers
+	return err == nil, &queueManagerImpl{
+		em.connection,
+		em.channel,
+		&q,
+	}
+}
+
 func (em *exchangeManagerImpl) close() {
 	dispose(em.connection, em.channel)
 }
@@ -159,6 +175,15 @@ func (qm *queueManagerImpl) publishMessage(exchange string, routingKey string, m
 	utils.DisposeOnError(err, "default publishing", qm.close)
 }
 
+func (qm *queueManagerImpl) publishMessageImmediate(exchange string, routingKey string, message amqp.Publishing) error {
+	err := qm.channel.Publish(exchange, routingKey,
+		false,
+		true, //if true than throws error when no consumers on the q
+		message)
+	return err
+}
+
+
 func (qm *queueManagerImpl) consumeFromChannel() (<-chan amqp.Delivery, error) {
 	return qm.channel.Consume(qm.queue.Name,
 		"", true, false, false, false, nil)
@@ -173,8 +198,7 @@ func dispose(connection *amqp.Connection, channel *amqp.Channel) {
 	utils.FailOnNil(channel, "channel is nil")
 	var err error
 	if !connection.IsClosed() {
-		err = channel.Close()
-		utils.FailOnError(err, "unable to dispose channel")
+		_ = channel.Close()
 		err = connection.Close()
 		utils.FailOnError(err, "unable to dispose connection")
 		log.Debug().Msg("connection closed")
