@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pg-admin
+  namespace: onho-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pg-admin
+  template:
+    metadata:
+      labels:
+        env: dev
+        app: pg-admin
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: pg-admin
+        image: dpage/pgadmin4
+        ports:
+        - containerPort: 80
+        env:
+          -  name: PGADMIN_DEFAULT_EMAIL
+             value: admin@local.com
+          -  name: PGADMIN_DEFAULT_PASSWORD
+             value: .secret-123
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pg-admin
+  namespace: onho-dev
+spec:
+  selector:
+    app: pg-admin
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 80
+      name: pgadmin
+  type: LoadBalancer
+
+#docker run -p 8085:80 \
+#--link pg-docker:pg-docker \
+#-e "PGADMIN_DEFAULT_EMAIL=admin@local.com" \
+#-e "PGADMIN_DEFAULT_PASSWORD=password" \
+#-d dpage/pgadmin4 \
+#--name pgadmin
+#
+#printf "pgadmin on localhost:8085 admin@local.com/password \n\n\n"

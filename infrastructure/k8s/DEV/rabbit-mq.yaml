@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbit-mq
+  namespace: onho-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rabbit-mq
+  template:
+    metadata:
+      labels:
+        env: dev
+        app: rabbit-mq
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: rabbit-mq
+        image: rabbitmq:3-management
+        ports:
+        - containerPort: 15671
+#          name: webapp1
+        - containerPort: 15672
+#         targetPort: 15672
+          name: webapp2
+        - containerPort: 5671
+#         targetPort: 5671
+          name: amqp3
+        - containerPort: 5672
+#         targetPort: 5672
+          name: amqp4
+        - containerPort: 25672
+#          targetPort: 25672
+          name: qmqp5
+        env:
+          -  name: RABBITMQ_DEFAULT_USER
+             value: guest
+          -  name: RABBITMQ_DEFAULT_PASS
+             value: .secret-123
+          # this needs to be there because AKS (as of 1.14.3)
+          # limits the number of thread a pod can use
+          - name: RABBITMQ_IO_THREAD_POOL_SIZE
+            value: "30"
+        resources:
+          limits:
+            memory: 4Gi
+          requests:
+            cpu: "1"
+            memory: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rabbit-mq
+  namespace: onho-dev
+spec:
+  #which pods are service target endpoints
+  selector:
+    app: rabbit-mq
+  ports:
+    - port: 8082
+      protocol: TCP
+      targetPort: 15672
+      name: webadmin2
+  #how to service is exposed
+  type: LoadBalancer
+
+
+#  ports 5671 and 5672 are enabled for communication from AMQP clients
+#  port 4369 is enabled to allow for peer discovery
+#  port 15672 is enabled for RabbitMQ administration over HTTP API
+#  port 25672 is enabled as a distribution port for communication with CLI tools
+
+#  docker run -d --hostname my-rabbit --name some-rabbit \
+#  -e RABBITMQ_DEFAULT_USER=guest \
+#  -e RABBITMQ_DEFAULT_PASS=guest \
+#  -p 15672:15672 -p 5671:5671 \
+#  -p 5672:5672 -p 15671:15671 \
+#  -p 25672:25672 rabbitmq:3-management
+#   printf "rabbitmq on localhost:15671 guest/guest \n\n"
