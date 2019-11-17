@@ -1,12 +1,13 @@
 package sensorMock
 
 import (
+	"encoding/json"
+	"github.com/kuritka/onho.io/common/msgbus"
 	"github.com/streadway/amqp"
 	"math/rand"
 	"strconv"
 	"time"
 
-	"github.com/kuritka/onho.io/common/dto"
 	"github.com/kuritka/onho.io/common/log"
 	"github.com/kuritka/onho.io/common/qutils"
 	"github.com/kuritka/onho.io/common/utils"
@@ -34,7 +35,6 @@ func NewService(options Options) *SensorMock {
 	}
 }
 
-
 func (sm *SensorMock) Run() error {
 
 	duration,err := time.ParseDuration(strconv.Itoa(1000/int(sm.options.Freq)) + "ms")
@@ -43,44 +43,22 @@ func (sm *SensorMock) Run() error {
 
 	signal := time.Tick(duration)
 
-	conn, ch := qutils.GetChannel(sm.options.ConnectionString)
-	defer conn.Close()
-	defer ch.Close()
+	msgBus :=  msgbus.NewMsgBus(sm.options.ConnectionString)
+	defer msgBus.Close()
 
-	provider :=  qutils.NewGobMessageProvider()
-
-	discoveryRequests, err := qutils.NewMessageConsumer(conn, ch).
-	 	GetUniqueQueue().
-	 	BindToExchange(qutils.SensorDiscoveryExchange).
-		ConsumeFromChannel()
-	utils.FailOnError(err, "discovery exchange")
-
-	go sm.listenForDiscoverRequests(discoveryRequests, provider ,ch)
-
-	provider.AsAmqpMessage(sm.options.Name).PublishQueueNameToFanout(ch)
-
-	dataQueue := qutils.GetQueue(sm.options.Name,ch,false)
+	_, publisher :=  msgBus.Register("sensor-mock")
 
 	for range signal {
 		sm.calcValue()
-
-		reading := dto.SensorMessage{
-			Name:      sm.options.Name,
-			Value:     sm.value,
-			Timestamp: time.Now(),
-			Face: "HAPPY-FACE",
-			Session: "-",
-		}
-
-		provider.Encode(reading).AsAmqpMessage().PublishDefault(ch,dataQueue)
-
-		logger.Info().Msgf("NAME=%s VALUE=%v",reading.Name, reading.Value)
+		b, err := json.Marshal(sm)
+		utils.FailOnError(err, "marshalling json")
+		publisher.Command("cmd-tick", string(b))
+		logger.Info().Msgf("VALUE=%v", sm.value)
 	}
-
-	logger.Debug().Msgf("Reading sent. %s Value: %v\n",sm.options.Name, sm.value)
 
 	return nil
 }
+
 
 func (sm *SensorMock) listenForDiscoverRequests(deliveries <-chan amqp.Delivery,provider *qutils.MessageProvider, ch *amqp.Channel) {
 	for range deliveries {
