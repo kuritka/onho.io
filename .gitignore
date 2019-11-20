@@ -21,3 +21,16 @@ vendor/
 
 # remove idea
 .idea/
+
+
+**/.terraform/*
+
+# .tfstate files
+**/*.tfstate
+**/*.tfstate.*
+**/terraform.tfvars
+**/*.plan
+
+
+# Crash log files
+crash.log
