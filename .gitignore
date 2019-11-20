@@ -23,6 +23,7 @@ vendor/
 .idea/
 
 
+
 **/.terraform/*
 
 # .tfstate files
@@ -30,7 +31,6 @@ vendor/
 **/*.tfstate.*
 **/terraform.tfvars
 **/*.plan
-
 
 # Crash log files
 crash.log
