@@ -10,8 +10,6 @@
       <change afterPath="$PROJECT_DIR$/../daily-interview.com/Uber/LargestNumber/main.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../daily-interview.com/Uber/LargestNumber/main_test.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../daily-interview.com/Uber/LargestNumber/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../rediscovery/rediscovery/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../rediscovery/rediscovery/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../rediscovery/rediscovery/styles/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/../rediscovery/rediscovery/styles/common.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../rediscovery/rediscovery/styles/common.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/../rediscovery/rediscovery/styles/common.css.map" afterDir="false" />
@@ -83,15 +81,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/infrastructure/azure/dev/terraform.tfvars">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
@@ -103,11 +92,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="452">
-              <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+            <state relative-caret-position="481">
+              <caret line="35" column="9" lean-forward="true" selection-start-line="25" selection-end-line="35" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/infrastructure/azure/dev/terraform.tfvars">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="7" selection-start-column="7" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -166,7 +164,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/common/bus/enumExchangeType.go" />
         <option value="$PROJECT_DIR$/common/bus/Provider.go" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/common/msgbus/utils.go" />
@@ -215,8 +212,9 @@
         <option value="$PROJECT_DIR$/infrastructure/azure/dev/locals.tf" />
         <option value="$PROJECT_DIR$/infrastructure/azure/dev/.gitignore" />
         <option value="$PROJECT_DIR$/infrastructure/azure/prod/.gitignore" />
-        <option value="$PROJECT_DIR$/infrastructure/azure/dev/terraform.tfvars" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/infrastructure/azure/.gitignore" />
+        <option value="$PROJECT_DIR$/infrastructure/azure/dev/terraform.tfvars" />
       </list>
     </option>
   </component>
@@ -554,13 +552,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/common/bus/queuemanager.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="957">
-          <caret line="62" column="29" lean-forward="true" selection-start-line="62" selection-start-column="29" selection-end-line="62" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common/bus/enumExchange.go">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -856,13 +847,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/azure/dev/locals.tf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="6" column="39" lean-forward="true" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/infrastructure/azure/dev/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="87">
@@ -890,17 +874,31 @@
     <entry file="file://$PROJECT_DIR$/infrastructure/azure/dev/_providers.tf">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/azure/dev/terraform.tfvars">
+    <entry file="file://$PROJECT_DIR$/infrastructure/azure/dev/locals.tf">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
+        <state relative-caret-position="174">
+          <caret line="6" column="39" lean-forward="true" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/azure/dev/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+        <state relative-caret-position="481">
+          <caret line="35" column="9" lean-forward="true" selection-start-line="25" selection-end-line="35" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/azure/dev/terraform.tfvars">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="7" selection-start-column="7" selection-end-column="7" />
         </state>
       </provider>
     </entry>
