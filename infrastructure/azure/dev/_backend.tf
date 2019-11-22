@@ -1,4 +1,3 @@
-
 /*
  create GRS V2 Premium storage with Hot tier manually in Azure.
 

@@ -45,14 +45,14 @@ variable "tags" {
 }
 
 
-variable "virtual_network_address_prefix_we" {
+variable "virtual_network_address_prefix_primary" {
   description = "vnet prefix."
-  default="172.17.0.0/24"
+  default="172.17.0.0/26"
 }
 
-variable "virtual_network_address_prefix_ne" {
+variable "virtual_network_address_prefix_paired" {
   description = "vnet prefix."
-  default="172.17.1.0/24"
+  default="172.17.1.0/26"
 }
 
 
