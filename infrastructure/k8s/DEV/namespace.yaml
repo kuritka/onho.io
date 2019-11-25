@@ -1,11 +1,8 @@
-{
-  "apiVersion": "v1",
-  "kind": "Namespace",
-  "metadata": {
-    "name": "onho-dev",
-    "labels": {
-      "name": "onho-dev",
-      "env": "dev"
-    }
-  }
-}
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: onho-dev
+  labels:
+    name: onho-dev
+    env: dev
+    istio-injection: enabled

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world
+  namespace: onho-dev
+spec:
+  selector:
+    matchLabels:
+      app: hello-world
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:        
+      containers:
+      - name: node-hello
+        image: gcr.io/google-samples/node-hello
+        ports:
+        - containerPort: 8080
+

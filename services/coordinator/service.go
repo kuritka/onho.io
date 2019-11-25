@@ -32,7 +32,9 @@ func (c *Coordinator) Run() error {
 	listener, _ :=  msgBus.Register("coordinator")
 
 	listener.
-		AddCommandHandler("cmd-tick",).
+		AddCommandHandler("cmd-tick", func(message msgbus.Message) {
+			fmt.Println(message)
+		}).
 		Listen()
 
 	var a string

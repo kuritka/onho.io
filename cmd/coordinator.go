@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"github.com/kuritka/onho.io/common/utils"
 
 	"github.com/kuritka/onho.io/services/coordinator"
 	"github.com/spf13/cobra"
@@ -20,12 +21,9 @@ var coordinatorCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Printf("coordinator started..")
 
-		go coordinator.NewService(coordinatorOptions, sharedEventAggregator).Run()
+		err := coordinator.NewService(coordinatorOptions, sharedEventAggregator).Run()
 
-		var a string
-
-		fmt.Scanln(&a)
-
+		utils.FailFastOnError(err)
 	},
 }
 

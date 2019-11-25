@@ -10,6 +10,53 @@
       <change afterPath="$PROJECT_DIR$/../daily-interview.com/Uber/LargestNumber/main.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../daily-interview.com/Uber/LargestNumber/main_test.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../daily-interview.com/Uber/LargestNumber/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmd/frontend.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/depresolver/depresolver.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/utils/keyboard.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/frontend/handlers.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/frontend/options.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/frontend/routes.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/frontend/server.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/frontend/service.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/frontend/static/css/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/frontend/static/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/frontend/static/js/face-api.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/frontend/static/js/face-recognition.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/frontend/static/js/models/face_expression_model-shard1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/frontend/static/js/models/face_expression_model-weights_manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/frontend/static/js/models/face_landmark_68_model-shard1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/frontend/static/js/models/face_landmark_68_model-weights_manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/frontend/static/js/models/face_landmark_68_tiny_model-shard1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/frontend/static/js/models/face_landmark_68_tiny_model-weights_manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/frontend/static/js/models/face_recognition_model-shard1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/frontend/static/js/models/face_recognition_model-shard2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/frontend/static/js/models/face_recognition_model-weights_manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/frontend/static/js/models/tiny_face_detector_model-shard1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/frontend/static/js/models/tiny_face_detector_model-weights_manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/frontend/static/js/websocks.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/frontend/templates/home.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/frontend/templates/layout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testGoRutineDebug/.idea/dictionaries/michal.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testGoRutineDebug/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testGoRutineDebug/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testGoRutineDebug/.idea/testGoRutineDebug.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testGoRutineDebug/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testGoRutineDebug/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../testGoRutineDebug/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/coordinator.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/coordinator.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/utils/guardians.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/utils/guardians.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/azure/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/azure/Readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/azure/regions/aks.tf" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/azure/regions/aks.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/azure/regions/gw.tf" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/azure/regions/gw.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/azure/regions/locals.tf" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/azure/regions/locals.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/azure/regions/networking.tf" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/azure/regions/networking.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/azure/regions/output.tf" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/azure/regions/output.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/azure/regions/variables.tf" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/azure/regions/variables.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/k8s/DEV/namespace.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/k8s/DEV/namespace.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/coordinator/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/services/coordinator/service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/sensor/options.go" beforeDir="false" afterPath="$PROJECT_DIR$/services/sensor/options.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../rediscovery/rediscovery/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../rediscovery/rediscovery/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../rediscovery/rediscovery/styles/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/../rediscovery/rediscovery/styles/common.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../rediscovery/rediscovery/styles/common.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/../rediscovery/rediscovery/styles/common.css.map" afterDir="false" />
@@ -49,65 +96,73 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/infrastructure/azure/dev/_backend.tf">
+        <entry file="file:///usr/lib/golang/src/html/template/template.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="6" column="11" lean-forward="true" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+            <state relative-caret-position="172">
+              <caret line="131" column="19" selection-start-line="131" selection-start-column="19" selection-end-line="131" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/infrastructure/azure/dev/_providers.tf">
+        <entry file="file:///usr/lib/golang/src/fmt/print.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="263" column="21" lean-forward="true" selection-start-line="263" selection-start-column="21" selection-end-line="263" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/services/frontend/static/js/face-recognition.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="48" column="37" selection-start-line="48" selection-start-column="37" selection-end-line="48" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/services/frontend/static/js/websocks.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="520">
+              <caret line="26" column="28" lean-forward="true" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common/bus/encoder/GobEncoder.go">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/infrastructure/azure/dev/variables.tf">
+        <entry file="file://$PROJECT_DIR$/common/bus/encoder/IMessageEncoder.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+            <state relative-caret-position="60">
+              <caret line="3" column="20" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/infrastructure/azure/dev/locals.tf">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="6" column="39" lean-forward="true" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/common/bus/enumExchange.go">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="485">
-                <caret line="72" column="37" selection-start-line="72" selection-start-column="28" selection-end-line="72" selection-end-column="37" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/common/bus/enumQueue.go">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="481">
-              <caret line="35" column="9" lean-forward="true" selection-start-line="25" selection-end-line="35" selection-end-column="9" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/common/bus/Message.go">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/infrastructure/azure/dev/terraform.tfvars">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="7" selection-start-column="7" selection-end-column="7" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/common/bus/Provider.go">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -122,36 +177,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>`</find>
-      <find>publishCommandRegistry</find>
-      <find>&quot;register&quot;</find>
-      <find>REGISTER</find>
-      <find>msgProvider</find>
-      <find>sendDiscoveryRequest</find>
-      <find>publishedcomm</find>
-      <find>registe</find>
-      <find>regis</find>
-      <find>register</find>
-      <find>fmt.</find>
-      <find>listenForCom</find>
-      <find>name</find>
-      <find>eventQu</find>
-      <find>bind</find>
-      <find>Fail</find>
-      <find>AddCommandHandler</find>
-      <find>consume from</find>
-      <find>createQueueIfNotExists</find>
-      <find>default</find>
-      <find>failed</find>
-      <find>registry</find>
-      <find>DIR</find>
-      <find>ROOT</find>
-      <find>vendor</find>
-      <find>get pod</find>
-      <find>all</find>
-      <find>-l</find>
-      <find>label</find>
       <find>link</find>
+      <find>client</find>
+      <find>shared</find>
+      <find>we</find>
+      <find>_we</find>
+      <find>&quot;${</find>
+      <find>}&quot;</find>
+      <find>.pfx</find>
+      <find>agw-</find>
+      <find>vne</find>
+      <find>agw</find>
+      <find>ddos</find>
+      <find>public</find>
+      <find>local.gw_public_subnet_name</find>
+      <find>data.</find>
+      <find>data</find>
+      <find>errorextensions</find>
+      <find>invalid port number</find>
+      <find>containe</find>
+      <find>Invoke</find>
+      <find>styles.cs</find>
+      <find>attem</find>
+      <find>starting</find>
+      <find>8080</find>
+      <find>getSocket</find>
+      <find>GetSocket</find>
+      <find>:8080</find>
+      <find>GetSocke</find>
+      <find>8081</find>
+      <find>bus.</find>
     </findStrings>
     <replaceStrings>
       <replace>coordinator</replace>
@@ -164,57 +219,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/common/bus/Provider.go" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/common/msgbus/utils.go" />
-        <option value="$PROJECT_DIR$/common/bus/queuemanager.go" />
-        <option value="$PROJECT_DIR$/services/eventAggregator.go" />
-        <option value="$PROJECT_DIR$/common/msgbus/enum.go" />
-        <option value="$PROJECT_DIR$/common/msgbus/GobMessageProvider.go" />
-        <option value="$PROJECT_DIR$/common/qutils/messageProvider.go" />
-        <option value="$PROJECT_DIR$/common/msgbus/message.go" />
-        <option value="$PROJECT_DIR$/common/msgbus/eventAggregator.go" />
-        <option value="$PROJECT_DIR$/common/msgbus/gobMessageProvider.go" />
-        <option value="$PROJECT_DIR$/deploy.sh" />
-        <option value="$PROJECT_DIR$/services/sensor/service.go" />
-        <option value="$PROJECT_DIR$/common/msgbus/Message.go" />
-        <option value="$PROJECT_DIR$/services/sensorBusMock/sensorBusMock.go" />
-        <option value="$PROJECT_DIR$/cmd/sensorBusMock.go" />
-        <option value="$PROJECT_DIR$/services/coordinatorBusMock/oordinatorBusOpts.go" />
-        <option value="$PROJECT_DIR$/cmd/coordinatorBusMock.go" />
-        <option value="$PROJECT_DIR$/services/coordinatorBusMock/coordinatorBusOpts.go" />
-        <option value="$PROJECT_DIR$/services/coordinatorBusMock/service.go" />
-        <option value="$PROJECT_DIR$/common/msgbus/BusPublisher.go" />
-        <option value="$PROJECT_DIR$/common/msgbus/Bus.go" />
-        <option value="$PROJECT_DIR$/common/msgbus/BusListener.go" />
-        <option value="$PROJECT_DIR$/common/utils/guardians.go" />
-        <option value="$PROJECT_DIR$/services/runner.go" />
-        <option value="$PROJECT_DIR$/cmd/coordinator.go" />
-        <option value="$PROJECT_DIR$/common/msgbus/qmgr.go" />
         <option value="$PROJECT_DIR$/services/sensorBusMock/service.go" />
         <option value="$PROJECT_DIR$/common/msgbus/listener.go" />
         <option value="$PROJECT_DIR$/common/msgbus/msgbus.go" />
         <option value="$PROJECT_DIR$/common/msgbus/publisher.go" />
-        <option value="$PROJECT_DIR$/cmd/sensor.go" />
         <option value="$PROJECT_DIR$/services/sensorMock/service.go" />
-        <option value="$PROJECT_DIR$/services/coordinator/service.go" />
         <option value="$PROJECT_DIR$/infrastructure/k8s/demo1.yaml" />
         <option value="$PROJECT_DIR$/infrastructure/k8s/api_course.md" />
         <option value="$PROJECT_DIR$/infrastructure/k8s/DEV/rabbitmq.yaml" />
         <option value="$PROJECT_DIR$/infrastructure/k8s/DEV/pg-admin.yaml" />
         <option value="$PROJECT_DIR$/infrastructure/k8s/DEV/rabbit-mq.yaml" />
-        <option value="$PROJECT_DIR$/infrastructure/k8s/DEV/namespace.yaml" />
         <option value="$PROJECT_DIR$/infrastructure/azure/_backend.tf" />
-        <option value="$PROJECT_DIR$/infrastructure/azure/dev/_backend.tf" />
         <option value="$PROJECT_DIR$/infrastructure/azure/dev/_providers.tf.go" />
         <option value="$PROJECT_DIR$/infrastructure/azure/dev/_providers.tf" />
-        <option value="$PROJECT_DIR$/infrastructure/azure/dev/variables.tf" />
-        <option value="$PROJECT_DIR$/infrastructure/azure/dev/locals.tf" />
         <option value="$PROJECT_DIR$/infrastructure/azure/dev/.gitignore" />
         <option value="$PROJECT_DIR$/infrastructure/azure/prod/.gitignore" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/infrastructure/azure/.gitignore" />
+        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/infrastructure/azure/dev/terraform.tfvars" />
+        <option value="$PROJECT_DIR$/infrastructure/azure/dev/_backend.tf" />
+        <option value="$PROJECT_DIR$/infrastructure/azure/dev/locals.tf" />
+        <option value="$PROJECT_DIR$/infrastructure/azure/readme.md" />
+        <option value="$PROJECT_DIR$/infrastructure/azure/dev/_output.tf" />
+        <option value="$PROJECT_DIR$/infrastructure/azure/dev/trafficManager.tf" />
+        <option value="$PROJECT_DIR$/infrastructure/azure/dev/variables.tf" />
+        <option value="$PROJECT_DIR$/infrastructure/azure/regions/output.tf.go" />
+        <option value="$PROJECT_DIR$/infrastructure/azure/regions/variables.tf" />
+        <option value="$PROJECT_DIR$/infrastructure/azure/regions/certificates/gw.tf" />
+        <option value="$PROJECT_DIR$/infrastructure/azure/regions/aks.tf" />
+        <option value="$PROJECT_DIR$/infrastructure/azure/dev/regions.tf" />
+        <option value="$PROJECT_DIR$/infrastructure/k8s/DEV/namespace.yaml" />
+        <option value="$PROJECT_DIR$/infrastructure/azure/regions/output.tf" />
+        <option value="$PROJECT_DIR$/infrastructure/azure/regions/networking.tf" />
+        <option value="$PROJECT_DIR$/infrastructure/azure/regions/locals.tf" />
+        <option value="$PROJECT_DIR$/infrastructure/azure/regions/gw.tf" />
+        <option value="$PROJECT_DIR$/infrastructure/azure/Readme.md" />
+        <option value="$PROJECT_DIR$/services/sensor/options.go" />
+        <option value="$PROJECT_DIR$/services/frontend/options.go" />
+        <option value="$PROJECT_DIR$/services/coordinator/service.go" />
+        <option value="$PROJECT_DIR$/common/utils/guardians.go" />
+        <option value="$PROJECT_DIR$/common/utils/keyboard.go" />
+        <option value="$PROJECT_DIR$/common/depresolver/depresolver.go" />
+        <option value="$PROJECT_DIR$/services/frontend/templates/layout.html" />
+        <option value="$PROJECT_DIR$/cmd/sensor.go" />
+        <option value="$PROJECT_DIR$/cmd/coordinator.go" />
+        <option value="$PROJECT_DIR$/cmd/frontend.go" />
+        <option value="$PROJECT_DIR$/services/frontend/service.go" />
+        <option value="$PROJECT_DIR$/services/frontend/routes.go" />
+        <option value="$PROJECT_DIR$/services/frontend/server.go" />
+        <option value="$PROJECT_DIR$/services/frontend/handlers.go" />
+        <option value="$PROJECT_DIR$/services/frontend/static/js/face-recognition.js" />
+        <option value="$PROJECT_DIR$/services/frontend/static/js/websocks.js" />
       </list>
     </option>
   </component>
@@ -247,20 +302,21 @@
             <path>
               <item name="onho.io" type="b2602c69:ProjectViewProjectNode" />
               <item name="onho.io" type="462c0819:PsiDirectoryNode" />
-              <item name="infrastructure" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="bus" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="onho.io" type="b2602c69:ProjectViewProjectNode" />
               <item name="onho.io" type="462c0819:PsiDirectoryNode" />
-              <item name="infrastructure" type="462c0819:PsiDirectoryNode" />
-              <item name="azure" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="bus" type="462c0819:PsiDirectoryNode" />
+              <item name="encoder" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="onho.io" type="b2602c69:ProjectViewProjectNode" />
               <item name="onho.io" type="462c0819:PsiDirectoryNode" />
-              <item name="infrastructure" type="462c0819:PsiDirectoryNode" />
-              <item name="azure" type="462c0819:PsiDirectoryNode" />
-              <item name="dev" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="qutils" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="onho.io" type="b2602c69:ProjectViewProjectNode" />
@@ -282,7 +338,7 @@
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/infrastructure/azure/prod" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../auth" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -295,18 +351,18 @@
       <recent name="$PROJECT_DIR$/services/coordinator" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/services/frontend" />
+      <recent name="$PROJECT_DIR$/infrastructure/azure/regions" />
       <recent name="$PROJECT_DIR$/infrastructure/azure/dev" />
       <recent name="$PROJECT_DIR$/infrastructure/azure/_exec" />
       <recent name="$PROJECT_DIR$/common/bus" />
-      <recent name="$PROJECT_DIR$/common/bus/encoder" />
-      <recent name="$PROJECT_DIR$/services/coordinator" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/services/frontend" />
+      <recent name="$PROJECT_DIR$/infrastructure/azure/regions/certificates" />
       <recent name="$PROJECT_DIR$/infrastructure/azure/prod" />
       <recent name="$PROJECT_DIR$/infrastructure/k8s/DEV" />
       <recent name="$PROJECT_DIR$/scripts" />
-      <recent name="$PROJECT_DIR$/infrastructure/k8s" />
-      <recent name="$PROJECT_DIR$/services/coordinatorBusMock" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -321,7 +377,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Build.RUN ROOT sensor-mock">
+  <component name="RunManager" selected="Go Build.RUN FRONTEND">
     <configuration name="BusTest" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="onho.io" />
       <working_directory value="$PROJECT_DIR$/" />
@@ -336,6 +392,16 @@
       <module name="onho.io" />
       <working_directory value="$PROJECT_DIR$/" />
       <parameters value="coordinator-bus-mock -n foo -c amqp://guest:guest@localhost:5672" />
+      <kind value="DIRECTORY" />
+      <filePath value="$PROJECT_DIR$/" />
+      <package value="github.com/kuritka/onho.io" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration name="RUN FRONTEND" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="onho.io" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <parameters value="frontend --client-id=4fc93087525410d7ae3b --client-secret=42efdd9c5afe4f31db0c38fa9b5c1ad443f2aaa3 --cookie-key=asdifj9182u98u98efua --port=8081" />
       <kind value="DIRECTORY" />
       <filePath value="$PROJECT_DIR$/" />
       <package value="github.com/kuritka/onho.io" />
@@ -392,7 +458,21 @@
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
+    <configuration name="Plan azurerm_subnet.aks-subnet" type="#org.intellij.plugins.hcl.terraform.run.TerraformConfigurationType" factoryName="Terraform Plan" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="envs">
+        <map />
+      </option>
+      <option name="passParentEnvs" value="true" />
+      <option name="programParameters" value="plan -target=azurerm_subnet.aks-subnet" />
+      <option name="workingDirectory" value="$PROJECT_DIR$/infrastructure/azure/regions" />
+      <option name="PROGRAM_PARAMETERS" value="plan -target=azurerm_subnet.aks-subnet" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/infrastructure/azure/regions" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <method v="2" />
+    </configuration>
     <list>
+      <item itemvalue="Go Build.RUN FRONTEND" />
       <item itemvalue="Go Build.RUN coordinator " />
       <item itemvalue="Go Build.RUN databaseManager" />
       <item itemvalue="Go Build.WEBADMIN Run" />
@@ -400,9 +480,11 @@
       <item itemvalue="Go Build.SENSORBUS" />
       <item itemvalue="Go Build.COORDINATORBUS" />
       <item itemvalue="Go Build.RUN ROOT sensor-mock" />
+      <item itemvalue="Terraform.Plan azurerm_subnet.aks-subnet" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Terraform.Plan azurerm_subnet.aks-subnet" />
         <item itemvalue="Go Build.RUN ROOT sensor-mock" />
       </list>
     </recent_temporary>
@@ -411,20 +493,20 @@
     <frame x="1920" y="27" width="1680" height="1023" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.54740405" visible="true" weight="0.28090575" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.54740405" visible="true" weight="0.33292535" />
       <window_info id="Structure" order="1" sideWeight="0.38451612" side_tool="true" weight="0.27530363" />
       <window_info id="Favorites" order="2" sideWeight="0.45259595" side_tool="true" weight="0.2643819" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32731378" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.29572836" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.41076005" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32731378" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.28329572" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3860045" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.16823228" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3296328" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.33134073" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -485,17 +567,12 @@
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/common/utils/guardians.go</url>
-          <line>51</line>
-          <option name="timeStamp" value="13" />
+          <url>file://$PROJECT_DIR$/services/frontend/service.go</url>
+          <line>25</line>
+          <option name="timeStamp" value="29" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="GoApplicationRunConfiguration">
-        <watch expression="discoMessage.CommandQueue" language="go" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
@@ -552,6 +629,309 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/infrastructure/azure/regions/locals.tf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="22" column="109" selection-start-line="22" selection-start-column="109" selection-end-line="22" selection-end-column="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/azure/regions/aks.tf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-29">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/azure/regions/gw.tf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="51" column="19" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/frontend/static/js/models/face_landmark_68_model-weights_manifest.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/frontend/static/js/models/face_landmark_68_tiny_model-weights_manifest.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/frontend/static/js/models/face_recognition_model-weights_manifest.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/frontend/static/js/models/face_expression_model-weights_manifest.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/azure/Readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="58">
+            <caret line="2" selection-end-line="2" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/frontend/static/css/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5916" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="58">
+          <caret line="2" column="8" lean-forward="true" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/azure/prod/.gitkeep">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/github.com/kuritka/break-down.io/common/utils/errorhandling.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/sensor/service.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/go.uber.org/dig/dig.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="327" column="20" selection-start-line="327" selection-start-column="20" selection-end-line="327" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/coordinator/queueListener.go">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/github.com/spf13/cobra/shell_completions.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/sensor/options.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/golang/src/fmt/scan.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="75" column="69" lean-forward="true" selection-start-line="75" selection-start-column="69" selection-end-line="75" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/depresolver/depresolver.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmd/root.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/github.com/spf13/cobra/command.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="829" selection-start-line="829" selection-end-line="829" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmd/constants.go">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmd/sensorMock.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/frontend/options.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmd/sensor.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/utils/guardians.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="60" column="39" selection-start-line="60" selection-start-column="39" selection-end-line="60" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/utils/keyboard.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="27" lean-forward="true" selection-start-line="5" selection-start-column="4" selection-end-line="6" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmd/dbmgr.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="37" column="1" selection-start-line="8" selection-end-line="37" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/coordinator/service.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/frontend/service.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="50" column="33" lean-forward="true" selection-start-line="50" selection-start-column="33" selection-end-line="50" selection-end-column="33" />
+          <folding>
+            <element signature="e#18#166#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmd/coordinator.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmd/coordinatorBusMock.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="11" lean-forward="true" selection-start-column="11" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/github.com/gorilla/mux/mux.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/frontend/server.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/frontend/routes.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="26" column="43" lean-forward="true" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
+          <folding>
+            <element signature="e#18#87#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmd/frontend.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="8" column="3" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/frontend/static/js/face-api.min.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/k8s/api_course.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="83">
+            <caret line="101" column="69" selection-start-line="101" selection-start-column="69" selection-end-line="101" selection-end-column="69" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/frontend/templates/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="18" lean-forward="true" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/frontend/templates/layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="30" lean-forward="true" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/frontend/handlers.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="10" lean-forward="true" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/golang/src/html/template/template.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="131" column="19" selection-start-line="131" selection-start-column="19" selection-end-line="131" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/golang/src/fmt/print.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="263" column="21" lean-forward="true" selection-start-line="263" selection-start-column="21" selection-end-line="263" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/frontend/static/js/face-recognition.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="48" column="37" selection-start-line="48" selection-start-column="37" selection-end-line="48" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/frontend/static/js/websocks.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="26" column="28" lean-forward="true" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/bus/encoder/GobEncoder.go">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/bus/encoder/IMessageEncoder.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="3" column="20" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/common/bus/enumExchange.go">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -561,346 +941,8 @@
     <entry file="file://$PROJECT_DIR$/common/bus/Message.go">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/dto/message.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-244" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common/bus/Provider.go">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/msgbus/enum.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="8" column="23" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/msgbus/eventaggregator.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmd/root.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="17" column="27" lean-forward="true" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmd/constants.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="4" column="31" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/msgbus/qmgr.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="95" column="31" selection-start-line="95" selection-start-column="31" selection-end-line="95" selection-end-column="31" />
-          <folding>
-            <element signature="e#16#127#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/msgbus/utils.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="14" column="28" selection-start-line="14" selection-end-line="15" />
-          <folding>
-            <element signature="e#16#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/msgbus/message.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/msgbus/gobprovider.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1782">
-          <caret line="59" column="30" lean-forward="true" selection-start-line="59" selection-end-line="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmd/coordinator.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-198">
-          <caret line="9" column="3" lean-forward="true" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
-          <folding>
-            <element signature="e#13#108#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmd/sensor.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/sensorMock/service.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1548">
-          <caret line="54" column="36" selection-start-line="54" selection-start-column="26" selection-end-line="54" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/coordinatorBusMock/service.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1044">
-          <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="35" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/coordinator/service.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="812">
-          <caret line="34" column="25" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/msgbus/listener.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1798">
-          <caret line="66" column="29" selection-start-line="66" selection-start-column="29" selection-end-line="66" selection-end-column="29" />
-          <folding>
-            <element signature="e#16#105#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/coordinator/queueListener.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="928">
-          <caret line="38" column="24" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/iEventAggregator.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/msgbus/msgbus.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-          <folding>
-            <element signature="e#16#142#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/msgbus/publisher.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="37" column="35" selection-start-line="37" selection-start-column="31" selection-end-line="37" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/sensor/service.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="928">
-          <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/coordinator/coordinatorOpts.go">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/utils/guardians.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/log/log.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-          <folding>
-            <element signature="e#47#96#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/go.mod">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/go.sum">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="29">
-          <caret line="1" selection-start-line="1" selection-end-line="2" />
-          <folding>
-            <element signature="e#14#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/k8s/namespace.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/k8s/demo1.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="13" column="20" selection-start-line="10" selection-start-column="2" selection-end-line="13" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/k8s/network-utils.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1015">
-          <caret line="50" column="22" selection-start-line="50" selection-start-column="2" selection-end-line="50" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/k8s/hello.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="5" column="10" selection-start-line="4" selection-end-line="5" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/k8s/deployment-me.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="30" column="8" lean-forward="true" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/run.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="6" column="12" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/k8s/DEV/rabbit-mq.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/k8s/api_course.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="9454">
-            <caret line="326" column="11" selection-start-line="326" selection-start-column="11" selection-end-line="326" selection-end-column="11" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/k8s/DEV/namespace.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/deploy.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2436">
-          <caret line="84" column="71" selection-start-line="77" selection-start-column="5" selection-end-line="84" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/k8s/DEV/pg-admin.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="37" column="16" lean-forward="true" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/azure/dev/_backend.tf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="6" column="11" lean-forward="true" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/azure/dev/variables.tf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/azure/dev/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/azure/prod/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="7" column="6" lean-forward="true" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="485">
-            <caret line="72" column="37" selection-start-line="72" selection-start-column="28" selection-end-line="72" selection-end-column="37" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/azure/dev/_providers.tf">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/azure/dev/locals.tf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="6" column="39" lean-forward="true" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/azure/dev/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="35" column="9" lean-forward="true" selection-start-line="25" selection-end-line="35" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/azure/dev/terraform.tfvars">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="7" selection-start-column="7" selection-end-column="7" />
-        </state>
-      </provider>
     </entry>
   </component>
 </project>
