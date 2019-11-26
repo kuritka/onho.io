@@ -131,7 +131,7 @@ var recognisedChannel chan bool
 
 var pingTicker = time.NewTicker(pingDuration)
 
-func (s *Server) serveWebSockets() http.HandlerFunc {
+func (s *Server) serveWebSockets(commandPublisher func(data string)) http.HandlerFunc {
 	//todo: implement way back to tell client that server doesn't recognise....
 	return func(w http.ResponseWriter, r *http.Request) {
 
@@ -175,6 +175,7 @@ func (s *Server) serveWebSockets() http.HandlerFunc {
 			errorextensions.LogOnError(err, "unable read message from socket")
 			recognisedChannel <- true
 			fmt.Printf("%s sent: %s %s\n", socket.RemoteAddr(), string(msg), *s.login)
+			commandPublisher(string(msg))
 		}
 
 	}
@@ -212,3 +213,4 @@ func (s *Server) websocksWriter(socket *websocket.Conn ) {
 		}
 	}
 }
+

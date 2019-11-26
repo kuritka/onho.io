@@ -32,20 +32,21 @@ const (
 )
 
 type Server struct {
-	router    *mux.Router
-	oauthCfg  *oauth2.Config
-	store     *sessions.CookieStore
-	templates map[string]*template.Template
-	upgrader  websocket.Upgrader
-	login 	  *string
+	router           *mux.Router
+	oauthCfg         *oauth2.Config
+	store            *sessions.CookieStore
+	templates        map[string]*template.Template
+	upgrader         websocket.Upgrader
+	login            *string
+	commandPublisher func(data string)
 }
 
-func NewServer( mux *mux.Router, config *Options, oauthCfg *oauth2.Config ) *Server {
+func NewServer( mux *mux.Router, config *Options, oauthCfg *oauth2.Config ,f func(data string) ) *Server {
 	cookieStore := sessions.NewCookieStore([]byte(config.CookieStoreKey))
 	templates := map[string]*template.Template{}
 	templates["home.html"] = template.Must(template.ParseFiles(templateDir+"home.html", defaultLayout))
 	upgrader := websocket.Upgrader{ ReadBufferSize:  1024, WriteBufferSize: 1024,}
-	server := Server{mux, oauthCfg,cookieStore, templates,upgrader, nil}
+	server := Server{mux, oauthCfg,cookieStore, templates,upgrader, nil, f}
 	server.routes()
 	return &server
 }

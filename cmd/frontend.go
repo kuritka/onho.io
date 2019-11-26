@@ -29,6 +29,7 @@ func init(){
 	frontendCmd.Flags().StringVarP(&frontendOptions.ClientSecret, "client-secret", "s", "", "client secret  i.e. 42efdd9c5afe4f31db0c38fa9b5c1ad443f2aab5")
 	frontendCmd.Flags().StringVarP(&frontendOptions.CookieStoreKey, "cookie-key", "k", "", "cookie store key  i.e. amqp://guest:guest@localhost:5672")
 	frontendCmd.Flags().IntVarP(&frontendOptions.Port, "port", "p", 8080, "port i.e. 8081")
+	frontendCmd.Flags().StringVarP(&frontendOptions.QueueConnectionString, "connection-string", "c", "", "connectionString i.e. amqp://guest:guest@localhost:5672")
 	err := frontendCmd.MarkFlagRequired("client-id")
 	utils.FailFastOnError(err)
 	err = frontendCmd.MarkFlagRequired("client-secret")

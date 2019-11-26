@@ -2,7 +2,7 @@
 
 set -e
 
-# Helper script to setup EDT
+# Helper script to setup EDT. Use this script if you don't have k8s cluster or AKS running.
 
 logError() {
   (>&2 echo "$@")

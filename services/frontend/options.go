@@ -6,4 +6,5 @@ type Options struct {
 	CookieStoreKey string
 	Port int
 	Idp Idp
+	QueueConnectionString string
 }
