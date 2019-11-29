@@ -10,10 +10,7 @@
       <change afterPath="$PROJECT_DIR$/../daily-interview.com/Uber/LargestNumber/main.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../daily-interview.com/Uber/LargestNumber/main_test.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../daily-interview.com/Uber/LargestNumber/readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/azure/dev/registry.tf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/docker/dev/dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/docker/prod/dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/k8s/DEV/frontend.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/infrastructure/docker/local/dockerfile" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../testGoRutineDebug/.idea/dictionaries/michal.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../testGoRutineDebug/.idea/misc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../testGoRutineDebug/.idea/modules.xml" afterDir="false" />
@@ -22,12 +19,8 @@
       <change afterPath="$PROJECT_DIR$/../testGoRutineDebug/.idea/workspace.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../testGoRutineDebug/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/azure/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/azure/Readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/azure/dev/_output.tf" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/azure/dev/_output.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/azure/dev/locals.tf" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/azure/dev/locals.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/azure/dev/variables.tf" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/azure/dev/variables.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/onho.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/frontend/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/services/frontend/service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/docker/prod/dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/docker/prod/dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/onho.go" beforeDir="false" afterPath="$PROJECT_DIR$/onho.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../rediscovery/rediscovery/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../rediscovery/rediscovery/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../rediscovery/rediscovery/styles/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/../rediscovery/rediscovery/styles/common.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../rediscovery/rediscovery/styles/common.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/../rediscovery/rediscovery/styles/common.css.map" afterDir="false" />
@@ -66,11 +59,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/onho.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+            <state relative-caret-position="280">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
               <folding>
                 <element signature="e#14#105#0" expanded="true" />
               </folding>
@@ -81,17 +74,37 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/services/sensorMock/service.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+            <state>
+              <folding>
+                <element signature="e#20#281#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/infrastructure/docker/dev/dockerfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="398">
+              <caret line="59" column="73" lean-forward="true" selection-start-line="59" selection-start-column="73" selection-end-line="59" selection-end-column="73" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common/log/log.go">
+        <entry file="file://$PROJECT_DIR$/infrastructure/docker/local/dockerfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="3" column="8" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="8" />
+            <state relative-caret-position="280">
+              <caret line="14" column="10" lean-forward="true" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/infrastructure/docker/prod/dockerfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="9" column="29" lean-forward="true" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -150,7 +163,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/infrastructure/azure/dev/.gitignore" />
         <option value="$PROJECT_DIR$/infrastructure/azure/prod/.gitignore" />
         <option value="$PROJECT_DIR$/infrastructure/azure/.gitignore" />
         <option value="$PROJECT_DIR$/.gitignore" />
@@ -201,6 +213,7 @@
         <option value="$PROJECT_DIR$/infrastructure/docker/dockerfile" />
         <option value="$PROJECT_DIR$/infrastructure/docker/dev/dockerfile" />
         <option value="$PROJECT_DIR$/onho.go" />
+        <option value="$PROJECT_DIR$/infrastructure/docker/prod/dockerfile" />
       </list>
     </option>
   </component>
@@ -287,6 +300,20 @@
             <path>
               <item name="onho.io" type="b2602c69:ProjectViewProjectNode" />
               <item name="onho.io" type="462c0819:PsiDirectoryNode" />
+              <item name="infrastructure" type="462c0819:PsiDirectoryNode" />
+              <item name="docker" type="462c0819:PsiDirectoryNode" />
+              <item name="local" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="onho.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="onho.io" type="462c0819:PsiDirectoryNode" />
+              <item name="infrastructure" type="462c0819:PsiDirectoryNode" />
+              <item name="docker" type="462c0819:PsiDirectoryNode" />
+              <item name="prod" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="onho.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="onho.io" type="462c0819:PsiDirectoryNode" />
               <item name="services" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -329,7 +356,7 @@
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/infrastructure/docker/dev" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/infrastructure/docker/local" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -342,11 +369,11 @@
       <recent name="$PROJECT_DIR$/services/coordinator" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/infrastructure/docker/local" />
       <recent name="$PROJECT_DIR$/infrastructure/docker/dev" />
       <recent name="$PROJECT_DIR$/services/frontend" />
       <recent name="$PROJECT_DIR$/infrastructure/azure/regions/certificates" />
       <recent name="$PROJECT_DIR$/infrastructure/azure/prod" />
-      <recent name="$PROJECT_DIR$/infrastructure/k8s/DEV" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/infrastructure/docker/prod" />
@@ -482,22 +509,21 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="27" width="1680" height="1023" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.54740405" visible="true" weight="0.3365973" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.54740405" visible="true" weight="0.3365973" />
       <window_info id="Structure" order="1" sideWeight="0.38451612" side_tool="true" weight="0.27530363" />
       <window_info id="Favorites" order="2" sideWeight="0.45259595" side_tool="true" weight="0.2643819" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32731378" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.27200902" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3860045" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.27088037" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3860045" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.16823228" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.2799097" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.2799097" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -615,13 +641,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/scripts/deploy.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="13" lean-forward="true" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/run.sh">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -759,13 +778,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/docker/prod/dockerfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="52" column="49" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/infrastructure/k8s/network-utils.yaml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -806,13 +818,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/docker/dev/dockerfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1000">
-          <caret line="62" column="33" lean-forward="true" selection-start-line="62" selection-end-line="63" />
         </state>
       </provider>
     </entry>
@@ -877,27 +882,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/services/sensorMock/service.go">
+    <entry file="file://$PROJECT_DIR$/common/log/log.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+        <state relative-caret-position="-76">
+          <caret line="3" column="8" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/log/log.go">
+    <entry file="file://$PROJECT_DIR$/services/sensorMock/service.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="8" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="8" />
+        <state>
+          <folding>
+            <element signature="e#20#281#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/onho.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="280">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
           <folding>
             <element signature="e#14#105#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/docker/prod/dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="29" lean-forward="true" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/docker/local/dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="10" lean-forward="true" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/docker/dev/dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="59" column="73" lean-forward="true" selection-start-line="59" selection-start-column="73" selection-end-line="59" selection-end-column="73" />
         </state>
       </provider>
     </entry>

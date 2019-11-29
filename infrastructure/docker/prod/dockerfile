@@ -1,58 +1,35 @@
-#docker run -p 3000:8080  auth:1.0
-#docker build --build-arg USER=gouser --target release-stage -t onho.io/frontend:1.6 .
-#or running those two commands will correctly tag particular stages
-#docker build --target build-stage -t auth-builder-image:1.0 . \
-#docker build  -t onho.io/frontend:1.6 .
-
-#we use multistage docker image. First stage is called build and is used
-#for building app in container where go and git exists..
 FROM golang:1.12 as build-stage
 
-# specifying default value if user is not defined
-ARG USER=onhouser
-
-# helps with debugging because shows dokcer instruction
-RUN set -x
-
-RUN mkdir /build
+RUN set -x && \
+    mkdir /build
 
 WORKDIR /build
 
 LABEL vendor=ONHO\ Incorporated \
-      onho.io.is-dev="" \
+      onho.io.is-prod="" \
       onho.io.version="0.0.1-beta" \
       onho.io.release-date="2020-01-01"
 
-#copy from build context to WORKDIR
-#I don't need copy as it is downloaded from github
-#COPY ../../. .
-
-#staicaly linking go libraries. Creates extra layer.
-#to remove it from that layer we can set within RUN command as `RUN export CGO_ENABLED=0 && \`
 ENV CGO_ENABLED=0
 
-#Do all in one layer otherwise downloaded data stay in previous layers
-#and if we delete them in upcomming layer it will not have effect
 RUN git clone https://github.com/kuritka/onho.io . && \
     go mod init github.com/kuritka/onho.io && \
     go list -e $(go list -f . -m all) && \
-    go build -o main .
-    #mv './templates' './static' 'main' 'config.json' /app && \
-    ##remove all files directories and hidden dirs like .git, .idea...
-    #rm -rf .[^.] .??* ./*
-# >> 960MB
+    go build -o main . && \
+    groupadd -g 1001 onhouser && \
+    useradd -r -u 1001 -g onhouser onhouser
 
 #-----------------------------------------------------
-# FROM alpine:latest as release-stage +5MB and is easy to troubleshoot (bash is present)
 FROM scratch as release-stage
 
 WORKDIR /app
 
-#multistage containers - copying from build stage /build to /app
 COPY --from=build-stage /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
-COPY --from=build-stage /build/static /app/static
-COPY --from=build-stage /build/templates /app/templates
+COPY --from=build-stage /build/services/frontend/static /app/static
+COPY --from=build-stage /build/services/frontend/templates /app/templates
 COPY --from=build-stage /build/main /app/main
-COPY --from=build-stage /build/config.json /app/config.json
+COPY --from=build-stage /etc/passwd /etc/passwd
 
+USER onhouser
 
+ENTRYPOINT ["./main"]
