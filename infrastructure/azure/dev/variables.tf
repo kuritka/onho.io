@@ -65,4 +65,3 @@ variable "db_admin_password" {
   description = "Postgre admin password in .tfvars"
 }
 
-

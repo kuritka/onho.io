@@ -1,5 +1,6 @@
 locals {
   suffix = "${var.project_shortcut}-${var.environment_short}"
+  alphanumeric_suffix = "${var.project_shortcut}${var.environment_short}"
 
   shared_rg_name = "rg-${local.suffix}"
 

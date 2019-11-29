@@ -51,9 +51,3 @@ func (f *Frontend) Run() error {
 	log.Printf("listening on %s",listenAddr)
 	return http.ListenAndServe(listenAddr, server)
 }
-
-
-
-func close(){
-	fmt.Println("CLOSE")
-}
