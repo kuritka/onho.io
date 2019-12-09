@@ -7,11 +7,20 @@ import (
 var logger = log.Log
 
 
-
 func FailOnError(err error, msg string){
 	if err != nil {
 		fail(err)
 	}
+}
+
+
+func FailFast(msg string){
+	fail(errors.New(msg))
+}
+
+
+func NotImplemented(){
+	fail(errors.New("function not implemented"))
 }
 
 
@@ -20,8 +29,6 @@ func FailFastOnError(err error){
 		fail(err)
 	}
 }
-
-
 
 func FailOnLessOrEqualToZero(num int, msg string) {
 	if num <= 0 {
@@ -66,6 +73,5 @@ func DisposeOnNil(entity interface{}, msg string,dispose func() ){
 }
 
 func fail(err error){
-	logger.Fatal().Msgf("%+v", err.Error())
-	//panic(fmt.Sprintf("%+v", err))
+	logger.Panic().Msgf("%+v", err.Error())
 }

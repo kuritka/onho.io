@@ -1,11 +1,11 @@
-package msgbus
+package utils
 
 import (
 	"crypto/rand"
 	"fmt"
 )
 
-func getGuid() (string,error) {
+func Guid() (string,error) {
 	b := make([]byte, 16)
 	_, err := rand.Read(b)
 	if err != nil {

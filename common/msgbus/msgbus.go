@@ -37,7 +37,7 @@ func NewMsgBus(connectionString string) *BusImpl {
 // Register service and attach it to the bus
 func (mb *BusImpl) Register(name string) (*msgBusListenerImpl, *msgBusPublisherImpl) {
 	utils.FailOnEmptyString(name, "name cannot be nil")
-	guid, _ := getGuid()
+	guid, _ := utils.Guid()
 	queueDiscoveryName := name + "_" + "discovery" + "_" + guid
 
 	mb.exmgr.createEventExchangeIfNotExists()

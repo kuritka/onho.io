@@ -41,11 +41,11 @@ spec:
         - name: SFTP_USER
           valueFrom:
             secretKeyRef:
-              name: api-key
+              name: api-contextType
               key: edt-sftp-user
         - name: SFTP_PRIVATE_KEY
           valueFrom:
             secretKeyRef:
-              name: api-key
-              key: edt-sftp-key        
+              name: api-contextType
+              key: edt-sftp-contextType
   restartPolicy: Never

@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap-onho-dev
+  namespace: onho-dev
+data:
+  onho.environment: "dev"
+  rabbit-mq.username: "guest"
+  rabbit-mq.password: ".secret-123"

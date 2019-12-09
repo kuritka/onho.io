@@ -14,8 +14,11 @@ spec:
           app: frontend
       spec:
         containers:
-        - name: onho
-          image:
+        - name: frontend
+          image: acronhosbx.azurecr.io/frontend:0.3
+          ports:
+          - containerPort: 8080
+
 
 + ports
 + environment variables

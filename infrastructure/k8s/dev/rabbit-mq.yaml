@@ -35,9 +35,15 @@ spec:
           name: qmqp5
         env:
           -  name: RABBITMQ_DEFAULT_USER
-             value: guest
+             valueFrom:
+               configMapKeyRef:
+                 name: configmap-onho-dev
+                 key: rabbit-mq.username
           -  name: RABBITMQ_DEFAULT_PASS
-             value: .secret-123
+             valueFrom:
+               configMapKeyRef:
+                 name: configmap-onho-dev
+                 key: rabbit-mq.password
           # this needs to be there because AKS (as of 1.14.3)
           # limits the number of thread a pod can use
           - name: RABBITMQ_IO_THREAD_POOL_SIZE
@@ -63,6 +69,10 @@ spec:
       protocol: TCP
       targetPort: 15672
       name: webadmin2
+    - port: 5672
+      protocol: TCP
+      targetPort: 5672
+      name: amqp3
   #how to service is exposed
   type: LoadBalancer
 

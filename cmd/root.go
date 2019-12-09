@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"context"
 	"github.com/kuritka/onho.io/services"
 	"os"
 
@@ -10,6 +11,7 @@ import (
 
 var Verbose bool
 var sharedEventAggregator = services.NewEventAggregator()
+var rootContext, _ = context.WithCancel(context.Background())
 
 var rootCmd = &cobra.Command{
 	Short: "onho.io",
@@ -17,7 +19,7 @@ var rootCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) == 0 {
 			log.Error().Msg("No parameters included")
-			cmd.Help()
+			_ = cmd.Help()
 			os.Exit(0)
 		}
 	},

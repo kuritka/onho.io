@@ -17,7 +17,7 @@ type Frontend struct {
 	options Options
 }
 
-func NewService(options Options)  *Frontend {
+	func NewService(options Options)  *Frontend {
 	utils.FailOnEmptyString(options.ClientID, "missing clientID")
 	utils.FailOnEmptyString(options.ClientSecret, "missing clientSecret")
 	utils.FailOnEmptyString(options.CookieStoreKey, "missing cookieStoreKey")

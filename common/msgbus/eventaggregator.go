@@ -16,7 +16,7 @@ func newEventAggregator() *eventAggregator {
 
 func (ea *eventAggregator) AddListener(key string, callback func(Message)) {
 	utils.FailOnNil(callback, "callback is not set")
-	utils.FailOnEmptyString(key, "key is empty")
+	utils.FailOnEmptyString(key, "contextType is empty")
 	ea.listeners[key] = append(ea.listeners[key], callback)
 }
 
