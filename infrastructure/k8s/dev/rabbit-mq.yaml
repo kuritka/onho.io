@@ -41,9 +41,9 @@ spec:
                  key: rabbit-mq.username
           -  name: RABBITMQ_DEFAULT_PASS
              valueFrom:
-               configMapKeyRef:
-                 name: configmap-onho-dev
-                 key: rabbit-mq.password
+               secretKeyRef:
+                 name: onho-secrets
+                 key: rabbit-mq-password
           # this needs to be there because AKS (as of 1.14.3)
           # limits the number of thread a pod can use
           - name: RABBITMQ_IO_THREAD_POOL_SIZE
