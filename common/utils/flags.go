@@ -5,8 +5,7 @@ import (
 	"fmt"
 	"github.com/kuritka/onho.io/common/log"
 	"os"
-
-
+	"strconv"
 )
 
 // GetStringFlagFromEnv attemps to lookup a flag with name 'flagName' from the environment
@@ -26,6 +25,18 @@ func MustGetStringFlagFromEnv(flagName string) string {
 		log.Logger().Panic().Err(err).Msg("failed to load string flag from env")
 	}
 	return value
+}
+
+func MustGetIntFlagFromEnv(flagName string) int {
+	strval, err := GetStringFlagFromEnv(flagName)
+	if err == nil {
+		value, err := strconv.Atoi(strval)
+		if err == nil {
+			return value
+		}
+	}
+	log.Logger().Panic().Err(err).Msg("failed to load string flag from env")
+	return -1
 }
 
 // EnvValueHolder holds values.

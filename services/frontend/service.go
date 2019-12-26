@@ -2,7 +2,7 @@ package frontend
 
 import (
 	"fmt"
-	"github.com/kuritka/onho.io/common/msgbus"
+	"github.com/kuritka/onho.io/common/manager/depresolver"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -14,26 +14,22 @@ import (
 
 
 type Frontend struct {
-	options Options
+	dependencies depresolver.Dependencies
 }
 
-	func NewService(options Options)  *Frontend {
-	utils.FailOnEmptyString(options.ClientID, "missing clientID")
-	utils.FailOnEmptyString(options.ClientSecret, "missing clientSecret")
-	utils.FailOnEmptyString(options.CookieStoreKey, "missing cookieStoreKey")
-	utils.FailOnEmptyString(options.QueueConnectionString, "queue connection string")
-	utils.FailOnLessOrEqualToZero(options.Port, "invalid port number")
-
+func NewService(dependencies depresolver.Dependencies)  *Frontend {
+	utils.FailOnNil(dependencies,"nil dependencies")
 	return & Frontend{
-		options ,
-
+		 dependencies,
 	}
 }
 
 
+
+
 func (f *Frontend) Run() error {
 
-	msgBus :=  msgbus.NewMsgBus(f.options.QueueConnectionString)
+	msgBus :=  f.dependencies.MsgBus
 	defer msgBus.Close()
 	_, publisher :=  msgBus.Register("frontend")
 
@@ -44,10 +40,8 @@ func (f *Frontend) Run() error {
 		i++
 	}
 
-	oauth,_ := NewIDP(&f.options)
-
-	server := NewServer(mux.NewRouter(), &f.options, oauth, commandPublisher)
-	listenAddr :=  fmt.Sprintf(":%v",f.options.Port)
+	server := NewServer(mux.NewRouter(), f.dependencies.CookieStore, f.dependencies.Auth, commandPublisher)
+	listenAddr :=  fmt.Sprintf(":%v",f.dependencies.Port)
 	log.Printf("listening on %s",listenAddr)
 	return http.ListenAndServe(listenAddr, server)
 }

@@ -2,6 +2,7 @@ package depresolver
 
 import (
 	"database/sql"
+	"github.com/gorilla/sessions"
 	"github.com/kuritka/onho.io/common/msgbus"
 	"github.com/kuritka/onho.io/common/utils"
 	"golang.org/x/oauth2"
@@ -34,14 +35,16 @@ type FromEnvDependenciesResolver struct {
 		initPlatformMQOnce sync.Once
 	}
 
-	Options Options
+	Options Dependencies
 }
 
-type Options struct {
+type Dependencies struct {
 	Environment string
+	Port int
 	Db *sql.DB
 	MsgBus msgbus.IMsgBus
 	Auth *oauth2.Config
+	CookieStore *sessions.CookieStore
 }
 
 func NewFromEnvDependencyResolver() *FromEnvDependenciesResolver{
@@ -66,6 +69,18 @@ func (r *FromEnvDependenciesResolver) MustResolveRabbitMQ() *FromEnvDependencies
 
 func (r *FromEnvDependenciesResolver) MustResolveEnvironment() *FromEnvDependenciesResolver {
 	r.Options.Environment = utils.MustGetStringFlagFromEnv("ONHO_ENVIRONMENT")
+	return r
+}
+
+func (r *FromEnvDependenciesResolver) MustResolvePort() *FromEnvDependenciesResolver {
+	r.Options.Port = utils.MustGetIntFlagFromEnv("ONHO_CLIENT_PORT")
+	return r
+}
+
+
+func (r *FromEnvDependenciesResolver) MustResolveCookieStore() *FromEnvDependenciesResolver {
+	cookieStoreKey := utils.MustGetStringFlagFromEnv("ONHO_OAUTH_COOKIE_KEY")
+	r.Options.CookieStore = sessions.NewCookieStore([]byte(cookieStoreKey))
 	return r
 }
 

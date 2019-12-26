@@ -42,7 +42,7 @@ func (r *Runner) WithGrpc() *Runner{
 }
 
 
-func (r *Runner) MustRun(ctx context.Context, res depresolver.Options) {
+func (r *Runner) MustRun(ctx context.Context, res depresolver.Dependencies) {
 	var wg sync.WaitGroup
 
 	if r.restRunner != nil {
