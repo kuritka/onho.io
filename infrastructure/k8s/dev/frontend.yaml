@@ -1,4 +1,4 @@
-version: v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
@@ -8,16 +8,61 @@ spec:
   selector:
     matchLabels:
       app: frontend
-    template:
-      metadata:
-        labels:
-          app: frontend
-      spec:
-        containers:
-        - name: frontend
-          image: acronhosbx.azurecr.io/frontend:0.3
-          ports:
-          - containerPort: 8080
+  template:
+    metadata:
+      labels:
+        env: dev
+        app: frontend
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: frontend
+        image: acronhosbx.azurecr.io/frontend:0.4
+        args: [frontend]
+        ports:
+        - containerPort: 8081
+        env:
+          -  name: ONHO_RABBIT_CONNECTION_STRING
+             valueFrom:
+               secretKeyRef:
+                 name: onho-secrets
+                 key: rabbit-mq-connection-string
+          -  name: ONHO_OAUTH_CLIENTID
+             valueFrom:
+               secretKeyRef:
+                 name: onho-secrets
+                 key: github-oauth-client-id
+          -  name: ONHO_OAUTH_COOKIE_KEY
+             valueFrom:
+               secretKeyRef:
+                 name: onho-secrets
+                 key: cookie-key
+          -  name: ONHO_OAUTH_CLIENT_SECRET
+             valueFrom:
+               secretKeyRef:
+                 name: onho-secrets
+                 key: github-oauth-client-secret
+          -  name: ONHO_CLIENT_PORT
+             valueFrom:
+               configMapKeyRef:
+                 name: configmap-onho-dev
+                 key: frontend.client.port
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  namespace: onho-dev
+spec:
+  selector:
+    app: frontend
+  ports:
+    - port: 8081
+      protocol: TCP
+      targetPort: 8081
+      name: pgadmin
+  type: LoadBalancer
+
 #
 #+ ports
 #+ environment variables

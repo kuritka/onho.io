@@ -1,7 +1,8 @@
 #!/bin/bash
 
 set -e
-
+# i.e.
+# PS /home/michal/workspace/onho.io> ./scripts/build.sh ci ./infrastructure/docker/dev/ "latest"
 usage(){
         cat <<EOF
         Usage: $(basename $0) <COMMAND>  <INDIR_PATH> <TAG>

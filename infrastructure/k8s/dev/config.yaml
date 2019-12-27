@@ -5,5 +5,4 @@ metadata:
   namespace: onho-dev
 data:
   onho.environment: "dev"
-  rabbit-mq.username: "guest"
-  rabbit-mq.password: ".secret-123"
+  frontend.client.port: "8081"

@@ -64,7 +64,7 @@ COPY --from=build-stage /etc/passwd /etc/passwd
 
 USER onhouser
 
-ENTRYPOINT ["./main"]
+ENTRYPOINT ["./main","frontend"]
 #25MB
 
 #delete all <none> images
