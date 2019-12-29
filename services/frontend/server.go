@@ -11,8 +11,8 @@ import (
 )
 
 const (
-	defaultLayout = "services/frontend/templates/layout.html"
-	templateDir   = "services/frontend/templates/"
+	defaultLayout = "./services/frontend/templates/layout.html"
+	templateDir   = "./services/frontend/templates/"
 )
 
 type (

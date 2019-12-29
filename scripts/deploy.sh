@@ -12,6 +12,9 @@ usage(){
 	cat <<EOF
 	Usage: $(basename $0) <COMMAND> <ARGUMENTS>
 
+	!!! COMMAND IS USED ONLY FOR LOCAL ENVIRONMENT USAGE INCLUDING LOCAL USERNAMES AND PASSWORDS !!!
+	!!! DO NOT STORE SAME CREDENTIALS WITHIN NON-LOCAL ENVIRONMENTS !!
+
 	Commands:
         drop                        removes all containers from local docker
         install                     installing postgre, pgadmin and mq

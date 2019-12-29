@@ -19,6 +19,11 @@ encrypt file by zipping is also possible.
 ansible-vault encrypt ./secrets.yaml
 
 #make changes within secrets file
+
+#following commands must be executed under bash terminal, not under linux powershell
+echo -n "some secret " | base64 -w0
+echo -n "base64 encoded" | base64 -d
+
 kubectl apply -f ./secrets.yaml
 
 kubectl describe  secrets/onho-secrets -n onho-dev

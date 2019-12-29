@@ -17,7 +17,7 @@ spec:
       restartPolicy: Always
       containers:
       - name: frontend
-        image: acronhosbx.azurecr.io/frontend:0.4
+        image: acronhosbx.azurecr.io/frontend:0.81
         args: [frontend]
         ports:
         - containerPort: 8081
@@ -47,6 +47,11 @@ spec:
                configMapKeyRef:
                  name: configmap-onho-dev
                  key: frontend.client.port
+          -  name: ONHO_ENVIRONMENT
+             valueFrom:
+               configMapKeyRef:
+                 name: configmap-onho-dev
+                 key: onho.environment
 ---
 apiVersion: v1
 kind: Service
@@ -60,7 +65,7 @@ spec:
     - port: 8081
       protocol: TCP
       targetPort: 8081
-      name: pgadmin
+      name: client
   type: LoadBalancer
 
 #

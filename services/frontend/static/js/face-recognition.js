@@ -21,7 +21,7 @@ function startCamera() {
     if(video != null) {
 
 
-        navigator.getUserMedia(
+        navigator.mediaDevices.getUserMedia(
             {video: {}},
             stream => video.srcObject = stream,
             err => console.log(err)

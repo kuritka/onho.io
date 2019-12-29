@@ -2,12 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fcd9139-f2d5-46f6-a4d6-b7cf12b196d4" name="Default Changelist" comment="MessagBus, implemented">
+      <change afterPath="$PROJECT_DIR$/_docs/img/ho.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_docs/installation/local/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_docs/installation/reade.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_docs/tech_description/deployment.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_docs/tech_description/https.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_docs/tech_description/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_docs/tech_description/secrets.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infrastructure/docker/dev/dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/docker/dev/dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/k8s/dev/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/k8s/dev/config.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infrastructure/k8s/dev/frontend.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/k8s/dev/frontend.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/k8s/dev/rabbit-mq.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/k8s/dev/rabbit-mq.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infrastructure/k8s/dev/secrets.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/k8s/dev/secrets.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/k8s/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/k8s/readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/build.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/build.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/deploy.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/deploy.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/frontend/routes.go" beforeDir="false" afterPath="$PROJECT_DIR$/services/frontend/routes.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/frontend/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/services/frontend/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/frontend/static/js/face-recognition.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/frontend/static/js/face-recognition.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,88 +48,102 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cmd/frontend.go">
+        <entry file="file://$PROJECT_DIR$/scripts/build.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="29" column="32" lean-forward="true" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
-              <folding>
-                <element signature="e#13#197#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="26">
+              <caret line="62" column="3" lean-forward="true" selection-start-line="62" selection-start-column="3" selection-end-line="62" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/cert-generator.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="298">
+              <caret line="22" column="17" lean-forward="true" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/deploy.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="26">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/run.sh">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_docs/installation/local/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="286">
+                <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_docs/tech_description/readme.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="78">
+                <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/infrastructure/k8s/dev/frontend.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/build.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="60" column="53" lean-forward="true" selection-start-line="60" selection-start-column="53" selection-end-line="60" selection-end-column="53" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/infrastructure/docker/dev/dockerfile">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1040">
-              <caret line="40" column="32" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/infrastructure/k8s/dev/config.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/infrastructure/k8s/dev/rabbit-mq.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1274">
-              <caret line="8" column="16" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/infrastructure/k8s/namespace.yaml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/infrastructure/k8s/network-utils.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-808" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/infrastructure/k8s/deployment-me.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-78" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/infrastructure/k8s/readme.md">
+        <entry file="file://$PROJECT_DIR$/_docs/tech_description/deployment.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="481">
-                <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
+              <first_editor relative-caret-position="130">
+                <caret line="5" column="3" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
               </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_docs/tech_description/https.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="156">
+                <caret line="6" selection-start-line="6" selection-end-line="6" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_docs/tech_description/secrets.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="675">
+                <caret line="31" column="4" lean-forward="true" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_docs/installation/reade.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor />
               <second_editor />
             </state>
           </provider>
@@ -134,13 +161,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>styles.cs</find>
-      <find>attem</find>
-      <find>starting</find>
-      <find>8080</find>
-      <find>getSocket</find>
-      <find>GetSocket</find>
-      <find>:8080</find>
       <find>GetSocke</find>
       <find>8081</find>
       <find>bus.</find>
@@ -164,6 +184,13 @@
       <find>Client</find>
       <find>ClientId</find>
       <find>rabbit-mq.password</find>
+      <find>base64</find>
+      <find>tem</find>
+      <find>templates/</find>
+      <find>network-utils.yaml</find>
+      <find>network-u</find>
+      <find>-it</find>
+      <find>getUser</find>
     </findStrings>
     <replaceStrings>
       <replace>coordinator</replace>
@@ -177,18 +204,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/common/bus/encoder/IMessageEncoder.go" />
-        <option value="$PROJECT_DIR$/common/bus/encoder/GobEncoder.go" />
-        <option value="$PROJECT_DIR$/services/frontend/routes.go" />
-        <option value="$PROJECT_DIR$/services/frontend/handlers.go" />
-        <option value="$PROJECT_DIR$/scripts/deploy.sh" />
-        <option value="$PROJECT_DIR$/infrastructure/k8s/DEV/frontend.yaml" />
-        <option value="$PROJECT_DIR$/infrastructure/azure/dev/trafficManager.tf" />
-        <option value="$PROJECT_DIR$/infrastructure/azure/dev/locals.tf" />
-        <option value="$PROJECT_DIR$/infrastructure/azure/dev/variables.tf" />
-        <option value="$PROJECT_DIR$/infrastructure/azure/dev/registry.tf" />
-        <option value="$PROJECT_DIR$/infrastructure/azure/dev/_output.tf" />
-        <option value="$PROJECT_DIR$/infrastructure/azure/Readme.md" />
         <option value="$PROJECT_DIR$/infrastructure/docker/dockerfile" />
         <option value="$PROJECT_DIR$/onho.go" />
         <option value="$PROJECT_DIR$/infrastructure/docker/prod/dockerfile" />
@@ -215,19 +230,31 @@
         <option value="$PROJECT_DIR$/common/manager/runner/service-runner.go" />
         <option value="$PROJECT_DIR$/common/utils/guardians.go" />
         <option value="$PROJECT_DIR$/common/manager/runner/rest-runner.go" />
-        <option value="$PROJECT_DIR$/infrastructure/k8s/dev/rabbit-mq.yaml" />
-        <option value="$PROJECT_DIR$/infrastructure/k8s/readme.md" />
         <option value="$PROJECT_DIR$/services/frontend/service.go" />
         <option value="$PROJECT_DIR$/services/frontend/options.go" />
         <option value="$PROJECT_DIR$/common/manager/depresolver/depresolver.go" />
         <option value="$PROJECT_DIR$/common/utils/flags.go" />
         <option value="$PROJECT_DIR$/cmd/frontend.go" />
-        <option value="$PROJECT_DIR$/services/frontend/server.go" />
-        <option value="$PROJECT_DIR$/scripts/build.sh" />
-        <option value="$PROJECT_DIR$/infrastructure/k8s/dev/secrets.yaml" />
         <option value="$PROJECT_DIR$/infrastructure/k8s/dev/config.yaml" />
+        <option value="$PROJECT_DIR$/scripts/build.sh" />
+        <option value="$PROJECT_DIR$/common/utils/strings.go" />
+        <option value="$PROJECT_DIR$/infrastructure/k8s/readme.md" />
+        <option value="$PROJECT_DIR$/common/qutils/qutils.go" />
+        <option value="$PROJECT_DIR$/infrastructure/k8s/dev/rabbit-mq.yaml" />
+        <option value="$PROJECT_DIR$/scripts/deploy.sh" />
+        <option value="$PROJECT_DIR$/services/frontend/routes.go" />
+        <option value="$PROJECT_DIR$/services/frontend/server.go" />
         <option value="$PROJECT_DIR$/infrastructure/docker/dev/dockerfile" />
         <option value="$PROJECT_DIR$/infrastructure/k8s/dev/frontend.yaml" />
+        <option value="$PROJECT_DIR$/infrastructure/k8s/dev/secrets.yaml" />
+        <option value="$PROJECT_DIR$/services/frontend/static/js/face-recognition.js" />
+        <option value="$PROJECT_DIR$/_docs/installation/local/README.md" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/_docs/tech_description/secrets.md" />
+        <option value="$PROJECT_DIR$/_docs/tech_description/https.md" />
+        <option value="$PROJECT_DIR$/_docs/installation/reade.md" />
+        <option value="$PROJECT_DIR$/_docs/tech_description/readme.md" />
+        <option value="$PROJECT_DIR$/_docs/tech_description/deployment.md" />
       </list>
     </option>
   </component>
@@ -255,49 +282,32 @@
             <path>
               <item name="onho.io" type="b2602c69:ProjectViewProjectNode" />
               <item name="onho.io" type="462c0819:PsiDirectoryNode" />
-              <item name="cmd" type="462c0819:PsiDirectoryNode" />
+              <item name="_docs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="onho.io" type="b2602c69:ProjectViewProjectNode" />
               <item name="onho.io" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="_docs" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="onho.io" type="b2602c69:ProjectViewProjectNode" />
               <item name="onho.io" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
+              <item name="_docs" type="462c0819:PsiDirectoryNode" />
+              <item name="installation" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="onho.io" type="b2602c69:ProjectViewProjectNode" />
               <item name="onho.io" type="462c0819:PsiDirectoryNode" />
-              <item name="infrastructure" type="462c0819:PsiDirectoryNode" />
+              <item name="_docs" type="462c0819:PsiDirectoryNode" />
+              <item name="installation" type="462c0819:PsiDirectoryNode" />
+              <item name="local" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="onho.io" type="b2602c69:ProjectViewProjectNode" />
               <item name="onho.io" type="462c0819:PsiDirectoryNode" />
-              <item name="infrastructure" type="462c0819:PsiDirectoryNode" />
-              <item name="docker" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="onho.io" type="b2602c69:ProjectViewProjectNode" />
-              <item name="onho.io" type="462c0819:PsiDirectoryNode" />
-              <item name="infrastructure" type="462c0819:PsiDirectoryNode" />
-              <item name="docker" type="462c0819:PsiDirectoryNode" />
-              <item name="dev" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="onho.io" type="b2602c69:ProjectViewProjectNode" />
-              <item name="onho.io" type="462c0819:PsiDirectoryNode" />
-              <item name="infrastructure" type="462c0819:PsiDirectoryNode" />
-              <item name="k8s" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="onho.io" type="b2602c69:ProjectViewProjectNode" />
-              <item name="onho.io" type="462c0819:PsiDirectoryNode" />
-              <item name="infrastructure" type="462c0819:PsiDirectoryNode" />
-              <item name="k8s" type="462c0819:PsiDirectoryNode" />
-              <item name="dev" type="462c0819:PsiDirectoryNode" />
+              <item name="_docs" type="462c0819:PsiDirectoryNode" />
+              <item name="tech_description" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="onho.io" type="b2602c69:ProjectViewProjectNode" />
@@ -320,7 +330,7 @@
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/_docs/img" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -340,11 +350,11 @@
       <recent name="$PROJECT_DIR$/infrastructure/k8s" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/_docs/img" />
+      <recent name="$PROJECT_DIR$/_docs/installation/local" />
       <recent name="$PROJECT_DIR$/common/context/keys" />
       <recent name="$PROJECT_DIR$/common/utils" />
       <recent name="$PROJECT_DIR$/scripts" />
-      <recent name="$PROJECT_DIR$/infrastructure/docker/local" />
-      <recent name="$PROJECT_DIR$/infrastructure/docker/dev" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -386,7 +396,7 @@
       <parameters value="frontend" />
       <envs>
         <env name="ONHO_ENVIRONMENT" value="LOCAL" />
-        <env name="ONHO_RABBIT_CONNECTION_STRING" value="amqp://guest:.secret-123@51.144.111.30:5672" />
+        <env name="ONHO_RABBIT_CONNECTION_STRING" value="amqp://guest:.Secret-123@104.214.233.221:5672" />
         <env name="ONHO_OAUTH_CLIENTID" value="4fc93087525410d7ae3b" />
         <env name="ONHO_OAUTH_COOKIE_KEY" value="asdifj9182u98u98efua" />
         <env name="ONHO_OAUTH_CLIENT_SECRET" value="42efdd9c5afe4f31db0c38fa9b5c1ad443f2aaa3" />
@@ -492,7 +502,7 @@
     <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.54740405" visible="true" weight="0.310032" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.54740405" visible="true" weight="0.310032" />
       <window_info id="Structure" order="1" sideWeight="0.38451612" side_tool="true" weight="0.27530363" />
       <window_info id="Favorites" order="2" sideWeight="0.45259595" side_tool="true" weight="0.2643819" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -505,7 +515,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49893278" weight="0.16812228" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49839914" visible="true" weight="0.360262" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49839914" visible="true" weight="0.360262" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50426894" side_tool="true" weight="0.27074236" />
       <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -570,6 +580,12 @@
           <line>67</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/common/qutils/qutils.go</url>
+          <line>13</line>
+          <properties />
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -628,76 +644,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/infrastructure/azure/dev/locals.tf">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/azure/dev/regions.tf">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/azure/dev/registry.tf">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/azure/dev/terraform.tfvars">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/azure/dev/trafficManager.tf">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/azure/dev/vault.tf">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/azure/regions/output.tf">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/azure/regions/variables.tf">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/azure/regions/networking.tf">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/azure/regions/locals.tf">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/azure/regions/gw.tf">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/azure/regions/aks.tf">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="-702">
-            <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/k8s/dev/namespace.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="5" column="18" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmd/coordinatorBusMock.go">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmd/coordinator.go">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmd/constants.go">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmd/sensorMock.go">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmd/webadmin.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-25" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/github.com/gorilla/sessions/store.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1014">
@@ -763,40 +709,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/services/frontend/server.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="32" column="28" lean-forward="true" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/manager/depresolver/depresolver.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-204">
-          <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/run.sh">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/deploy.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2028">
-          <caret line="12" column="27" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/cert-generator.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="14" column="62" selection-start-line="14" selection-start-column="56" selection-end-line="14" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/k8s/demo1.yaml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/onho.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
@@ -804,10 +716,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/k8s/dev/secrets.yaml">
+    <entry file="file:///usr/lib/golang/src/strings/strings.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
+        <state relative-caret-position="177">
+          <caret line="834" column="5" selection-start-line="834" selection-start-column="5" selection-end-line="834" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/utils/parser.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1326" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/github.com/streadway/amqp/connection.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="133" column="50" selection-start-line="133" selection-end-line="134" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/golang/src/runtime/panic.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="689" selection-start-line="689" selection-end-line="689" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/utils/strings.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/k8s/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="315">
+            <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/msgbus/msgbus.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/qutils/qutils.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="13" column="31" lean-forward="true" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -817,6 +779,81 @@
           <caret line="41" column="20" lean-forward="true" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/k8s/dev/rabbit-mq.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="45" column="40" lean-forward="true" selection-start-line="45" selection-start-column="40" selection-end-line="45" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/manager/depresolver/depresolver.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="70" column="76" selection-start-line="70" selection-start-column="60" selection-end-line="70" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmd/frontend.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+          <folding>
+            <element signature="e#13#197#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/k8s/dev/config.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="6" column="2" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/k8s/dev/namespace.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="5" column="18" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/frontend/routes.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="16" column="15" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/frontend/server.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="17" column="6" lean-forward="true" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/k8s/dev/frontend.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="63" column="8" lean-forward="true" selection-start-line="63" selection-end-line="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/k8s/api_course.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="2933">
+            <caret line="363" column="45" selection-start-line="363" selection-start-column="31" selection-end-line="363" selection-end-column="45" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/k8s/demo1.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/k8s/deployment-me.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/infrastructure/k8s/h.yaml">
       <provider selected="true" editor-type-id="text-editor">
@@ -831,68 +868,126 @@
     <entry file="file://$PROJECT_DIR$/infrastructure/k8s/namespace.yaml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/k8s/readme.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="481">
-            <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/infrastructure/k8s/network-utils.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-808" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/k8s/deployment-me.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-78" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/k8s/dev/rabbit-mq.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1274">
-          <caret line="8" column="16" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+        <state relative-caret-position="104">
+          <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/k8s/dev/config.yaml">
+    <entry file="file://$PROJECT_DIR$/infrastructure/k8s/dev/secrets.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
+        <state relative-caret-position="156">
+          <caret line="6" column="5" lean-forward="true" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/infrastructure/docker/dev/dockerfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1040">
-          <caret line="40" column="32" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
+        <state relative-caret-position="220">
+          <caret line="57" column="41" lean-forward="true" selection-start-line="57" selection-start-column="41" selection-end-line="57" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmd/frontend.go">
+    <entry file="file://$PROJECT_DIR$/services/frontend/static/js/face-recognition.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="29" column="32" lean-forward="true" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
-          <folding>
-            <element signature="e#13#197#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="213">
+          <caret line="23" column="30" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_docs/img/ho.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="260">
+            <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/run.sh">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/deploy.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/cert-generator.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="22" column="17" lean-forward="true" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_docs/installation/local/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="286">
+            <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_docs/tech_description/secrets.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="675">
+            <caret line="31" column="4" lean-forward="true" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_docs/tech_description/https.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="156">
+            <caret line="6" selection-start-line="6" selection-end-line="6" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/build.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="60" column="53" lean-forward="true" selection-start-line="60" selection-start-column="53" selection-end-line="60" selection-end-column="53" />
+        <state relative-caret-position="26">
+          <caret line="62" column="3" lean-forward="true" selection-start-line="62" selection-start-column="3" selection-end-line="62" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/infrastructure/k8s/dev/frontend.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
+    <entry file="file://$PROJECT_DIR$/_docs/installation/reade.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_docs/tech_description/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="78">
+            <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_docs/tech_description/deployment.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="130">
+            <caret line="5" column="3" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

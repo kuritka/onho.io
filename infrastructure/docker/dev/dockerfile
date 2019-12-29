@@ -56,15 +56,15 @@ WORKDIR /app
 
 #multistage containers - copying from build stage /build to /app
 COPY --from=build-stage /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
-COPY --from=build-stage /build/services/frontend/static /app/static
-COPY --from=build-stage /build/services/frontend/templates /app/templates
+COPY --from=build-stage /build/services/frontend/static /app/services/frontend/static
+COPY --from=build-stage /build/services/frontend/templates /app/services/frontend/templates
 COPY --from=build-stage /build/main /app/main
 #scratch is missing bash, so cannot call useradd command. That's we created user at build-stage, now we copy him to scratch
 COPY --from=build-stage /etc/passwd /etc/passwd
 
 USER onhouser
 
-ENTRYPOINT ["./main","frontend"]
+ENTRYPOINT ["./main"]
 #25MB
 
 #delete all <none> images

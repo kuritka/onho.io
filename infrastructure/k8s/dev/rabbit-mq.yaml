@@ -36,9 +36,9 @@ spec:
         env:
           -  name: RABBITMQ_DEFAULT_USER
              valueFrom:
-               configMapKeyRef:
-                 name: configmap-onho-dev
-                 key: rabbit-mq.username
+               secretKeyRef:
+                 name: onho-secrets
+                 key: rabbit-mq-username
           -  name: RABBITMQ_DEFAULT_PASS
              valueFrom:
                secretKeyRef:

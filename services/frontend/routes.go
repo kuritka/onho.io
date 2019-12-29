@@ -10,7 +10,7 @@ import (
 
 const (
 	sessionStoreKey = "fugu"
-	staticDir = "services/frontend/"
+	staticDir = "./services/frontend/"
 )
 
 func init() {
