@@ -7,9 +7,12 @@ Shortening stress on employee side and saving costs on employer side.
 
 
 ## installation
-- [Local](_docs/installation/local/README.md)
-- [Dev](_docs/installation/dev/README.md)
+- [local](_docs/installation/local/README.md)
+- [dev](_docs/installation/dev/README.md)
 - [PROD] 
 
 ## technical details
-- [HTTPS](_docs/tech_description/readme.md)
+- [HTTPS and certificates](_docs/tech_description/https.md)
+- [secrets.yaml](_docs/tech_description/secrets.md)
+- [infrastructure and terraform]
+- [deployment](_docs/tech_description/deployment.md)

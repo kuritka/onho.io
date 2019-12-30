@@ -30,3 +30,14 @@ to encrypt run
 ```bash
 ansible-vault encrypt secret.yaml
 ``` 
+
+## generate certificate
+
+### DEV 
+generate self sign certificate
+```bash
+./scripts/cert-generator.sh self-sign ./infrastructure/certificates/dev/dev.onho.cnf ../cert-out/dev
+```
+
+
+

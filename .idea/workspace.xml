@@ -2,25 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fcd9139-f2d5-46f6-a4d6-b7cf12b196d4" name="Default Changelist" comment="MessagBus, implemented">
-      <change afterPath="$PROJECT_DIR$/_docs/img/ho.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_docs/installation/local/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_docs/installation/reade.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_docs/tech_description/deployment.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_docs/tech_description/https.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_docs/tech_description/readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_docs/tech_description/secrets.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/infrastructure/certificates/dev/dev.onho.cnf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/infrastructure/certificates/prod/.gitkeep" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/docker/dev/dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/docker/dev/dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/k8s/dev/frontend.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/k8s/dev/frontend.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/k8s/dev/rabbit-mq.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/k8s/dev/rabbit-mq.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/k8s/dev/secrets.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/k8s/dev/secrets.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/k8s/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/k8s/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/build.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/build.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/deploy.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/deploy.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/frontend/routes.go" beforeDir="false" afterPath="$PROJECT_DIR$/services/frontend/routes.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/frontend/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/services/frontend/server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/frontend/static/js/face-recognition.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/frontend/static/js/face-recognition.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_docs/installation/reade.md" beforeDir="false" afterPath="$PROJECT_DIR$/_docs/installation/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_docs/tech_description/deployment.md" beforeDir="false" afterPath="$PROJECT_DIR$/_docs/tech_description/deployment.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_docs/tech_description/secrets.md" beforeDir="false" afterPath="$PROJECT_DIR$/_docs/tech_description/secrets.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/cert-generator.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/cert-generator.sh" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,80 +48,18 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/cert-generator.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="22" column="17" lean-forward="true" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/deploy.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="26">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/run.sh">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_docs/installation/local/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="286">
-                <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_docs/tech_description/readme.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="78">
-                <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
-              </first_editor>
-              <second_editor />
+            <state relative-caret-position="286">
+              <caret line="104" column="6" selection-start-line="104" selection-start-column="6" selection-end-line="104" selection-end-column="6" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/_docs/tech_description/deployment.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="130">
-                <caret line="5" column="3" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_docs/tech_description/https.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="156">
-                <caret line="6" selection-start-line="6" selection-end-line="6" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_docs/tech_description/secrets.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="675">
-                <caret line="31" column="4" lean-forward="true" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+              <first_editor relative-caret-position="480">
+                <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
               </first_editor>
               <second_editor />
             </state>
@@ -140,11 +67,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_docs/installation/reade.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor />
-              <second_editor />
+        <entry file="file://$PROJECT_DIR$/infrastructure/certificates/dev/dev.onho.cnf">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="116">
+              <caret line="6" column="19" lean-forward="true" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -204,11 +130,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/infrastructure/docker/dockerfile" />
-        <option value="$PROJECT_DIR$/onho.go" />
         <option value="$PROJECT_DIR$/infrastructure/docker/prod/dockerfile" />
         <option value="$PROJECT_DIR$/scripts/build.sh.go" />
-        <option value="$PROJECT_DIR$/scripts/cert-generator.sh" />
         <option value="$PROJECT_DIR$/infrastructure/docker/local/dockerfile" />
         <option value="$PROJECT_DIR$/infrastructure/azure/regions/rabbit.tf" />
         <option value="$PROJECT_DIR$/.gitignore" />
@@ -249,12 +172,15 @@
         <option value="$PROJECT_DIR$/infrastructure/k8s/dev/secrets.yaml" />
         <option value="$PROJECT_DIR$/services/frontend/static/js/face-recognition.js" />
         <option value="$PROJECT_DIR$/_docs/installation/local/README.md" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/_docs/tech_description/secrets.md" />
         <option value="$PROJECT_DIR$/_docs/tech_description/https.md" />
         <option value="$PROJECT_DIR$/_docs/installation/reade.md" />
         <option value="$PROJECT_DIR$/_docs/tech_description/readme.md" />
+        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/_docs/tech_description/deployment.md" />
+        <option value="$PROJECT_DIR$/infrastructure/certificates/dev/dev.onho.cnf.go" />
+        <option value="$PROJECT_DIR$/infrastructure/certificates/dev/dev.onho.cnf" />
+        <option value="$PROJECT_DIR$/scripts/cert-generator.sh" />
+        <option value="$PROJECT_DIR$/_docs/tech_description/secrets.md" />
       </list>
     </option>
   </component>
@@ -308,6 +234,31 @@
               <item name="onho.io" type="462c0819:PsiDirectoryNode" />
               <item name="_docs" type="462c0819:PsiDirectoryNode" />
               <item name="tech_description" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="onho.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="onho.io" type="462c0819:PsiDirectoryNode" />
+              <item name="infrastructure" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="onho.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="onho.io" type="462c0819:PsiDirectoryNode" />
+              <item name="infrastructure" type="462c0819:PsiDirectoryNode" />
+              <item name="certificates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="onho.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="onho.io" type="462c0819:PsiDirectoryNode" />
+              <item name="infrastructure" type="462c0819:PsiDirectoryNode" />
+              <item name="certificates" type="462c0819:PsiDirectoryNode" />
+              <item name="dev" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="onho.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="onho.io" type="462c0819:PsiDirectoryNode" />
+              <item name="infrastructure" type="462c0819:PsiDirectoryNode" />
+              <item name="certificates" type="462c0819:PsiDirectoryNode" />
+              <item name="prod" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="onho.io" type="b2602c69:ProjectViewProjectNode" />
@@ -515,7 +466,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49893278" weight="0.16812228" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49839914" visible="true" weight="0.360262" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49839914" visible="true" weight="0.36135373" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50426894" side_tool="true" weight="0.27074236" />
       <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -644,20 +595,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/github.com/gorilla/sessions/store.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1014">
-          <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/golang/src/runtime/proc.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="189" lean-forward="true" selection-start-line="189" selection-end-line="189" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/github.com/spf13/cobra/command.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="169">
@@ -899,16 +836,6 @@
     <entry file="file://$PROJECT_DIR$/_docs/img/ho.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="260">
-            <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/run.sh">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -916,33 +843,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="26">
           <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/cert-generator.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="22" column="17" lean-forward="true" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_docs/installation/local/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="286">
-            <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_docs/tech_description/secrets.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="675">
-            <caret line="31" column="4" lean-forward="true" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>
@@ -963,10 +863,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_docs/installation/reade.md">
+    <entry file="file://$PROJECT_DIR$/_docs/installation/local/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor />
+          <first_editor relative-caret-position="-26">
+            <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+          </first_editor>
           <second_editor />
         </state>
       </provider>
@@ -974,8 +876,8 @@
     <entry file="file://$PROJECT_DIR$/_docs/tech_description/readme.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="78">
-            <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
+          <first_editor>
+            <caret selection-end-line="3" selection-end-column="31" />
           </first_editor>
           <second_editor />
         </state>
@@ -984,8 +886,53 @@
     <entry file="file://$PROJECT_DIR$/_docs/tech_description/deployment.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="130">
-            <caret line="5" column="3" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+          <first_editor relative-caret-position="52">
+            <caret line="2" column="39" selection-start-line="2" selection-start-column="39" selection-end-line="2" selection-end-column="39" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/certificates/prod/.gitkeep">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="260">
+            <caret line="10" column="26" lean-forward="true" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_docs/installation/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infrastructure/certificates/dev/dev.onho.cnf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="6" column="19" lean-forward="true" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/cert-generator.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="104" column="6" selection-start-line="104" selection-start-column="6" selection-end-line="104" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_docs/tech_description/secrets.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="480">
+            <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
           </first_editor>
           <second_editor />
         </state>

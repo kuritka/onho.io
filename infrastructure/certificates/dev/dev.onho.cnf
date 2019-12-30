@@ -1,0 +1,43 @@
+v_domain=dev.onho.io
+
+[req]
+distinguished_name=req_distinguished_name
+req_extensions = v3_req
+prompt=no
+default_bits = 2048
+
+
+[req_distinguished_name]
+organizationName       = "onho.io"                      # O=
+organizationalUnitName = "onho.io"                      # OU=
+commonName             = ${v_domain}                    # CN=
+
+[v3_req]
+basicConstraints = CA:FALSE
+keyUsage = digitalSignature, keyEncipherment
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = ${v_domain}
+DNS.2 = monitoring.${v_domain}
+DNS.3 = api.${v_domain}
+DNS.4 = we.${v_domain}
+DNS.5 = we.monitoring.${v_domain}
+DNS.6 = we.api.${v_domain}
+DNS.7 = ne.${v_domain}
+DNS.8 = ne.monitoring.${v_domain}
+DNS.9 = ne.api.${v_domain}
+DNS.10 = localhost
+DNS.11 = localhost.localdomain
+IP.1 = 127.0.0.1
+IP.2 = ::1
+IP.3 = 13.94.131.139
+
+
+# Add these if you need them. But usually you don't want them or
+#   need them in production. You may need them for development.
+# DNS.5       = localhost
+# DNS.6       = localhost.localdomain
+# IP.1        = 127.0.0.1
+# IP.2        = ::1
+
