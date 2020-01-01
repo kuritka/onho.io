@@ -20,7 +20,7 @@ vendor/
 *.sum
 
 # remove idea
-**/.idea/
+.idea/
 **/workspace.xml
 
 
