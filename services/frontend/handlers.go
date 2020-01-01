@@ -122,6 +122,12 @@ func (s *Server) handleDestroySession(sessionKey string) http.HandlerFunc {
 }
 
 
+func (s *Server) handleHealthProbe() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+	}
+}
+
 var inactiveDuration = time.Second * 20
 var pingDuration = time.Second * 1
 var closeConnectionDuration = time.Hour * 8

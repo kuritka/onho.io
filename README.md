@@ -14,5 +14,5 @@ Shortening stress on employee side and saving costs on employer side.
 ## technical details
 - [HTTPS and certificates](_docs/tech_description/https.md)
 - [secrets.yaml](_docs/tech_description/secrets.md)
-- [infrastructure and terraform]
+- [infrastructure and terraform](infrastructure/azure/Readme.md)
 - [deployment](_docs/tech_description/deployment.md)

@@ -9,6 +9,7 @@ usage(){
             csrgen  create new certificate requests from configurations
             pfx  create new pfx certificates from .crt in PEM or DR3 format. pfx is created in folder where certificate exists
             self-sign create new self-sign certificate from configuration
+            keystore  creates new store for certificates. not implemented yet
 
         Command arguments:
             csrgen
@@ -20,6 +21,9 @@ usage(){
             self-sign
                 <INDIR_PATH>    required	certificate configuration path
                 <OUTDIR_PATH>   required    certificate OUTDIR path, create if not exists
+                <keystore>      optional    not implemented yet
+             keystore
+                <NAME>          required    name of keystore
 EOF
 }
 
