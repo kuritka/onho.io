@@ -1,0 +1,38 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: frontend-gateway
+  namespace: onho-dev
+spec:
+  selector:
+    istio: ingressgateway # use Istio default gateway implementation
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - "onho.cz"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: frontend
+  namespace: onho-dev
+spec:
+  hosts:
+    - "onho.cz"
+  gateways:
+    - frontend-gateway
+  http:
+    - match:
+        - uri:
+            prefix: /
+        - uri:
+            prefix: /health
+      route:
+        - destination:
+            port:
+              number: 8081
+            host: frontend

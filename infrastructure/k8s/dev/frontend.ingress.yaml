@@ -5,12 +5,21 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: istio
   name: frontend-ingress
+  namespace: onho-dev
 spec:
   rules:
     - host: onho.cz
       http:
         paths:
+          - path: /test
+            backend:
+              serviceName: frontend
+              servicePort: 8081
           - path: /
             backend:
               serviceName: frontend
-              servicePort: 5000
+              servicePort: 8081
+          - path: /health
+            backend:
+              serviceName: frontend
+              servicePort: 8081

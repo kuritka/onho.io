@@ -15,7 +15,18 @@ kubectl get event -n onho-dev --field-selector involvedObject.name=frontend-57db
 
 #istio
 
-Istio ingress gateway
+label istio namespace from commandline. After this value is set you can use istio within namespace
+```
+kubectl label namespace default istio-injection=enabled
+```
+
+## ingress 
+https://istio.io/docs/tasks/traffic-management/ingress/ingress-certmgr/
+https://istio.io/docs/reference/config/networking/gateway/
+
+
+Istio ingress gateway (https://istio.io/docs/tasks/traffic-management/ingress/ingress-control/). Put resources into correct namespace! 
 ```bash
 kubectl -n istio-system get service istio-ingressgateway
 ```
+
