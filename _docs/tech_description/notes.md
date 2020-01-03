@@ -25,7 +25,7 @@ https://istio.io/docs/tasks/traffic-management/ingress/ingress-certmgr/
 https://istio.io/docs/reference/config/networking/gateway/
 
 
-Istio ingress gateway (https://istio.io/docs/tasks/traffic-management/ingress/ingress-control/). Put resources into correct namespace! 
+Istio ingress gateway (https://istio.io/docs/tasks/traffic-management/ingress/ingress-control/). Don't forget to put resources into correct namespace! 
 ```bash
 kubectl -n istio-system get service istio-ingressgateway
 ```
