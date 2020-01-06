@@ -8,8 +8,8 @@ default_bits = 2048
 
 
 [req_distinguished_name]
-organizationName       = "onho.io"                      # O=
-organizationalUnitName = "onho.io"                      # OU=
+organizationName       = "onho.cz"                      # O=
+organizationalUnitName = "onho.cz"                      # OU=
 commonName             = ${v_domain}                    # CN=
 
 [v3_req]
@@ -28,7 +28,8 @@ DNS.7 = ne.${v_domain}
 DNS.8 = ne.monitoring.${v_domain}
 DNS.9 = ne.api.${v_domain}
 DNS.10 = localhost
-DNS.11 = localhost.localdomain
+DNS.11 = dev.${v_domain}
+DNS.12 = api.dev.${v_domain}
 IP.1 = 127.0.0.1
 IP.2 = ::1
 IP.3 = 13.94.131.139

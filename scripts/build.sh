@@ -37,8 +37,9 @@ dir_exists(){
 
 build(){
     local crt="$1"
-
 }
+
+
 
 
 ci(){
@@ -66,6 +67,7 @@ EOF
     #docker tag onho.io/frontend:${tag} acronhosbx.azurecr.io/frontend:${tag}
 
     docker push acronhosbx.azurecr.io/frontend:${tag}
+
 }
 
 INDIR=${2%/}

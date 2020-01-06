@@ -15,13 +15,16 @@ usage(){
             csrgen
                 <INDIR_PATH>    required	certificate configuration path
                 <OUTDIR_PATH>   required    certificate OUTDIR path, create if not exists
+
              pfx
                 <CRT_FILEPATH>  required    .crt filepath.
                 <PEM_FILEPATH>  required    .pem filepath.
+
             self-sign
                 <INDIR_PATH>    required	certificate configuration path
                 <OUTDIR_PATH>   required    certificate OUTDIR path, create if not exists
                 <keystore>      optional    not implemented yet
+
              keystore
                 <NAME>          required    name of keystore
 EOF
@@ -93,12 +96,13 @@ create_self_sign(){
     local outdir="$2"
     baseName="$(basename "$cnf")"
     name="${baseName%.*}"
-    pem="$outdir/$name.pem"
+    pem="$outdir/$name.key"
     csr="$outdir/$name.csr"
     crt="$outdir/$name.crt"
     #signing key on the side of CA. for simplicity I use the same key for csr as for signing
     signkey="${pem}"
     openssl genrsa -out "${pem}" 2048
+    #openssl req -sha256 -nodes -newkey rsa:2048 -keyout "${pem}"
     openssl req -new -key "${pem}" -out "${csr}" -extensions v3_req -config "${cnf}" -verbose
     openssl x509 -in "${csr}" -out "${crt}" -req -signkey "${signkey}" -days 365
 
