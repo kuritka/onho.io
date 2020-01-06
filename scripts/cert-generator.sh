@@ -13,7 +13,7 @@ usage(){
 
         Command arguments:
             csrgen
-                <INDIR_PATH>    required	certificate configuration path
+                <INDIR_PATH>    required	  certificate configuration path
                 <OUTDIR_PATH>   required    certificate OUTDIR path, create if not exists
 
              pfx
@@ -21,7 +21,7 @@ usage(){
                 <PEM_FILEPATH>  required    .pem filepath.
 
             self-sign
-                <INDIR_PATH>    required	certificate configuration path
+                <INDIR_PATH>    required	  certificate configuration path
                 <OUTDIR_PATH>   required    certificate OUTDIR path, create if not exists
                 <keystore>      optional    not implemented yet
 

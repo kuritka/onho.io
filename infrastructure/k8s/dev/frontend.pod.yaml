@@ -17,7 +17,7 @@ spec:
       restartPolicy: Always
       containers:
       - name: frontend
-        image: acronhosbx.azurecr.io/frontend:0.89
+        image: acronhosbx.azurecr.io/frontend:0.891
         args: [frontend]
         ports:
         - containerPort: 8081

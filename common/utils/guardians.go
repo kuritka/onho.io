@@ -3,6 +3,7 @@ package utils
 import (
 	"errors"
 	"github.com/kuritka/onho.io/common/log"
+	"os"
 )
 var logger = log.Log
 
@@ -48,6 +49,14 @@ func DisposeOnError(err error, msg string, dispose func()){
 func FailOnEmptyString(str string, msg string ){
 	if str == "" {
 		fail(errors.New(msg))
+	}
+}
+
+func FailIfFileNotExist(path string, msg string) {
+	if _, err := os.Stat(path); err != nil {
+		if os.IsNotExist(err) {
+			fail(errors.New(msg))
+		}
 	}
 }
 

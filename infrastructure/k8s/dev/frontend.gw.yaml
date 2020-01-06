@@ -24,8 +24,8 @@ spec:
         protocol: HTTP
       hosts:
         - "onho.cz"
-      tls:
-        httpsRedirect: true
+#      tls:
+#        httpsRedirect: true
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
