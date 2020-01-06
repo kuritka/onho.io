@@ -4,6 +4,8 @@
 *.dll
 *.so
 *.dylib
+*.key
+*.crt
 
 log.txt
 
