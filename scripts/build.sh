@@ -25,7 +25,7 @@ EOF
 
 panic() {
   (>&2 echo "$@")
-  exit -1
+  exit 1
 }
 
 
@@ -34,11 +34,6 @@ dir_exists(){
     	if [[ ! -d "$path" ]]; then
   		panic "$path doesn't exists"
      	fi
-}
-
-
-build(){
-    local crt="$1"
 }
 
 
@@ -52,10 +47,10 @@ cat <<EOF
 EOF
    dir_exists ${DOCKER_DIR}
 
-    docker build ${DOCKER_DIR} -t acronhosbx.azurecr.io/frontend:${tag}
+    docker build ${DOCKER_DIR} -t acronhosbx.azurecr.io/onho:${tag}
 
     #remove all layers so docker will be build again
-    docker rmi $(docker images | grep "^<none>" | awk '{ print $3 }')
+    docker rmi "$(docker images | grep "^<none>" | awk '{ print $3 }')"
 }
 
 cd(){
@@ -66,9 +61,9 @@ cat <<EOF
 EOF
 
     # to be able to push into remote repo we need properly tag. I'm doing this step in ci part
-    #docker tag onho.io/frontend:${tag} acronhosbx.azurecr.io/frontend:${tag}
+    #docker tag onho.io/onho:${tag} acronhosbx.azurecr.io/onho:${tag}
 
-    docker push acronhosbx.azurecr.io/frontend:${tag}
+    docker push acronhosbx.azurecr.io/onho:${tag}
 
     #TODO: replace to polly manifest
 
@@ -106,7 +101,6 @@ EOF
 
     #TODO: replace to polly manifest
 
-    #frontend
     kubectl delete -f ${KUBE_DIR}namespace.yaml
 }
 
@@ -114,7 +108,6 @@ EOF
 DOCKER_DIR="${2%/}/infrastructure/docker/dev/"
 KUBE_DIR="${2%/}/infrastructure/k8s/dev/"
 
-VERSION=0.1
 tag=${3} #"$(date '+%Y%m%d%H%M%S')"
 
 case "$1" in
