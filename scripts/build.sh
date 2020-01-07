@@ -72,17 +72,24 @@ EOF
 
     #TODO: replace to polly manifest
 
-    #frontend
-    local secret="${KUBE_DIR}secrets.yaml"
     kubectl apply -f ${KUBE_DIR}namespace.yaml
     kubectl apply -f ${KUBE_DIR}config.yaml
+    local secret="${KUBE_DIR}secrets.yaml"
     isEncrypted="$(sed -n '1{/^$ANSIBLE_VAULT;1.1;AES256/p};q' ${secret})"
     if [[ ! "$isEncrypted" ]]; then
       kubectl apply -f ${KUBE_DIR}secrets.yaml
     fi
+
+
+    #frontend
     kubectl apply -f ${KUBE_DIR}frontend.pod.yaml
     kubectl apply -f ${KUBE_DIR}frontend.service.yaml
     kubectl apply -f ${KUBE_DIR}frontend.gw.yaml
+
+    #backend
+    kubectl apply -f ${KUBE_DIR}backend.pod.yaml
+    kubectl apply -f ${KUBE_DIR}backend.service.yaml
+    kubectl apply -f ${KUBE_DIR}backend.gw.yaml
 
 
     #rabbit-mq

@@ -6,3 +6,4 @@ metadata:
 data:
   onho.environment: "dev"
   frontend.client.port: "8081"
+  backend.client.port: "8086"
