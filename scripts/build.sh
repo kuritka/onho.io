@@ -83,9 +83,7 @@ EOF
 
 
     #frontend
-    kubectl apply -f ${KUBE_DIR}frontend.pod.yaml
-    kubectl apply -f ${KUBE_DIR}frontend.service.yaml
-    kubectl apply -f ${KUBE_DIR}frontend.gw.yaml
+    kubectl apply -f ${KUBE_DIR}frontend.yaml
 
     #backend
     kubectl apply -f ${KUBE_DIR}backend.yaml
@@ -103,7 +101,7 @@ cat <<EOF
 ***************************************************************
 EOF
 
-    kubectl delete -f ${KUBE_DIR}frontend.pod.yaml
+    kubectl delete -f ${KUBE_DIR}frontend.yaml
     kubectl delete -f ${KUBE_DIR}backend.yaml
     #waiting until pods are initialised
     sleep 15s

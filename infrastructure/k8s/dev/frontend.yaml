@@ -1,0 +1,124 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: frontend
+  namespace: onho-dev
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  namespace: onho-dev
+  labels:
+    app: frontend
+spec:
+  ports:
+    - name: http
+      port: 8001
+      targetPort: 8081
+  selector:
+    app: frontend
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: onho-dev
+  name: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: frontend
+        version: v1
+    spec:
+      serviceAccountName: frontend
+      restartPolicy: Always
+      containers:
+        - name: frontend
+          image: acronhosbx.azurecr.io/onho:0.21
+          args: [frontend]
+          ports:
+            - containerPort: 8081
+          env:
+            -  name: ONHO_RABBIT_CONNECTION_STRING
+               valueFrom:
+                 secretKeyRef:
+                   name: onho-secrets
+                   key: rabbit-mq-connection-string
+            -  name: ONHO_OAUTH_CLIENTID
+               valueFrom:
+                 secretKeyRef:
+                   name: onho-secrets
+                   key: github-oauth-client-id
+            -  name: ONHO_OAUTH_COOKIE_KEY
+               valueFrom:
+                 secretKeyRef:
+                   name: onho-secrets
+                   key: cookie-key
+            -  name: ONHO_OAUTH_CLIENT_SECRET
+               valueFrom:
+                 secretKeyRef:
+                   name: onho-secrets
+                   key: github-oauth-client-secret
+            -  name: ONHO_CLIENT_PORT
+               valueFrom:
+                 configMapKeyRef:
+                   name: configmap-onho-dev
+                   key: frontend.client.port
+            -  name: ONHO_ENVIRONMENT
+               valueFrom:
+                 configMapKeyRef:
+                   name: configmap-onho-dev
+                   key: onho.environment
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: frontend-gateway
+  namespace: onho-dev
+spec:
+  selector:
+    istio: ingressgateway # use istio default ingress gateway
+  servers:
+  - port:
+      number: 443
+      name: https
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      serverCertificate: /etc/istio/ingressgateway-certs/tls.crt
+      privateKey: /etc/istio/ingressgateway-certs/tls.key
+    hosts:
+      - "onho.cz"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: frontend
+  namespace: onho-dev
+spec:
+  hosts:
+      - "onho.cz"
+  gateways:
+      - frontend-gateway
+  http:
+    - match:
+      - uri:
+          prefix: /health
+      - uri:
+          prefix: /
+      - uri:
+          prefix: /status
+      - uri:
+          prefix: /delay
+      route:
+      - destination:
+          port:
+            number: 8001
+          host: frontend
+---
