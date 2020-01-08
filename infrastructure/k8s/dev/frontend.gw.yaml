@@ -24,8 +24,8 @@ spec:
         protocol: HTTP
       hosts:
         - "onho.cz"
-#      tls:
-#        httpsRedirect: true
+      tls:
+        httpsRedirect: true
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -49,90 +49,3 @@ spec:
               number: 8081
             host: frontend
       maxAge: "86400s"
-#---
-#apiVersion: networking.istio.io/v1alpha3
-#kind: DestinationRule
-#metadata:
-#  name: frontend
-#  namespace: onho-dev
-#spec:
-#  host: frontend
-#  trafficPolicy:
-#    connectionPool:
-#      tcp:
-#        maxConnections: 100
-#        connectTimeout: 15s
-#        tcpKeepalive:
-#          time: 7200s
-#          interval: 75s
-#  spec:
-#    exportTo:
-#      - '*'
-#    host: frontend
-#    trafficPolicy:
-#      tls:
-#        mode: DISABLE
-
-#apiVersion: networking.istio.io/v1alpha3
-#kind: Gateway
-#metadata:
-#  name: httpbin-gateway
-#spec:
-#  selector:
-#    istio: ingressgateway # use istio default ingress gateway
-#  servers:
-#    - port:
-#        number: 443
-#        name: https
-#        protocol: HTTPS
-#      tls:
-#        mode: SIMPLE
-#        serverCertificate: /etc/istio/ingressgateway-certs/tls.crt
-#        privateKey: /etc/istio/ingressgateway-certs/tls.key
-#      hosts:
-#        - "onho.cz"
-#---
-#apiVersion: networking.istio.io/v1alpha3
-#kind: VirtualService
-#metadata:
-#  name: httpbin
-#spec:
-#  hosts:
-#    - "onho.cz"
-#  gateways:
-#    - httpbin-gateway
-#  http:
-#    - match:
-#        - uri:
-#            prefix: /status
-#        - uri:
-#            prefix: /delay
-#      route:
-#        - destination:
-#            port:
-#              number: 8000
-#            host: httpbin
-#      timeout: 60s
-#      max_grpc_timeout: 60s
-#---
-#apiVersion: networking.istio.io/v1alpha3
-#kind: DestinationRule
-#metadata:
-#  name: httpbin
-#spec:
-#  host: httpbin
-#  trafficPolicy:
-#    connectionPool:
-#      tcp:
-#        maxConnections: 100
-#        connectTimeout: 15s
-#        tcpKeepalive:
-#          time: 7200s
-#          interval: 75s
-#  spec:
-#    exportTo:
-#      - '*'
-#    host: productpage
-#    trafficPolicy:
-#      tls:
-#        mode: DISABLE

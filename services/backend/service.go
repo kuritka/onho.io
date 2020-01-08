@@ -28,8 +28,8 @@ func NewService(dependencies depresolver.Dependencies)  *Frontend {
 
 
 func (f *Frontend) Run() error {
-	utils.FailIfFileNotExist("./onho.crt","missing ./onho.crt")
-	utils.FailIfFileNotExist("./onho.crt","missing ./onho.key")
+	//utils.FailIfFileNotExist("./onho.crt","missing ./onho.crt")
+	//utils.FailIfFileNotExist("./onho.crt","missing ./onho.key")
 
 	//TODO: ADD websockets server and charts etc..
 

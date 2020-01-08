@@ -88,9 +88,7 @@ EOF
     kubectl apply -f ${KUBE_DIR}frontend.gw.yaml
 
     #backend
-    kubectl apply -f ${KUBE_DIR}backend.pod.yaml
-    kubectl apply -f ${KUBE_DIR}backend.service.yaml
-    kubectl apply -f ${KUBE_DIR}backend.gw.yaml
+    kubectl apply -f ${KUBE_DIR}backend.yaml
 
 
     #rabbit-mq
@@ -106,7 +104,7 @@ cat <<EOF
 EOF
 
     kubectl delete -f ${KUBE_DIR}frontend.pod.yaml
-    kubectl delete -f ${KUBE_DIR}backend.pod.yaml
+    kubectl delete -f ${KUBE_DIR}backend.yaml
     #waiting until pods are initialised
     sleep 15s
 }

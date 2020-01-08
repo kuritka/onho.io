@@ -1,0 +1,97 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: backend
+  namespace: onho-dev
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  namespace: onho-dev
+  labels:
+    app: backend
+spec:
+  ports:
+    - name: http
+      port: 8000
+      targetPort: 8080
+  selector:
+    app: backend
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: onho-dev
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: backend
+        version: v1
+    spec:
+      serviceAccountName: backend
+      containers:
+        - name: backend
+          image: acronhosbx.azurecr.io/onho:0.21
+          args: [backend]
+          ports:
+            - containerPort: 8080
+          env:
+            -  name: ONHO_CLIENT_PORT
+               value: "8080"
+            -  name: ONHO_ENVIRONMENT
+               value: "dev"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: backend-gateway
+  namespace: onho-dev
+spec:
+  selector:
+    istio: ingressgateway # use istio default ingress gateway
+  servers:
+  - port:
+      number: 443
+      name: https
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      serverCertificate: /etc/istio/ingressgateway-certs/tls.crt
+      privateKey: /etc/istio/ingressgateway-certs/tls.key
+    hosts:
+      - "httpbin.onho.cz"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: backend
+  namespace: onho-dev
+spec:
+  hosts:
+      - "httpbin.onho.cz"
+  gateways:
+      - backend-gateway
+  http:
+    - match:
+      - uri:
+          prefix: /health
+      - uri:
+          prefix: /
+      - uri:
+          prefix: /status
+      - uri:
+          prefix: /delay
+      route:
+      - destination:
+          port:
+            number: 8000
+          host: backend
+---

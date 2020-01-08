@@ -53,7 +53,7 @@ spec:
       serviceAccountName: httpbin
       containers:
         - name: httpbin
-          image: acronhosbx.azurecr.io/onho:0.20
+          image: acronhosbx.azurecr.io/onho:0.21
           args: [backend]
           ports:
             - containerPort: 8080
