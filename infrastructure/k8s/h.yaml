@@ -11,13 +11,19 @@ spec:
     metadata:
       labels:
         app: hello-world
-    spec:        
+    spec:
       containers:
       - name: node-hello
-        image: strm/helloworld-http
+        image: acronhosbx.azurecr.io/onho:0.18
+        args: [backend]
         ports:
-        - containerPort: 80
-          hostPort: 80
+          - containerPort: 8086
+#             hostPort: 8086
+        env:
+        -  name: ONHO_CLIENT_PORT
+           value: "8086"
+        -  name: ONHO_ENVIRONMENT
+           value: "dev"
 ---
 apiVersion: v1
 kind: Service
@@ -27,9 +33,9 @@ spec:
   selector:
     app: hello-world
   ports:
-    - port: 80
+    - port: 8086
       protocol: TCP
-      targetPort: 80
+      targetPort: 8086
   type: LoadBalancer
 ---
 apiVersion: networking.istio.io/v1alpha3
@@ -52,12 +58,10 @@ spec:
         - "we.onho.cz"
     - port:
         number: 80
-        name: http
-        protocol: HTTP
+        name: http2
+        protocol: HTTP2
       hosts:
         - "we.onho.cz"
-#      tls:
-#        httpsRedirect: true
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -75,6 +79,112 @@ spec:
       route:
         - destination:
             port:
-              number: 80
+              number: 8086
             host: hello-world
       maxAge: "86400s"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: hello-world
+spec:
+  host: hello-world
+  trafficPolicy:
+    connectionPool:
+      tcp:
+        maxConnections: 100
+        connectTimeout: 15s
+        tcpKeepalive:
+          time: 7200s
+          interval: 75s
+  spec:
+    exportTo:
+      - '*'
+    host: hello-world
+#    trafficPolicy:
+#      tls:
+#        mode: DISABLE
+
+
+
+
+#apiVersion: apps/v1
+#kind: Deployment
+#metadata:
+#  name: hello-world
+#  namespace: default
+#spec:
+#  selector:
+#    matchLabels:
+#      app: hello-world
+#  template:
+#    metadata:
+#      labels:
+#        app: hello-world
+#    spec:
+#      containers:
+#      - name: node-hello
+#        image: strm/helloworld-http
+#        ports:
+#        - containerPort: 80
+#          hostPort: 80
+#---
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: hello-world
+#spec:
+#  selector:
+#    app: hello-world
+#  ports:
+#    - port: 80
+#      protocol: TCP
+#      targetPort: 80
+#  type: LoadBalancer
+#---
+#apiVersion: networking.istio.io/v1alpha3
+#kind: Gateway
+#metadata:
+#  name: hello-gw
+#spec:
+#  selector:
+#    istio: ingressgateway # use Istio default gateway implementation
+#  servers:
+#    - port:
+#        number: 443
+#        name: https
+#        protocol: HTTPS
+#      tls:
+#        mode: SIMPLE
+#        serverCertificate: /etc/istio/ingressgateway-certs/tls.crt
+#        privateKey: /etc/istio/ingressgateway-certs/tls.key
+#      hosts:
+#        - "we.onho.cz"
+#    - port:
+#        number: 80
+#        name: http
+#        protocol: HTTP
+#      hosts:
+#        - "we.onho.cz"
+##      tls:
+##        httpsRedirect: true
+#---
+#apiVersion: networking.istio.io/v1alpha3
+#kind: VirtualService
+#metadata:
+#  name: hello-vs
+#spec:
+#  hosts:
+#    - "we.onho.cz"
+#  gateways:
+#    - hello-gw
+#  http:
+#    - match:
+#        - uri:
+#            prefix: /
+#      route:
+#        - destination:
+#            port:
+#              number: 80
+#            host: hello-world
+#      maxAge: "86400s"

@@ -5,19 +5,16 @@ set -e
 # PS /home/michal/workspace/onho.io> ./scripts/build.sh ci ./infrastructure/docker/dev/ "latest"
 usage(){
         cat <<EOF
-        Usage: $(basename $0) <COMMAND>  <ONHO_DIR_PATH> <TAG>
+        Usage: $(basename $0) <COMMAND>  <TAG>
         Commands:
             ci                run build process with new version and properly tag
             cd                deploy app to container registry.
             cid               ci+cd
             init              you should run this before first deployment starts. Instals istio and certificates renew certificates. not implemented yet...
-            drop
+            drop              drops onho namespace
 
         Command arguments:
-            <ONHO_DIR_PATH>    root directory of onho
-
-         tag :
-            if empty than :latest is used
+            <TAG> :   docker tag, if empty than :latest is used
 EOF
 }
 
@@ -36,6 +33,14 @@ dir_exists(){
      	fi
 }
 
+check_kube_cli(){
+	KUBECTL=`which kubectl`||true
+
+	if [[ -z "${KUBECTL}" ]]; then
+ 		panic "Kubectl is not installed"
+		exit 1
+	fi
+}
 
 
 
@@ -60,6 +65,7 @@ cat <<EOF
 ***************************************************************
 EOF
 
+    check_kube_cli
     # to be able to push into remote repo we need properly tag. I'm doing this step in ci part
     #docker tag onho.io/onho:${tag} acronhosbx.azurecr.io/onho:${tag}
 
@@ -92,6 +98,21 @@ EOF
 }
 
 
+shallow_drop(){
+cat <<EOF
+***************************************************************
+    cleaning k8s and dockers
+***************************************************************
+EOF
+
+    kubectl delete -f ${KUBE_DIR}frontend.pod.yaml
+    kubectl delete -f ${KUBE_DIR}backend.pod.yaml
+    #waiting until pods are initialised
+    sleep 15s
+}
+
+
+
 drop(){
 cat <<EOF
 ***************************************************************
@@ -104,11 +125,29 @@ EOF
     kubectl delete -f ${KUBE_DIR}namespace.yaml
 }
 
+init(){
+  check_kube_cli
 
-DOCKER_DIR="${2%/}/infrastructure/docker/dev/"
-KUBE_DIR="${2%/}/infrastructure/k8s/dev/"
+  #create certificates here
+  kubectl delete secret istio-ingressgateway-certs -n istio-system
+  sleep 2s
+  kubectl create secret tls istio-ingressgateway-certs -n istio-system --key onho.cz.key --cert onho.cz.crt
+  echo "uploading cert..."
+  sleep 70s
+  kubectl exec -it -n istio-system "$(kubectl -n istio-system get pods -l istio=ingressgateway -o jsonpath='{.items[0].metadata.name}')" -- ls -al /etc/istio/ingressgateway-certs
+  #remove crtificates here
 
-tag=${3} #"$(date '+%Y%m%d%H%M%S')"
+}
+
+
+SCRIPTDIR=$( pwd -P )
+ROOTDIR="${SCRIPTDIR}/../"
+DOCKER_DIR="${ROOTDIR%/}/infrastructure/docker/dev/"
+KUBE_DIR="${ROOTDIR%/}/infrastructure/k8s/dev/"
+
+
+
+tag=${2} #"$(date '+%Y%m%d%H%M%S')"
 
 case "$1" in
     "ci")
@@ -120,6 +159,9 @@ case "$1" in
     "cid")
         ci
         cd
+    ;;
+    "init")
+        init
     ;;
     "drop")
         drop

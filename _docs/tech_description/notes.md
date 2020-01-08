@@ -30,3 +30,7 @@ Istio ingress gateway (https://istio.io/docs/tasks/traffic-management/ingress/in
 kubectl -n istio-system get service istio-ingressgateway
 ```
 
+Verifying creds were mounted to istio-ingress-gateway pods
+```bash
+kubectl exec -it -n istio-system $(kubectl -n istio-system get pods -l istio=ingressgateway -o jsonpath='{.items[0].metadata.name}') -- ls -al /etc/istio/ingressgateway-certs
+```

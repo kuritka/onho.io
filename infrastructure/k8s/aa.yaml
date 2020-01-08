@@ -1,0 +1,103 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: hello-world
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+        - name: node-hello
+          image: acrxyzzsbx.azurecr.io/xyzz:0.15
+          args: [backend]
+          ports:
+            - containerPort: 8086
+          #             hostPort: 8086
+          env:
+            -  name: xyzz_CLIENT_PORT
+               value: "8086"
+            -  name: xyzz_ENVIRONMENT
+               value: "dev"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-world
+spec:
+  selector:
+    app: hello-world
+  ports:
+    - port: 8086
+      protocol: TCP
+      targetPort: 8086
+  type: LoadBalancer
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: hello-gw
+spec:
+  selector:
+    istio: ingressgateway # use Istio default gateway implementation
+  servers:
+    - port:
+        number: 443
+        name: https
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        serverCertificate: /etc/istio/ingressgateway-certs/tls.crt
+        privateKey: /etc/istio/ingressgateway-certs/tls.key
+      hosts:
+        - "we.xyzz.io"
+    - port:
+        number: 80
+        name: http2
+        protocol: HTTP2
+      hosts:
+        - "we.xyzz.io"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: hello-vs
+spec:
+  hosts:
+    - "we.xyzz.io"
+  gateways:
+    - hello-gw
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            port:
+              number: 8086
+            host: hello-world
+      maxAge: "86400s"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: hello-world
+spec:
+  host: hello-world
+  trafficPolicy:
+    connectionPool:
+      tcp:
+        maxConnections: 100
+        connectTimeout: 15s
+        tcpKeepalive:
+          time: 7200s
+          interval: 75s
+  spec:
+    exportTo:
+      - '*'
+    host: hello-world
