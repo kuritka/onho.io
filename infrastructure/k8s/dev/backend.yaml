@@ -39,7 +39,7 @@ spec:
       serviceAccountName: backend
       containers:
         - name: backend
-          image: acronhosbx.azurecr.io/onho:0.21
+          image: acronhosbx.azurecr.io/onho:0.22
           args: [backend]
           ports:
             - containerPort: 8080
@@ -85,10 +85,6 @@ spec:
           prefix: /health
       - uri:
           prefix: /
-      - uri:
-          prefix: /status
-      - uri:
-          prefix: /delay
       route:
       - destination:
           port:
