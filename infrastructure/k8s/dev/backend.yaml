@@ -39,7 +39,7 @@ spec:
       serviceAccountName: backend
       containers:
         - name: backend
-          image: acronhosbx.azurecr.io/onho:0.22
+          image: acronhosbx.azurecr.io/onho:0.23
           args: [backend]
           ports:
             - containerPort: 8080
