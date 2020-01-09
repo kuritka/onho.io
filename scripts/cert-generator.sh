@@ -23,7 +23,6 @@ usage(){
             self-sign
                 <INDIR_PATH>    required	  certificate configuration path
                 <OUTDIR_PATH>   required    certificate OUTDIR path, create if not exists
-                <keystore>      optional    not implemented yet
 
              keystore
                 <NAME>          required    name of keystore

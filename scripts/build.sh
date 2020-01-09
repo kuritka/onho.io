@@ -14,7 +14,20 @@ usage(){
             drop              drops onho namespace
 
         Command arguments:
-            <TAG> :   docker tag, if empty than :latest is used
+            ci
+                <TAG> required   docker tag, if empty than :latest is used
+
+            cd
+                <TAG> required   docker tag, if empty than :latest is used
+
+            cid
+                <TAG> required   docker tag, if empty than :latest is used
+
+            init
+                no arguments...
+
+            drop
+                no arguments...
 EOF
 }
 
@@ -124,22 +137,29 @@ EOF
 init(){
   check_kube_cli
 
-  #create certificates here
+  #TODO: in PROD , SIM, certificates would come from Azure vault
+
+  "${SCRIPT_DIR}/cert-generator.sh" self-sign "${CSR_DIR}onho.cnf" "${CSR_DIR}"
+
   kubectl delete secret istio-ingressgateway-certs -n istio-system
   sleep 2s
-  kubectl create secret tls istio-ingressgateway-certs -n istio-system --key onho.cz.key --cert onho.cz.crt
+  kubectl create secret tls istio-ingressgateway-certs -n istio-system --key "${CSR_DIR}onho.key" --cert "${CSR_DIR}onho.crt"
   echo "uploading cert..."
   sleep 70s
   kubectl exec -it -n istio-system "$(kubectl -n istio-system get pods -l istio=ingressgateway -o jsonpath='{.items[0].metadata.name}')" -- ls -al /etc/istio/ingressgateway-certs
-  #remove crtificates here
+  rm "${CSR_DIR}onho.key"
+  rm "${CSR_DIR}onho.crt"
 
 }
 
 
-SCRIPTDIR=$( pwd -P )
-ROOTDIR="${SCRIPTDIR}/../"
+ABSPATH=$(readlink -f $0)
+SCRIPT_DIR=$(dirname $ABSPATH)
+ROOTDIR="${SCRIPT_DIR}/../"
 DOCKER_DIR="${ROOTDIR%/}/infrastructure/docker/dev/"
 KUBE_DIR="${ROOTDIR%/}/infrastructure/k8s/dev/"
+CSR_DIR="${ROOTDIR%/}/infrastructure/certificates/dev/"
+CRT_DIR="${ROOTDIR%/}/certs/"
 
 
 
