@@ -1,7 +1,8 @@
+#TODO: use ine service acoount and setup roles : https://medium.com/better-programming/k8s-tips-using-a-serviceaccount-801c433d0023
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: frontend
+  name: frontend-identity
   namespace: onho-dev
 ---
 apiVersion: v1
@@ -36,7 +37,7 @@ spec:
         app: frontend
         version: v1
     spec:
-      serviceAccountName: frontend
+      serviceAccountName: frontend-identity
       restartPolicy: Always
       containers:
         - name: frontend
