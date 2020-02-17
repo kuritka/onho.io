@@ -39,8 +39,10 @@ variable "paired_region" {
 variable "tags" {
   type = "map"
   default = {
-    source = "terraform"
-    environment = "sendbox test"
+    Product = "Corporate Systems"
+    Environment = "Development"
+    ApplicationId = "0"
+    Owner = "edt"
   }
 }
 

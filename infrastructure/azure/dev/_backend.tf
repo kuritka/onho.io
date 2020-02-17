@@ -1,7 +1,7 @@
 /*
  create GRS V2 Premium storage with Hot tier manually in Azure.
 
- Terraform state will be created automatically after `azure plan` command
+ Terraform state will be created automatically after `terraform plan` command
 */
 terraform {
   backend "azurerm" {
