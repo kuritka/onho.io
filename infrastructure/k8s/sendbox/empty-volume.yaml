@@ -1,0 +1,55 @@
+#demo to show how to just share data between containers within the pod  . Data is lost when pod get  down
+apiVersion: v1
+kind: Service
+metadata:
+  name: empty-volume-service
+  namespace: sendbox
+  labels:
+    app: empty-volume
+spec:
+  ports:
+    - name: http
+      port: 9080
+      targetPort: 80
+  selector:
+    app: empty-volume
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: sendbox
+  name: empty-volume
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: empty-volume
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: empty-volume
+        version: v1
+    spec:
+      volumes:
+        - name: html
+          emptyDir: {}
+      containers:
+        - name: nginx
+          image: nginx:alpine
+          volumeMounts:
+            - name: html
+              #within nginx container map emptydir:{} html to nginx default resource folder /usr/share/nginx/html
+              mountPath: /usr/share/nginx/html
+              readOnly: true
+        - name: html-updater
+          image: alpine
+          command: ["/bin/sh", "-c"]
+          args:
+            #update file /html/index.html every 10 seconds
+            - while  true; do date >> /html/index.html;sleep 10;  done
+          volumeMounts:
+            - name: html
+              #within alpine container map emptydir:{} into /html . By attaching  index.html can nginx show new line every 10 seconds
+              mountPath: /html

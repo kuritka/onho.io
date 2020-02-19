@@ -28,7 +28,6 @@ func ToFloat64(i interface{}) (b float64) {
 	default:
 		b = 0
 	}
-
 	return
 }
 
