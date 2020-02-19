@@ -34,3 +34,11 @@ Verifying creds were mounted to istio-ingress-gateway pods
 ```bash
 kubectl exec -it -n istio-system $(kubectl -n istio-system get pods -l istio=ingressgateway -o jsonpath='{.items[0].metadata.name}') -- ls -al /etc/istio/ingressgateway-certs
 ```
+
+
+
+
+#troubleshoot
+```bash
+kubectl run -it --rm nwutils --restart=Never --image=nbrown/nwutils -- nslookup rabbit-mq.onho-dev
+```

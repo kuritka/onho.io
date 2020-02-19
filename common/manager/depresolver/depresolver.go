@@ -85,6 +85,10 @@ func (r *FromEnvDependenciesResolver) MustResolveCookieStore() *FromEnvDependenc
 }
 
 
+//func (r *FromEnvDependenciesResolver) MustResolveSFTPPrivateKey() *FromEnvDependenciesResolver {
+//	r.Options.Port = utils.MustGetIntFlagFromEnv("ONHO_SFTP_PK")
+//	return r
+//}
 
 const (
 	githubAuthorizeUrl = "https://github.com/login/oauth/authorize"
